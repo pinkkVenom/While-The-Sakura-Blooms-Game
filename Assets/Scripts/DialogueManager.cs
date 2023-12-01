@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         textComponent.text = string.Empty;
-        StartDailouge(); 
+        StartDialouge(); 
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    void StartDailouge()
+    void StartDialouge()
     {
         index = 0;
         StartCoroutine(TypeLine()); 
