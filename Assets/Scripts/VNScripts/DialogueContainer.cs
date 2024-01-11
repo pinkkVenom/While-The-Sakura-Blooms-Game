@@ -11,7 +11,7 @@ namespace DIALOGUE
         //for hiding the dialogue
         public GameObject UIRoot;
         //for displaying characters name
-        public TextMeshProUGUI nameText;
+        public NameContainer nameContainer;
         //for displaying the spoken dialogue
         public TextMeshProUGUI dialogueText;
     }
