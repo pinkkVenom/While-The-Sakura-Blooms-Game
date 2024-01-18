@@ -12,7 +12,7 @@ namespace DIALOGUE
         //w identifies word character of any length (*)
         //the [^] will exclude the proceeding of s which is white space
         //the ( is looking for parenthesis
-        private const string commandRegexPattern = "\\w*[^\\s]\\(";
+        private const string commandRegexPattern = @"[\w\[\]]*[^\\s]\(";
 
         //to parse a string straight from the dialogue file
         //sends string to ripcontent method to be separated into 3 parts
@@ -67,16 +67,21 @@ namespace DIALOGUE
 
             //Indentifying Command Patterns in Strings
             Regex commandRegex = new Regex(commandRegexPattern);
-            Match match = commandRegex.Match(rawLine);
+            MatchCollection matches = commandRegex.Matches(rawLine);
             int commandStart = -1;
-            //if the line matches the regex pattern
-            if (match.Success)
+            //loop through all matches
+            foreach(Match match in matches)
             {
-                commandStart = match.Index;
-                if(dialogueStart == -1 && dialogueEnd == -1)
+                if(match.Index < dialogueStart || match.Index > dialogueEnd)
                 {
-                    return ("", "", rawLine.Trim());
+                    commandStart = match.Index;
+                    break;
                 }
+            }
+
+            if (commandStart != -1 && (dialogueStart == -1 && dialogueEnd == -1))
+            {
+                return ("", "", rawLine.Trim());
             }
 
             //this figures out whether we have dialogue or if the quotations are in a command
@@ -101,10 +106,10 @@ namespace DIALOGUE
             }
             else
             {
-                speaker = rawLine;
+                dialogue = rawLine;
             }
 
-            Debug.Log(rawLine.Substring(dialogueStart + 1, (dialogueEnd - dialogueStart)-1));
+            //Debug.Log(rawLine.Substring(dialogueStart + 1, (dialogueEnd - dialogueStart)-1));
 
             return (speaker, dialogue, commands);
         }

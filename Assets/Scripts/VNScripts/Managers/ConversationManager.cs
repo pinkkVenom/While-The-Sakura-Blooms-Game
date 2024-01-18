@@ -80,6 +80,12 @@ namespace DIALOGUE
                 {
                     yield return Line_RunCommands(line);
                 }
+                //check if the line is just a command
+                if (line.hasDialogue)
+                {
+                    //wait for user input
+                    yield return WaitForUserInput();
+                }
             }
         }
 
@@ -88,19 +94,29 @@ namespace DIALOGUE
             //shows the speaker name if they have one
             if (line.hasSpeaker)
             {
-                dialogueSystem.ShowSpeakerName(line.speaker);
+                dialogueSystem.ShowSpeakerName(line.speakerData.displayName);
             }
 
             //build dialogue
-            yield return BuildLineSegments(line.dialogue);
+            yield return BuildLineSegments(line.dialogueData);
 
-            //wait for user input
-            yield return WaitForUserInput();
         }
 
         IEnumerator Line_RunCommands(DIALOGUE_LINE line)
         {
-            Debug.Log(line.commands);
+            //Debug.Log(line.commandData);
+            List<DL_COMMAND_DATA.Command> commands = line.commandData.commands;
+            foreach(DL_COMMAND_DATA.Command command in commands)
+            {
+                if (command.waitForCompletion)
+                {
+                    yield return CommandManager.instance.Execute(command.name, command.arguments);
+                }
+                else
+                {
+                    CommandManager.instance.Execute(command.name, command.arguments);
+                }
+            }
             yield return null;
         }
 

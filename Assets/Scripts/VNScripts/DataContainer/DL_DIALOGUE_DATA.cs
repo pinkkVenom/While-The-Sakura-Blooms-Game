@@ -9,9 +9,6 @@ public class DL_DIALOGUE_DATA
     //the regex pattern for locating identifiers in the dialogue lines
     private const string segmentIdentifierPattern = @"\{[ca]\}|\{w[ca]\s\d*\.?\d*\}";
 
-    //as long as we have segments, we have dialogue
-    public bool hasDialogue => segments.Count > 0;
-
     //constructor that will extract elements of the dialogue line
     //into separate data pieces
    public DL_DIALOGUE_DATA(string rawDialogue)

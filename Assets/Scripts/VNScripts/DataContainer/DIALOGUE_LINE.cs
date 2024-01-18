@@ -8,22 +8,22 @@ namespace DIALOGUE
 {
     public class DIALOGUE_LINE
     {
-        public string speaker;
-        public DL_DIALOGUE_DATA dialogue;
-        public string commands;
+        public DL_SPEAKER_DATA speakerData;
+        public DL_DIALOGUE_DATA dialogueData;
+        public DL_COMMAND_DATA commandData;
 
-        //checks right away if speaker is empty
-        public bool hasSpeaker => speaker != string.Empty;
-        //checks right away if dialogue is empty, points to DLDIALOGUEDATA variable
-        public bool hasDialogue => dialogue.hasDialogue;
-        //checks right away if commands is empty
-        public bool hasCommands => commands != string.Empty;
+        //checks right away if speaker is null
+        public bool hasSpeaker => speakerData != null;
+        //checks right away if dialogue is null, points to DLDIALOGUEDATA variable
+        public bool hasDialogue => dialogueData != null;
+        //checks right away if commands is null
+        public bool hasCommands => commandData != null;
 
         public DIALOGUE_LINE(string speaker, string dialogue, string commands)
         {
-            this.speaker = speaker;
-            this.dialogue = new DL_DIALOGUE_DATA(dialogue);
-            this.commands = commands;
+            this.speakerData = (string.IsNullOrWhiteSpace(speaker) ? null : new DL_SPEAKER_DATA(speaker));
+            this.dialogueData = (string.IsNullOrWhiteSpace(dialogue) ? null : new DL_DIALOGUE_DATA(dialogue));
+            this.commandData = (string.IsNullOrWhiteSpace(commands) ? null : new DL_COMMAND_DATA(commands));
         }
     }
 }
