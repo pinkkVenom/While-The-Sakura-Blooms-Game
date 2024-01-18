@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using COMMAND;
 
 //example of how to add commands into the system
 //all commands her MUST be static

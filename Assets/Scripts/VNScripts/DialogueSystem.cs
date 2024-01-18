@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CHARACTERS;
 
 //this code is the main controller for starting and controlling dialogue conversations on screen
 
@@ -8,6 +9,10 @@ namespace DIALOGUE
 {
     public class DialogueSystem : MonoBehaviour
     {
+        //we don't want anything to change the config so we make a second private declaration
+        [SerializeField] private DialogueSystemConfigSO _config;
+        public DialogueSystemConfigSO config => _config;
+
         //accessible from inspector
         public DialogueContainer dialogueContainer = new DialogueContainer();
         private ConversationManager conversationManager;
@@ -57,6 +62,25 @@ namespace DIALOGUE
             onUserPrompt_Next?.Invoke();
         }
 
+        //apply config data to speaker
+        public void ApplySpeakerDataToDialogueContainer(string speakerName)
+        {
+            Character character = CharacterManager.instance.GetCharacter(speakerName);
+            //get configuration assigned to character
+            CharacterConfigData config = character != null ? character.config : CharacterManager.instance.GetCharacterConfig(speakerName);
+
+            ApplySpeakerDataToDialogueContainer(config);
+        }
+
+        //goes through config to find character
+        public void ApplySpeakerDataToDialogueContainer(CharacterConfigData config)
+        {
+            dialogueContainer.SetDialogueColor(config.dialogueColor);
+            dialogueContainer.SetDialogueFont(config.dialogueFont);
+            dialogueContainer.nameContainer.SetNameColor(config.nameColor);
+            dialogueContainer.nameContainer.SetNameFont(config.nameFont);
+        }
+
         public void ShowSpeakerName(string speakerName = "")
         {
             //if the speaker isnt named narrator
@@ -73,16 +97,16 @@ namespace DIALOGUE
 
         //method called when we want anything to show up in-game on-screen
         //Type 1: individual lines passed into string which becomes the conversation
-        public void Say(string speaker, string dialogue)
+        public Coroutine Say(string speaker, string dialogue)
         {
             List<string> conversation = new List<string>() { $"{speaker} \"{dialogue}\"" };
-            Say(conversation);
+            return Say(conversation);
         }
 
         //Type 2: entire conversation (array)
-        public void Say(List<string> conversation)
+        public Coroutine Say(List<string> conversation)
         {
-            conversationManager.StartConversation(conversation);
+            return conversationManager.StartConversation(conversation);
         }
     }
 }
