@@ -29,7 +29,7 @@ namespace DIALOGUE
         private void Awake()
         {
             //only 1 dialogue system allowed at a time
-            if (instance = null)
+            if (instance == null)
             {
                 instance = this;
                 Initialize();

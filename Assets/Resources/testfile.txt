@@ -1,0 +1,8 @@
+Speaker "Hello!"
+Speaker "Welcome to the Demo"
+Speaker "I hope you're having a good day"
+Speaker "Press spacebar to make the text appear faster on screen because some lines are super super super long for no reason"
+Speaker "Press spacebar 3 times to append the text to screen because this particular line is so crazy long i dont even know if it will fit on screen but oh well im rambling a lot right now"
+Hanako "My name changed to Hanako! How cool"
+Super Cool Gal "And now it changed again"
+Person "Whenever you're ready, press E again to exit dialogue"

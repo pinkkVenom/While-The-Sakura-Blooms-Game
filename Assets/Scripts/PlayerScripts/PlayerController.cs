@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DIALOGUE;
 
 //keep rigidbody 2D rotation frozen
 
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
+    public GameObject vnscene;
+    bool sceneActive;
 
     //private Inventory inventory;
 
     //[SerializeField] private UI_Inventory uiInventory; 
-    
+
     /*
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        vnscene.SetActive(false);
+        sceneActive = false;
     }
 
     public float moveSpeed = 5.0f;
@@ -49,15 +54,36 @@ public class PlayerController : MonoBehaviour
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-        if (moveDirection != Vector3.zero)
+        //if (moveDirection != Vector3.zero)
+        //{
+        //    anim.SetBool("isRunning", true); 
+        //}
+        //else
+        //{
+         //   anim.SetBool("isRunning", false);
+        //}
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            anim.SetBool("isRunning", true); 
-        }
-        else
-        {
-            anim.SetBool("isRunning", false);
+            PromptAdvance();
         }
 
+        if (Input.GetKeyDown(KeyCode.E) && sceneActive == false)
+        {
+            vnscene.SetActive(true);
+            sceneActive = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.E) && sceneActive == true)
+        {
+            vnscene.SetActive(false);
+            sceneActive = false;
+        }
+
+    }
+
+    public void PromptAdvance()
+    {
+        DialogueSystem.instance.OnUserPrompt_Next();
+        //Debug.Log("Success");
     }
 
     public void OnMoveInput(float horizontal, float vertical)
@@ -66,4 +92,5 @@ public class PlayerController : MonoBehaviour
         this.vertical = vertical;
         Debug.Log($"Player Controller Move Input: {vertical}, {horizontal}");
     }
+
 }

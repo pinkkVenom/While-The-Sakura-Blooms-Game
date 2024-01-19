@@ -9,7 +9,7 @@ public class Quest : MonoBehaviour
     public Image questItem;
     public Color completedColor;
     public Color activeColor;
-    public Color currentColor; 
+    public Color currentColor;
 
     public QuestArrow arrow;
 
@@ -24,7 +24,7 @@ public class Quest : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
-        {
+        { 
             FinishQuest();
             Destroy(gameObject);
         }
