@@ -18,12 +18,12 @@ public class InputController : MonoBehaviour
 {
     Controls controls;
     public MoveInputEvent moveInputEvent;
-
+    
     //anything in awake is for the InputController class specifically
     private void Awake()
     {
         controls = new Controls();
-    }
+     }
 
     //this enables the action map controls
     private void OnEnable()

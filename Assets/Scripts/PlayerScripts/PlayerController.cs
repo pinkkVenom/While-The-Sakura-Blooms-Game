@@ -6,8 +6,31 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
     private Animator anim;
+    private Inventory inventory;
+
+    [SerializeField] private UI_Inventory uiInventory; 
+
+    private void Awake()
+    {
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+
+        ItemWorld.SpawnItemWorld(new Vector3(-30, 18), new Item {itemType = Item.ItemType.Coin, amount = 1});
+        ItemWorld.SpawnItemWorld(new Vector3(10, 18), new Item {itemType = Item.ItemType.Coin, amount = 1 });
+        ItemWorld.SpawnItemWorld(new Vector3(32, 15), new Item { itemType = Item.ItemType.Flower, amount = 1 });
+    }
+
+   private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
+        if ((itemWorld != null) )
+        {
+            // if the player is touching item 
+            inventory.AddItem(ItemWorld.GetItem());
+            itemWorld.DestroySelf(); 
+        }
+    }
 
     private void Start()
     {
