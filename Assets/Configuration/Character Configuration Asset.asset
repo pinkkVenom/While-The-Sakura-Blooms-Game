@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character Configuration Asset
   m_EditorClassIdentifier: 
   characters:
-  - name: Hanako Kaori
+  - name: Hanako
     alias: hk
     characterType: 1
     nameColor: {r: 1, g: 1, b: 1, a: 0}
