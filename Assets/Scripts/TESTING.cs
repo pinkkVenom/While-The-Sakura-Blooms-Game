@@ -5,10 +5,11 @@ using DIALOGUE;
 
 public class TESTING : MonoBehaviour
 {
+    public GameObject VN;
     // Start is called before the first frame update
     void Start()
     {
-        StartConversation();
+            StartConversation();
     }
 
     // Update is called once per frame
