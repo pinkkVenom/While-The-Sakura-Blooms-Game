@@ -10,14 +10,25 @@ namespace CHARACTERS
     public abstract class Character
     {
 
-        public const bool ENABLE_ON_START = true;
+        public const bool ENABLE_ON_START = false;
+        private const float UNHIGHLIGHTED_DARKEN_STRENGTH = 0.65f;
+        public const bool DEFAULT_ORIENTATION_ISFACING_LEFT = true;
+        public const string ANIMATION_REFRESH_TRIGGER = "Refresh";
 
         public string name = "";
         public string displayName = "";
         public RectTransform root = null;
         public CharacterConfigData config;
         public Animator animator;
+
         public Color color { get; protected set; } = Color.white;
+        //second color that will take into account the highlighted status
+        protected Color displayColor => highlighted ? highlightedColor : unhighlightedColor;
+        protected Color highlightedColor => color;
+        protected Color unhighlightedColor => new Color(color.r * UNHIGHLIGHTED_DARKEN_STRENGTH, color.g * UNHIGHLIGHTED_DARKEN_STRENGTH, color.b * UNHIGHLIGHTED_DARKEN_STRENGTH, color.a);
+        public bool highlighted { get; protected set; } = true;
+        protected bool facingLeft = DEFAULT_ORIENTATION_ISFACING_LEFT;
+        public int priority { get; protected set; }
 
 
         //reference to character manager
@@ -30,14 +41,23 @@ namespace CHARACTERS
         protected Coroutine co_revealing, co_hiding;
         protected Coroutine co_moving;
         protected Coroutine co_changingColor;
+        protected Coroutine co_highlighting;
+        protected Coroutine co_flipping;
 
         //public bools that check if coroutines are active
         public bool isRevealing => co_revealing != null;
         public bool isHiding => co_hiding != null;
         public bool isMoving => co_moving != null;
         public bool isChangingColor => co_changingColor != null;
+        public bool isHighlighting => (highlighted && co_highlighting != null);
+        public bool isUnHighlighting => (!highlighted && co_highlighting != null);
         //check if character is visible in the scene
         public virtual bool isVisible { get; set; }
+        //for character x-axis flip
+        public bool isFacingLeft => facingLeft;
+        public bool isFacingRight => !facingLeft;
+        public bool isFlipping => co_flipping != null;
+
 
         //create character constructor (empty here, but inheritance classes use it to make their own)
         public Character(string name, CharacterConfigData config, GameObject prefab)
@@ -194,7 +214,7 @@ namespace CHARACTERS
             {
                 manager.StopCoroutine(co_changingColor);
             }
-            co_changingColor = manager.StartCoroutine(ChangingColor(color, speed));
+            co_changingColor = manager.StartCoroutine(ChangingColor(displayColor, speed));
             return co_changingColor;
         }
 
@@ -203,6 +223,112 @@ namespace CHARACTERS
             Debug.Log("Color changing is not applicable on this character type!");
             yield return null;
         }
+
+        public Coroutine Highlight(float speed = 1f)
+        {
+            if (isHighlighting)
+            {
+                return co_highlighting;
+            }
+            if (isUnHighlighting)
+            {
+                manager.StopCoroutine(co_highlighting);
+            }
+            highlighted = true;
+            co_highlighting = manager.StartCoroutine(Highlighting(highlighted, speed));
+            return co_highlighting;
+        }
+        public Coroutine UnHighlight(float speed = 1f)
+        {
+            if (isUnHighlighting)
+            {
+                return co_highlighting;
+            }
+            if (isHighlighting)
+            {
+                manager.StopCoroutine(co_highlighting);
+            }
+            highlighted = false;
+            co_highlighting = manager.StartCoroutine(Highlighting(highlighted, speed));
+            return co_highlighting;
+        }
+
+        public virtual IEnumerator Highlighting (bool highlight, float speedMultiplier)
+        {
+            Debug.Log("Highlighting is not available on this character type!");
+            yield return null;
+        }
+
+        //flip sprite regardless of the direction they're facing
+        public Coroutine Flip(float speed = 1f, bool immediate = false)
+        {
+            if (isFacingLeft)
+            {
+                return FaceLeft(speed, immediate);
+            }
+            else
+            {
+                return FaceRight(speed, immediate);
+            }
+        }
+        public Coroutine FaceLeft(float speed = 1f, bool immediate = false)
+        {
+            if (isFlipping)
+            {
+                manager.StopCoroutine(co_flipping);
+            }
+            facingLeft = true;
+            co_flipping = manager.StartCoroutine(FaceDirection(facingLeft, speed, immediate));
+            return co_flipping;
+        }
+        public Coroutine FaceRight(float speed = 1f, bool immediate = false)
+        {
+            if (isFlipping)
+            {
+                manager.StopCoroutine(co_flipping);
+            }
+            facingLeft = false;
+            co_flipping = manager.StartCoroutine(FaceDirection(facingLeft, speed, immediate));
+            return co_flipping;
+        }
+
+        public virtual IEnumerator FaceDirection(bool faceLeft, float speedMultiplier, bool immediate)
+        {
+            Debug.Log("Cannot flip a character of this type!");
+            yield return null;
+        }
+
+        //decides which character is drawn first
+        //some characters should be drawn overtop of existing ones to give them prio in the scene
+        public void SetPriority (int priority, bool autoSortCharactersOnUI = true)
+        {
+            this.priority = priority;
+
+            //sort the characters on UI if true
+            //sends this to Character Manager
+            if (autoSortCharactersOnUI)
+            {
+                manager.SortCharacters();
+            }
+        }
+
+
+        public void Animate(string animation)
+        {
+            animator.SetTrigger(animation);
+        }
+        //for animations with trigger state
+        public void Animate(string animation, bool state)
+        {
+            animator.SetBool(animation, state);
+            animator.SetTrigger(ANIMATION_REFRESH_TRIGGER);
+        }
+
+        public virtual void OnRecieveCastingExpression(int layer, string expression)
+        {
+            return;
+        }
+
 
         //types of characters that can exist in the game
         public enum CharacterType 

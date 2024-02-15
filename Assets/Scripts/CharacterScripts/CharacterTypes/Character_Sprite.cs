@@ -118,9 +118,11 @@ namespace CHARACTERS
         public override void SetColor(Color color)
         {
             base.SetColor(color);
+            color = displayColor;
 
             foreach(CharacterSpriteLayer layer in layers)
             {
+                layer.StopChangingColor();
                 layer.SetColor(color);
             }
         }
@@ -141,6 +143,62 @@ namespace CHARACTERS
                 yield return null;
             }
             co_changingColor = null;
+        }
+
+        public override IEnumerator Highlighting(bool highlight, float speedMultiplier)
+        {
+            Color targetColor = displayColor;
+
+            //go through each character layer and transition to the target color
+            foreach(CharacterSpriteLayer layer in layers)
+            {
+                layer.TransitionColor(targetColor, speedMultiplier);
+            }
+            yield return null;
+            //check if coroutines are still running
+            //if any layer is still changing color then wait for it to finish
+            while (layers.Any(l => l.isChangingColor))
+            {
+                yield return null;
+            }
+            co_highlighting = null;
+
+        }
+
+        public override IEnumerator FaceDirection(bool faceLeft, float speedMultiplier, bool immediate)
+        {
+            foreach(CharacterSpriteLayer layer in layers)
+            {
+                if (faceLeft)
+                {
+                    layer.FaceLeft(speedMultiplier, immediate);
+                }
+                else
+                {
+                    layer.FaceRight(speedMultiplier, immediate);
+                }
+            }
+            //yield for next frame
+            yield return null;
+
+            //wait for everything to finish
+            while(layers.Any(l => l.isFlipping))
+            {
+                yield return null;
+            }
+            co_flipping = null;
+        }
+
+        public override void OnRecieveCastingExpression(int layer, string expression)
+        {
+            Sprite sprite = GetSprite(expression);
+
+            if(sprite == null)
+            {
+                Debug.LogWarning($"Sprite '{expression}' could not be found for character '{name}'");
+                return;
+            }
+            TransitionSprite(sprite, layer);
         }
 
     }

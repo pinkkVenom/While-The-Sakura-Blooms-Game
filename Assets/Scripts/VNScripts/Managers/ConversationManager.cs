@@ -2,6 +2,7 @@ using COMMAND;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CHARACTERS;
 
 //handles all logic to run dialogue on screen
 //one dialogue line at a time
@@ -96,12 +97,45 @@ namespace DIALOGUE
             //shows the speaker name if they have one
             if (line.hasSpeaker)
             {
-                dialogueSystem.ShowSpeakerName(line.speakerData.displayName);
+                HandleSpeakerLogic(line.speakerData);
             }
 
             //build dialogue
             yield return BuildLineSegments(line.dialogueData);
 
+        }
+        private void HandleSpeakerLogic(DL_SPEAKER_DATA speakerData)
+        {
+            bool characterMustBeCreated = (speakerData.makeCharacterEnter || speakerData.isCastingPosition || speakerData.isCastingExpressions);
+
+            Character character = CharacterManager.instance.GetCharacter(speakerData.name, createIfDoesNotExist: characterMustBeCreated);
+
+            //check if character is forced to enter
+            if (speakerData.makeCharacterEnter && (!character.isVisible && !character.isRevealing))
+            {
+                character.Show();
+            }
+
+            //add character name to the UI
+            dialogueSystem.ShowSpeakerName(speakerData.displayName);
+
+            DialogueSystem.instance.ApplySpeakerDataToDialogueContainer(speakerData.name);
+
+            //check if we need to cast position
+            if (speakerData.isCastingPosition)
+            {
+                character.MoveToPosition(speakerData.castPosition);
+            }
+
+            //check if we need to cast expressions
+            if (speakerData.isCastingExpressions)
+            {
+                //ce is cast expressions
+                foreach(var ce in speakerData.CastExpressions)
+                {
+                    character.OnRecieveCastingExpression(ce.layer, ce.expression);
+                }
+            }
         }
 
         IEnumerator Line_RunCommands(DIALOGUE_LINE line)

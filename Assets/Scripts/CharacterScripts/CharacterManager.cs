@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DIALOGUE;
+using System.Linq;
 
 //central hub for creating, retrieving, and managing characters in the scene
 namespace CHARACTERS
@@ -61,7 +62,7 @@ namespace CHARACTERS
         }
 
         //handles character creation
-        public Character CreateCharacter(string characterName)
+        public Character CreateCharacter(string characterName, bool revealAfterCreation = false)
         {
             if (characters.ContainsKey(characterName.ToLower()))
             {
@@ -73,7 +74,13 @@ namespace CHARACTERS
             Character character = CreateCharacterFromInfo(info);
 
             //log the character so we dont create them twice
-            characters.Add(character.name.ToLower(), character);
+            characters.Add(info.name.ToLower(), character);
+
+            //check if we want to reveal character
+            if (revealAfterCreation)
+            {
+                character.Show();
+            }
 
             return character;
         }
@@ -117,6 +124,67 @@ namespace CHARACTERS
 
                 default:
                     return null;
+            }
+        }
+
+        //manager sorts the priority of characters to be shown on UI
+        //takes into account active and inactive characters in the scene
+        public void SortCharacters()
+        {
+            //grab all active characters in scene and put into list
+            //also make sure character is visible
+            List<Character> activeCharacters = characters.Values.Where(c => c.root.gameObject.activeInHierarchy && c.isVisible).ToList();
+            //then grab everything that isnt active
+            List<Character> inactiveCharacters = characters.Values.Except(activeCharacters).ToList();
+
+            //compare a and b priority and then sort
+            activeCharacters.Sort((a, b) => a.priority.CompareTo(b.priority));
+            activeCharacters.Concat(inactiveCharacters);
+
+            SortCharacters(activeCharacters);
+        }
+
+        //set multiple characters priorities at once
+        //any character in this array should prio above all other characters on screen
+        public void SortCharacters(string[] characterNames)
+        {
+            List<Character> sortedCharacters = new List<Character>();
+
+            //gets all characters as long as theyre valid in our dictionary
+            sortedCharacters = characterNames
+                .Select(name => GetCharacter(name))
+                .Where(character => character != null)
+                .ToList();
+
+            //get remaining (inactive) characters
+            //sort the remaining characters by their priority
+            List<Character> remainingCharacters = characters.Values
+                .Except(sortedCharacters)
+                .OrderBy(character => character.priority)
+                .ToList();
+
+            sortedCharacters.Reverse();
+            //manually update the actual chracter priority
+            int startingPriority = remainingCharacters.Count > 0 ? remainingCharacters.Max(c => c.priority) : 0;
+            for(int i = 0; i < sortedCharacters.Count; i++)
+            {
+                Character character = sortedCharacters[i];
+                character.SetPriority(startingPriority + i + 1, autoSortCharactersOnUI: false);
+            }
+
+            List<Character> allCharacters = remainingCharacters.Concat(sortedCharacters).ToList();
+            SortCharacters(allCharacters);
+        }
+
+        //set the sorting priority on screen UI
+        private void SortCharacters(List<Character> charactersSortingOrder)
+        {
+            //first child
+            int i = 0;
+            foreach(Character character in charactersSortingOrder)
+            {
+                Debug.Log($"{character.name} priority is {character.priority}");
+                character.root.SetSiblingIndex(i++);
             }
         }
 

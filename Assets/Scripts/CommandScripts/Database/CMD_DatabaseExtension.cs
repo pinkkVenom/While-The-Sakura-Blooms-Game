@@ -14,5 +14,7 @@ namespace COMMAND
             //nothing here 
             //all logic for extending will be in the subclasses
         }
+
+        public static CommandParameters ConvertDataToParameters(string[] data) => new CommandParameters(data);
     }
 }
