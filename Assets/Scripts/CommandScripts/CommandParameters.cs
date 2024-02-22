@@ -9,12 +9,13 @@ namespace COMMAND {
         private const char PARAMETER_IDENTIFIER = '-';
 
         private Dictionary<string, string> parameters;
+        private List<string> unlabeledParameters = new List<string>();
 
-        public CommandParameters(string[] paramaterArray)
+        public CommandParameters(string[] paramaterArray, int startingIndex = 0)
         {
-            for(int i = 0; i < paramaterArray.Length; i++)
+            for(int i = startingIndex; i < paramaterArray.Length; i++)
             {
-                if (paramaterArray[i].StartsWith(PARAMETER_IDENTIFIER))
+                if (paramaterArray[i].StartsWith(PARAMETER_IDENTIFIER) && !float.TryParse(paramaterArray[i], out _))
                 {
                     string pName = paramaterArray[i];
                     string pValue = "";
@@ -27,6 +28,10 @@ namespace COMMAND {
                         i++;
                     }
                     parameters.Add(pName, pValue);
+                }
+                else
+                {
+                    unlabeledParameters.Add(paramaterArray[i]);
                 }
             }
         }
@@ -49,7 +54,20 @@ namespace COMMAND {
                         return true;
                     }
                 }
+
             }
+            //if we get here, no match was found in the existing parameters
+            //search unlabelled parameters if present
+            foreach (string parameterName in unlabeledParameters)
+            {
+                if (TryCastParameter(parameterName, out value))
+                {
+                    unlabeledParameters.Remove(parameterName);
+                    return true;
+                }
+
+            }
+
             value = defaultValue;
             return false;
         }

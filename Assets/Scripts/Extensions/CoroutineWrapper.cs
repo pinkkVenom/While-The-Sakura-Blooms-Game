@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//instead of yielding until end of coroutine, we can loop until this wrapper tells us the coroutine is done
+//in that loop, we are free to do anything else including checking for input
+public class CoroutineWrapper
+{
+    private MonoBehaviour owner;
+    private Coroutine coroutine;
+
+    public bool IsDone = false;
+    public CoroutineWrapper(MonoBehaviour owner, Coroutine coroutine)
+    {
+        this.owner = owner;
+        this.coroutine = coroutine;
+    }
+
+    public void Stop()
+    {
+        owner.StopCoroutine(coroutine);
+        IsDone = true;
+    }
+}

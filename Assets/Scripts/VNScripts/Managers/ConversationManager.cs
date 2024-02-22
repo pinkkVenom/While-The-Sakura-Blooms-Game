@@ -88,6 +88,8 @@ namespace DIALOGUE
                 {
                     //wait for user input
                     yield return WaitForUserInput();
+
+                    CommandManager.instance.StopAllProcesses();
                 }
             }
         }
@@ -144,9 +146,18 @@ namespace DIALOGUE
             List<DL_COMMAND_DATA.Command> commands = line.commandData.commands;
             foreach(DL_COMMAND_DATA.Command command in commands)
             {
-                if (command.waitForCompletion)
+                if (command.waitForCompletion || command.name == "wait")
                 {
-                    yield return CommandManager.instance.Execute(command.name, command.arguments);
+                    CoroutineWrapper cw = CommandManager.instance.Execute(command.name, command.arguments);
+                    while (!cw.IsDone)
+                    {
+                        if (userPrompt)
+                        {
+                            CommandManager.instance.StopCurrentProces();
+                            userPrompt = false;
+                        }
+                        yield return null;
+                    }
                 }
                 else
                 {

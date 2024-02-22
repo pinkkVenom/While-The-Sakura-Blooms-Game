@@ -13,6 +13,7 @@ namespace CHARACTERS
         //should only be one in the scene
         //can persist between scenes
         public static CharacterManager instance { get; private set; }
+        public Character[] allCharacters => characters.Values.ToArray();
         //create dictionary for characters
         private Dictionary<string, Character> characters = new Dictionary<string, Character>();
 
@@ -60,6 +61,9 @@ namespace CHARACTERS
             }
             return null;
         }
+
+        //check if character exists in the scene
+        public bool HasCharacter(string characterName) => characters.ContainsKey(characterName.ToLower());
 
         //handles character creation
         public Character CreateCharacter(string characterName, bool revealAfterCreation = false)
