@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        vnscene.SetActive(false);
+       // vnscene.SetActive(false);
         sceneActive = false;
     }
 
