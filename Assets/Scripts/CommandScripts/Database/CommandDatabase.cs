@@ -28,11 +28,13 @@ public class CommandDatabase
     public Delegate GetCommand(string commandName)
     {
         commandName = commandName.ToLower();
+
         if (!database.ContainsKey(commandName))
         {
-            Debug.LogError($"Command '{commandName}' does not exist in the database");
+            Debug.LogError($"Command '{commandName}' does not exist in the database!");
             return null;
         }
+
         return database[commandName];
     }
 }

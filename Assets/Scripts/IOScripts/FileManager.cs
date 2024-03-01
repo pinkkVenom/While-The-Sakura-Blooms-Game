@@ -44,7 +44,7 @@ public class FileManager
     }
 
     //load text file from resources/
-    public static List<string> ReadTextAsset(string filePath, bool includeBlankLines = true)
+    public static List<string> ReadTextAsset(string filePath, bool includeBlankLines = false)
     {
         TextAsset asset = Resources.Load<TextAsset>(filePath);
         //if we don't find the file
@@ -57,7 +57,7 @@ public class FileManager
     }
 
     //additional variant of method that takes the actual text asset instead of filepath
-    public static List<string> ReadTextAsset(TextAsset asset, bool includeBlankLines = true)
+    public static List<string> ReadTextAsset(TextAsset asset, bool includeBlankLines = false)
     {
         List<string> lines = new List<string>();
         //asset file is one massive string, so we use string reader instead

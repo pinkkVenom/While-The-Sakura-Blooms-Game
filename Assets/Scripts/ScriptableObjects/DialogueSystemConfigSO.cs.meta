@@ -3,7 +3,9 @@ guid: 1ac91eef9c9cf404d97642334b8847b0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - characterConfigAsset: {fileID: 11400000, guid: 6347a9709c1f8a349a42f60d253a894b, type: 2}
+  - defaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

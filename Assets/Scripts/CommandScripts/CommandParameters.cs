@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //helps the database extensions to allow easy location of parameters within the data passed to commands
-namespace COMMAND {
+namespace COMMAND 
+{
     public class CommandParameters
     {
         private const char PARAMETER_IDENTIFIER = '-';
 
-        private Dictionary<string, string> parameters;
+        private Dictionary<string, string> parameters = new Dictionary<string, string>();
         private List<string> unlabeledParameters = new List<string>();
 
         public CommandParameters(string[] paramaterArray, int startingIndex = 0)
@@ -38,8 +39,7 @@ namespace COMMAND {
 
         //try to get a value from the dictionary
         //T represents any value
-        public bool TryGetValue<T>(string parameterName, out T value, T defaultValue = default(T))
-            => TryGetValue(new string[] { parameterName }, out value, defaultValue);
+        public bool TryGetValue<T>(string parameterName, out T value, T defaultValue = default(T)) => TryGetValue(new string[] { parameterName }, out value, defaultValue);
         public bool TryGetValue<T>(string[] parameterNames, out T value, T defaultValue = default(T))
         {
             //go through all specified parameter values

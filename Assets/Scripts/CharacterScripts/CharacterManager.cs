@@ -24,7 +24,7 @@ namespace CHARACTERS
         //find character prefab
         private const string CHARACTER_NAME_ID = "<charname>";
         public string characterRootPathFormat => $"Characters/{CHARACTER_NAME_ID}";
-        public string characterPrefabNameFormat => $"Character - [{CHARACTER_NAME_ID}]";
+        public string characterPrefabNameFormat => $"Character [{CHARACTER_NAME_ID}]";
         public string characterPrefabPathFormat => $"{characterRootPathFormat}/{characterPrefabNameFormat}";
 
 
@@ -33,14 +33,7 @@ namespace CHARACTERS
         
         private void Awake()
         {
-            if(instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                DestroyImmediate(gameObject);
-            }
+            instance = this;
         }
 
         //get configuration data for character

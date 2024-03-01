@@ -9,8 +9,6 @@ using CHARACTERS;
 
 namespace DIALOGUE
 {
-
-
     public class ConversationManager
     {
         private DialogueSystem dialogueSystem => DialogueSystem.instance;
@@ -68,25 +66,17 @@ namespace DIALOGUE
                 }
                 DIALOGUE_LINE line = DialogueParser.Parse(conversation[i]);
 
-                //show the dialogue on screen
+                //Show dialogue
                 if (line.hasDialogue)
-                {
-                    if (line.hasSpeaker)
-                    {
-                        //call the dialogue coroutine
-                        yield return Line_RunDialogue(line);
-                    }
-                }
+                    yield return Line_RunDialogue(line);
 
-                //identify and use command lines
+                //Run any commands
                 if (line.hasCommands)
-                {
                     yield return Line_RunCommands(line);
-                }
-                //check if the line is just a command
+
                 if (line.hasDialogue)
                 {
-                    //wait for user input
+                    //Wait for user input
                     yield return WaitForUserInput();
 
                     CommandManager.instance.StopAllProcesses();

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 //this code controls the graphic display of dialogue (text, box, other elements)
 

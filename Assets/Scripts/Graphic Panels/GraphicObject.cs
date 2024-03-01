@@ -30,7 +30,7 @@ public class GraphicObject
     private Coroutine co_fadingIn = null;
     private Coroutine co_fadingOut = null;
 
-    public GraphicObject(GraphicLayer layer, string graphicPath, Texture tex)
+    public GraphicObject(GraphicLayer layer, string graphicPath, Texture tex, bool immediate )
     {
         this.graphicPath = graphicPath;
         this.layer = layer;
@@ -40,14 +40,14 @@ public class GraphicObject
         renderer = ob.AddComponent<RawImage>();
         graphicName = tex.name;
 
-        InitGraphic();
+        InitGraphic(immediate);
 
         renderer.name = string.Format(NAME_FORMAT, graphicName);
         renderer.material.SetTexture(MATERIAL_FIELD_MAINTEX, tex);
     }
 
     //for videos
-    public GraphicObject(GraphicLayer layer, string graphicPath, VideoClip clip, bool useAudio)
+    public GraphicObject(GraphicLayer layer, string graphicPath, VideoClip clip, bool useAudio, bool immediate)
     {
         this.graphicPath = graphicPath;
         this.layer = layer;
@@ -59,7 +59,7 @@ public class GraphicObject
         graphicName = clip.name;
         renderer.name = string.Format(NAME_FORMAT, graphicName);
 
-        InitGraphic();
+        InitGraphic(immediate);
 
         RenderTexture tex = new RenderTexture(Mathf.RoundToInt(clip.width), Mathf.RoundToInt(clip.height), 0);
         renderer.material.SetTexture(MATERIAL_FIELD_MAINTEX, tex);
@@ -92,7 +92,7 @@ public class GraphicObject
         video.enabled = true;
     }
 
-    private void InitGraphic()
+    private void InitGraphic(bool immediate)
     {
         renderer.transform.localPosition = Vector3.zero;
         renderer.transform.localScale = Vector3.one;
@@ -106,6 +106,7 @@ public class GraphicObject
 
         renderer.material = GetTransitionMaterial();
 
+        float startingOpacity = immediate ? 1.0f : 0.0f;
         renderer.material.SetFloat(MATERIAL_FIELD_BLEND, 0);
         renderer.material.SetFloat(MATERIAL_FIELD_ALPHA, 0);
     }
@@ -137,7 +138,6 @@ public class GraphicObject
 
         co_fadingIn = panelManager.StartCoroutine(Fading(1f, speed, blend));
         return co_fadingIn;
-        Debug.LogError("Done FI");
     }
     public Coroutine FadeOut(float speed = 1f, Texture blend = null)
     {
@@ -152,7 +152,6 @@ public class GraphicObject
 
         co_fadingOut = panelManager.StartCoroutine(Fading(0f, speed, blend));
         return co_fadingOut;
-        Debug.LogError("Done");
     }
 
     private IEnumerator Fading(float target, float speed, Texture blend)

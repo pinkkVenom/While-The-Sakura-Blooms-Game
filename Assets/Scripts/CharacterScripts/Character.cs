@@ -83,20 +83,17 @@ namespace CHARACTERS
         public Coroutine Say(List<string> dialogue)
         {
             dialogueSystem.ShowSpeakerName(displayName);
-            UpdateTextCustomizationsOnScreen();
+            dialogueSystem.ApplySpeakerDataToDialogueContainer(config);
             return dialogueSystem.Say(dialogue);
         }
         ///////////////////////////////////////////////
 
         //if we change these values, we set them here
-        public void SetNameColor(Color color) => config.nameColor = color;
-        public void SetDialogueColor(Color color) => config.dialogueColor = color;
         public void SetNameFont(TMP_FontAsset font) => config.nameFont = font;
         public void SetDialogueFont(TMP_FontAsset font) => config.dialogueFont = font;
+        public void SetNameColor(Color color) => config.nameColor = color;
+        public void SetDialogueColor(Color color) => config.dialogueColor = color;
         public void ResetConfigurationData() => config = CharacterManager.instance.GetCharacterConfig(name);
-
-        //force updating the text customization on screen
-        public void UpdateTextCustomizationsOnScreen() => dialogueSystem.ApplySpeakerDataToDialogueContainer(config);
 
         //this will reveal characters
         public virtual Coroutine Show(float speedMultiplier = 1f)

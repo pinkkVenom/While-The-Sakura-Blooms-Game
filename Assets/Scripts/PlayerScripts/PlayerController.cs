@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
        // vnscene.SetActive(false);
-        sceneActive = false;
+        sceneActive = true;
     }
 
     public float moveSpeed = 5.0f;

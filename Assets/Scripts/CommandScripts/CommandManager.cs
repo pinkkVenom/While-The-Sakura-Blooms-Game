@@ -61,7 +61,7 @@ namespace COMMAND
                 return ExecuteSubCommand(commandName, args);
             }
             Delegate command = database.GetCommand(commandName);
-            if (command != null)
+            if (command == null)
             {
                 return null;
             }

@@ -12,7 +12,7 @@ namespace DIALOGUE
         //w identifies word character of any length (*)
         //the [^] will exclude the proceeding of s which is white space
         //the ( is looking for parenthesis
-        private const string commandRegexPattern = @"[\w\[\]]*[^\\s]\(";
+        private const string commandRegexPattern = @"[\w\[\]]*[^\s]\(";
 
         //to parse a string straight from the dialogue file
         //sends string to ripcontent method to be separated into 3 parts
@@ -20,6 +20,8 @@ namespace DIALOGUE
         {
             Debug.Log($"Parsing line - '{rawLine}'");
             (string speaker, string dialogue, string commands) = RipContent(rawLine);
+
+            Debug.Log($"Speaker='{speaker}'\nDialogue='{dialogue}'\nCommands='{commands}'");
             return new DIALOGUE_LINE(speaker, dialogue, commands);
         }
 
@@ -46,7 +48,7 @@ namespace DIALOGUE
                     isEscaped = !isEscaped;
                 }
                 //if we find a " and we're not escaped, then we're either at the start or end of the dialogue
-                else if(current == '"' && !isEscaped)
+                else if(current == '"' && isEscaped ==false )
                 {
                     if (dialogueStart == -1)
                     {
@@ -65,7 +67,7 @@ namespace DIALOGUE
                 }
             }
 
-            //Indentifying Command Patterns in Strings
+            //Identifying Command Patterns in Strings
             Regex commandRegex = new Regex(commandRegexPattern);
             MatchCollection matches = commandRegex.Matches(rawLine);
             int commandStart = -1;
@@ -110,7 +112,7 @@ namespace DIALOGUE
             }
 
             //Debug.Log(rawLine.Substring(dialogueStart + 1, (dialogueEnd - dialogueStart)-1));
-
+            //Debug.Log($"DS={dialogueStart}, DE={dialogueEnd}, CS={commandStart}");
             return (speaker, dialogue, commands);
         }
     }

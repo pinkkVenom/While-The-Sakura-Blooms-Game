@@ -51,10 +51,10 @@ namespace DIALOGUE
 
                 //getting the start signal for the segment
                 string signalMatch = match.Value; //this will grab the container {} as well
-                signalMatch = signalMatch.Substring(i, match.Length - 2); //this grabs only the content of the container
+                signalMatch = signalMatch.Substring(1, match.Length - 2); //this grabs only the content of the container
                 string[] signalSplit = signalMatch.Split(' '); //splits the signals by spaces
 
-                segment.startSignal = (DIALOGUE_SEGMENT.StartSignal)Enum.Parse(typeof(DIALOGUE_SEGMENT.StartSignal), signalSplit[0]);
+                segment.startSignal = (DIALOGUE_SEGMENT.StartSignal)Enum.Parse(typeof(DIALOGUE_SEGMENT.StartSignal), signalSplit[0].ToUpper());
 
                 //get signal delay
                 //we know we have a delay if our signal split has more than 1 value
