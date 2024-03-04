@@ -20,6 +20,7 @@ namespace COMMAND
         new public static void Extend(CommandDatabase database)
         {
             database.AddCommand("setlayermedia", new Func<string[], IEnumerator>(SetLayerMedia));
+            database.AddCommand("clearlayermedia", new Func<string[], IEnumerator>(ClearLayerMedia));
         }
 
         private static IEnumerator SetLayerMedia(string[] data)
@@ -102,8 +103,71 @@ namespace COMMAND
             }
         }
 
+        private static IEnumerator ClearLayerMedia(string[] data)
+        {
+            string panelName = "";
+            int layer = 0;
+            float transitionSpeed = 0;
+            bool immediate = false;
+            string blendTextName = "";
+
+            Texture blendTex = null;
+
+            //get parameters
+            var parameters = ConvertDataToParameters(data);
+
+            //get the panel that this media is applied to
+            parameters.TryGetValue(PARAM_PANEL, out panelName);
+            GraphicPanel panel = GraphicPanelManager.instance.GetPanel(panelName);
+            if (panel == null)
+            {
+                Debug.LogError($"Unable to grab panel '{panelName}' because it is not valid.");
+                yield break;
+            }
+
+            //try to get layer 
+            parameters.TryGetValue(PARAM_LAYER, out layer, defaultValue: -1);
+
+            //try to see if this is an immediate effect
+            parameters.TryGetValue(PARAM_IMMEDIATE, out immediate, defaultValue: false);
+
+            //if were not using immediate, try to find the speed of the transition
+            if (!immediate)
+            {
+                parameters.TryGetValue(PARAM_SPEED, out transitionSpeed, defaultValue: 1);
+            }
+
+            //find blend texture if we're using one
+            parameters.TryGetValue(PARAM_BLENDTEX, out blendTextName);
+            //add the blend texture if we arent immediately transitioning and we have a texture
+            if (!immediate && blendTextName != string.Empty)
+            {
+                blendTex = Resources.Load<Texture>(FilePaths.resources_blendTextures + blendTextName);
+            }
+
+            //clearing the layer
+            if(layer == -1)
+            {
+                panel.Clear(transitionSpeed, blendTex, immediate);
+            }
+            else
+            {
+                GraphicLayer graphicsLayer = panel.GetLayer(layer);
+                if(graphicsLayer == null)
+                {
+                    Debug.LogError($"Could not clear layer [{layer}] on panel '{panel.panelName}'");
+                    yield break;
+                }
+                graphicsLayer.Clear(transitionSpeed, blendTex, immediate);
+            }
+        }
+
         private static string GetPathToGraphic(string defaultPath, string graphicName)
         {
+            if (graphicName.StartsWith(HOMEDIRECTORY_SYMBOL))
+            {
+                return graphicName.Substring(HOMEDIRECTORY_SYMBOL.Length);
+            }
             return defaultPath + graphicName;
         }
     }

@@ -2,7 +2,11 @@ CreateCharacter(Hanako -e true)
 
 person "heyyy"
 
+SetLayerMedia(cinematic -m "~/Graphics/Gallery/flower")
+
 Hanako "Hello and welcome"
+
+ClearLayerMedia(cinematic)
 
 wait(5)
 

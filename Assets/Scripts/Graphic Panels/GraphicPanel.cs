@@ -66,11 +66,11 @@ public class GraphicPanel
     }
 
     //clears out multiple layers
-    public void Clear()
+    public void Clear(float transitionSpeed = 1, Texture blendTexture = null, bool immediate = false)
     {
         foreach (var layer in layers)
         {
-            layer.Clear();
+            layer.Clear(transitionSpeed, blendTexture, immediate);
         }
     }
 }

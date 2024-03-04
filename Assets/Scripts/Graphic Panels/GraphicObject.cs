@@ -75,7 +75,7 @@ public class GraphicObject
         video.audioOutputMode = VideoAudioOutputMode.AudioSource;
         audio = video.AddComponent<AudioSource>();
 
-        audio.volume = 0;
+        audio.volume = immediate ? 1:0;
         if (!useAudio)
         {
             audio.mute = true;
@@ -107,8 +107,8 @@ public class GraphicObject
         renderer.material = GetTransitionMaterial();
 
         float startingOpacity = immediate ? 1.0f : 0.0f;
-        renderer.material.SetFloat(MATERIAL_FIELD_BLEND, 0);
-        renderer.material.SetFloat(MATERIAL_FIELD_ALPHA, 0);
+        renderer.material.SetFloat(MATERIAL_FIELD_BLEND, startingOpacity);
+        renderer.material.SetFloat(MATERIAL_FIELD_ALPHA, startingOpacity);
     }
 
     //grab material from resources
@@ -192,7 +192,7 @@ public class GraphicObject
         }
     }
 
-    private void Destroy()
+    public void Destroy()
     {
         if(layer.currentGraphic != null && layer.currentGraphic.renderer == renderer)
         {

@@ -15,8 +15,8 @@ MonoBehaviour:
   characters:
   - name: Hanako
     alias: hk
-    characterType: 0
-    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 0}
-    dialogueColor: {r: 1, g: 1, b: 1, a: 0}
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
     nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
