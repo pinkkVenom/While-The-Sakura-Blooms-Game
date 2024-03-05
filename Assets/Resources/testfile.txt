@@ -12,5 +12,5 @@ wait(5)
 
 [wait]Hide(Hanako)
 
-Spank(Hanako)
+playsfx(footsteps -v 1 -p 0.85)
 

@@ -70,12 +70,12 @@ namespace COMMAND
             //if we are loading video, check to see if we are using sound
             parameters.TryGetValue(PARAM_USEVIDEOAUDIO, out useAudio, defaultValue: false);
 
-            pathToGraphic = GetPathToGraphic(FilePaths.resources_backgroundImages, mediaName);
+            pathToGraphic = FilePaths.GetPathToResources(FilePaths.resources_backgroundImages, mediaName);
             //try to find it as an image first, then a video
             graphic = Resources.Load<Texture>(pathToGraphic);
             if(graphic == null)
             {
-                pathToGraphic = GetPathToGraphic(FilePaths.resources_backgroundVideos, mediaName);
+                pathToGraphic = FilePaths.GetPathToResources(FilePaths.resources_backgroundVideos, mediaName);
                 graphic = Resources.Load<VideoClip>(pathToGraphic);
             }
             //if we are still null then media doesnt exist
