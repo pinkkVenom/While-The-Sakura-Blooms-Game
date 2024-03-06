@@ -8,8 +8,6 @@ using DIALOGUE;
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
-    public GameObject vnscene;
-    bool sceneActive;
 
     //private Inventory inventory;
 
@@ -40,8 +38,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-       // vnscene.SetActive(false);
-        sceneActive = true;
     }
 
     public float moveSpeed = 5.0f;
@@ -54,43 +50,13 @@ public class PlayerController : MonoBehaviour
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-        //if (moveDirection != Vector3.zero)
-        //{
-        //    anim.SetBool("isRunning", true); 
-        //}
-        //else
-        //{
-         //   anim.SetBool("isRunning", false);
-        //}
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
-        {
-            PromptAdvance();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && sceneActive == false)
-        {
-            vnscene.SetActive(true);
-            sceneActive = true;
-        }
-        else if(Input.GetKeyDown(KeyCode.E) && sceneActive == true)
-        {
-            vnscene.SetActive(false);
-            sceneActive = false;
-        }
-
-    }
-
-    public void PromptAdvance()
-    {
-        DialogueSystem.instance.OnUserPrompt_Next();
-        //Debug.Log("Success");
     }
 
     public void OnMoveInput(float horizontal, float vertical)
     {
         this.horizontal = horizontal;
         this.vertical = vertical;
-        Debug.Log($"Player Controller Move Input: {vertical}, {horizontal}");
+        //Debug.Log($"Player Controller Move Input: {vertical}, {horizontal}");
     }
 
 }

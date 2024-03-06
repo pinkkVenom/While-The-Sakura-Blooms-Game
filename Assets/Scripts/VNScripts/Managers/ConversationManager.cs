@@ -19,14 +19,17 @@ namespace DIALOGUE
 
         //gives the conversationmanager access to the text manager so that they
         //can share data without other classes having access to text manager
-        private TextManager textManager = null;
+        public TextManager textManager = null;
         //for subscribing to the event in DialogueSystem
         private bool userPrompt = false;
+
+        private TagManager tagManager;
         public ConversationManager(TextManager textManager)
         {
             this.textManager = textManager;
             //this triggers the onuserprompt method
             dialogueSystem.onUserPrompt_Next += OnUserPrompt_Next;
+            tagManager = new TagManager();
         }
 
         private void OnUserPrompt_Next()
@@ -92,6 +95,10 @@ namespace DIALOGUE
             {
                 HandleSpeakerLogic(line.speakerData);
             }
+            if (!dialogueSystem.dialogueContainer.isVisible)
+            {
+                dialogueSystem.dialogueContainer.Show();
+            }
 
             //build dialogue
             yield return BuildLineSegments(line.dialogueData);
@@ -110,7 +117,7 @@ namespace DIALOGUE
             }
 
             //add character name to the UI
-            dialogueSystem.ShowSpeakerName(speakerData.displayName);
+            dialogueSystem.ShowSpeakerName(tagManager.Inject(speakerData.displayName));
 
             DialogueSystem.instance.ApplySpeakerDataToDialogueContainer(speakerData.name);
 
@@ -169,6 +176,8 @@ namespace DIALOGUE
             }
         }
 
+
+        public bool isWaitingOnAutoTimer { get; private set; } = false;
         //wait for user input to trigger signal
         IEnumerator WaitForDialogueSegmentSignalToBeTriggered(DL_DIALOGUE_DATA.DIALOGUE_SEGMENT segment)
         {
@@ -180,7 +189,9 @@ namespace DIALOGUE
                     break;
                 case DL_DIALOGUE_DATA.DIALOGUE_SEGMENT.StartSignal.WC:
                 case DL_DIALOGUE_DATA.DIALOGUE_SEGMENT.StartSignal.WA:
+                    isWaitingOnAutoTimer = true;
                     yield return new WaitForSeconds(segment.signalDelay);
+                    isWaitingOnAutoTimer = false;
                     break;
                 //if something else happens (unlikely)
                 default:
@@ -190,6 +201,8 @@ namespace DIALOGUE
 
         IEnumerator BuildDialogue(string dialogue, bool append = false)
         {
+            dialogue = tagManager.Inject(dialogue);
+
             //build dialogue
             if (!append)
             {

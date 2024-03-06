@@ -1,16 +1,16 @@
 CreateCharacter(Hanako -e true)
 
-person "heyyy"
+person "heyyy <mainChar>!"
 
-SetLayerMedia(cinematic -m "~/Graphics/Gallery/flower")
+SetLayerMedia(background -m "~/Graphics/Gallery/flower")
 
 Hanako "Hello and welcome"
 
-ClearLayerMedia(cinematic)
+[wait]ShowUI()
 
 wait(5)
 
-[wait]Hide(Hanako)
+HideUI()
 
 playsfx(footsteps -v 1 -p 0.85)
 

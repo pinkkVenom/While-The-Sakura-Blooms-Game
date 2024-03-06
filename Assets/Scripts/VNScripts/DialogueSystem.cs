@@ -17,6 +17,9 @@ namespace DIALOGUE
         public DialogueContainer dialogueContainer = new DialogueContainer();
         private ConversationManager conversationManager;
         private TextManager textManager;
+        private AutoReader autoReader;
+
+        [SerializeField] private CanvasGroup mainCanvas;
 
         public static DialogueSystem instance { get; private set; }
 
@@ -27,6 +30,7 @@ namespace DIALOGUE
         public bool isRunningConversation => conversationManager.isRunning;
 
         public DialogueContinuePrompt prompt;
+        private CanvasGroupController cgController;
 
         private void Awake()
         {
@@ -55,10 +59,29 @@ namespace DIALOGUE
             textManager = new TextManager(dialogueContainer.dialogueText);
             //getting access to private class
             conversationManager = new ConversationManager(textManager);
+
+            cgController = new CanvasGroupController(this, mainCanvas);
+            dialogueContainer.Initialize();
+
+            //get auto reader if enabled
+            if(TryGetComponent(out autoReader))
+            {
+                autoReader.Initialize(conversationManager);
+            }
         }
 
         //function called to trigger the keypress event
         public void OnUserPrompt_Next()
+        {
+            //the question mark means that if its null then nothing will happen
+            onUserPrompt_Next?.Invoke();
+            if(autoReader !=null && autoReader.isOn)
+            {
+                autoReader.Disable();
+            }
+        }
+
+        public void OnSystemPrompt_Next()
         {
             //the question mark means that if its null then nothing will happen
             onUserPrompt_Next?.Invoke();
@@ -79,8 +102,14 @@ namespace DIALOGUE
         {
             dialogueContainer.SetDialogueColor(config.dialogueColor);
             dialogueContainer.SetDialogueFont(config.dialogueFont);
+            float fontSize = this.config.defaultDialogueFontSize * this.config.dialogueFontScale * config.dialogueFontScale;
+            dialogueContainer.SetDialogueFontSize(fontSize);
+
             dialogueContainer.nameContainer.SetNameColor(config.nameColor);
             dialogueContainer.nameContainer.SetNameFont(config.nameFont);
+            fontSize = this.config.defaultNameFontSize * config.nameFontScale;
+            dialogueContainer.nameContainer.SetNameFontSize(fontSize);
+
         }
 
         public void ShowSpeakerName(string speakerName = "")
@@ -110,5 +139,10 @@ namespace DIALOGUE
         {
             return conversationManager.StartConversation(conversation);
         }
+
+        public bool isVisible => cgController.isVisible;
+        public Coroutine Show(float speed = 1f, bool immediate = false) => cgController.Show(speed, immediate);
+
+        public Coroutine Hide(float speed = 1f, bool immediate = false) => cgController.Hide(speed, immediate);
     }
 }
