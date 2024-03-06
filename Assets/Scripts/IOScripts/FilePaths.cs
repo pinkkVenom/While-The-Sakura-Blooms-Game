@@ -8,6 +8,8 @@ public class FilePaths
     //define root path for project (even once we have executable file)
     public static readonly string root = $"{Application.dataPath}/gameData/";
 
+    //public static readonly string gameSaves = $"{runtimePath}Save Files/";
+
     //Resources Paths
     public static readonly string resources_graphics = "Graphics/";
     public static readonly string resources_backgroundImages = $"{resources_graphics}BG Images/";

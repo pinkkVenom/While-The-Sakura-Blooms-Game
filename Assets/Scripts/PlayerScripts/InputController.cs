@@ -17,6 +17,7 @@ public class MoveInputEvent : UnityEvent<float, float> { }
 
 public class InputController : MonoBehaviour
 {
+
     Controls controls;
     public MoveInputEvent moveInputEvent;
 
@@ -69,4 +70,5 @@ public class InputController : MonoBehaviour
         DialogueSystem.instance.OnUserPrompt_Next();
         //Debug.Log("Success");
     }
+
 }
