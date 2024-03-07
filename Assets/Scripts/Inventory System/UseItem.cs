@@ -7,12 +7,11 @@ public class UseItem : MonoBehaviour
     private Transform player;
     private Transform npc;
 
-    private bool isNearNPC = false;
+    private bool isNearNPC => PlayerController.isNearNPC;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        npc = GameObject.FindGameObjectWithTag("NPC").transform;
     }
 
     public void Use()
@@ -21,15 +20,5 @@ public class UseItem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("NPC"))
-        {
-            isNearNPC = true;
-            Use();
-        }
-        isNearNPC = false;
     }
 }

@@ -7,23 +7,19 @@ using DIALOGUE;
 
 public class PlayerController : MonoBehaviour
 {
-    private Animator anim;
+    public Animator anim;
 
-
+    public static bool isNearNPC;
     
     private void Awake()
     {
 
     }
     
-   private void OnTriggerEnter2D(Collider2D collider)
-    {
-        
-        
-    }
     
     private void Start()
     {
+        isNearNPC = false;
         anim = GetComponent<Animator>();
     }
 
@@ -37,13 +33,35 @@ public class PlayerController : MonoBehaviour
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
+        anim.SetFloat("Horizontal", moveDirection.x);
+        anim.SetFloat("Vertical", moveDirection.y);
+        anim.SetFloat("Speed", moveDirection.sqrMagnitude);
+
     }
+
+
 
     public void OnMoveInput(float horizontal, float vertical)
     {
         this.horizontal = horizontal;
         this.vertical = vertical;
         //Debug.Log($"Player Controller Move Input: {vertical}, {horizontal}");
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            isNearNPC = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            isNearNPC = false;
+        }
     }
 
 
