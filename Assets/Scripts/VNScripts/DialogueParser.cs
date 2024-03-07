@@ -22,7 +22,7 @@ namespace DIALOGUE
             (string speaker, string dialogue, string commands) = RipContent(rawLine);
 
             Debug.Log($"Speaker='{speaker}'\nDialogue='{dialogue}'\nCommands='{commands}'");
-            return new DIALOGUE_LINE(speaker, dialogue, commands);
+            return new DIALOGUE_LINE(rawLine, speaker, dialogue, commands);
         }
 
         //this method will separate 3 fields from a line 

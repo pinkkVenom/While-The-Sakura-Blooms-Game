@@ -19,7 +19,8 @@ public class TagManager
     {
         tags["<mainChar>"] = () => "Miao";
         tags["<time>"] = () => DateTime.Now.ToString("hh:mm tt");
-        tags["tempVal1"] = () => "42";
+        tags["<tempVal1>"] = () => "42";
+        tags["<input>"] = () => InputPanel.instance.lastInput;
     }
 
     public string Inject(string text)

@@ -2,6 +2,10 @@ CreateCharacter(Hanako -e true)
 
 person "heyyy <mainChar>!"
 
+input "Type your name here"
+
+person "nice to meet you <input>"
+
 SetLayerMedia(background -m "~/Graphics/Gallery/flower")
 
 Hanako "Hello and welcome"

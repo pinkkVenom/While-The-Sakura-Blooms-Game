@@ -101,7 +101,7 @@ namespace CHARACTERS
         {
             if (isRevealing)
             {
-                return co_revealing;
+                manager.StopCoroutine(co_revealing);
             }
             if (isHiding)
             {
@@ -116,7 +116,7 @@ namespace CHARACTERS
         {
             if (isHiding)
             {
-                return co_hiding;
+                manager.StopCoroutine(co_hiding);
             }
             if (isRevealing)
             {
@@ -224,11 +224,7 @@ namespace CHARACTERS
 
         public Coroutine Highlight(float speed = 1f, bool immediate = false)
         {
-            if (isHighlighting)
-            {
-                return co_highlighting;
-            }
-            if (isUnHighlighting)
+            if (isHighlighting || isUnHighlighting)
             {
                 manager.StopCoroutine(co_highlighting);
             }
@@ -238,11 +234,7 @@ namespace CHARACTERS
         }
         public Coroutine UnHighlight(float speed = 1f, bool immediate = false)
         {
-            if (isUnHighlighting)
-            {
-                return co_highlighting;
-            }
-            if (isHighlighting)
+            if (isHighlighting || isUnHighlighting)
             {
                 manager.StopCoroutine(co_highlighting);
             }

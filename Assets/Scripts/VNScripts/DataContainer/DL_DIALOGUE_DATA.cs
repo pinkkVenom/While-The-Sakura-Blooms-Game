@@ -8,6 +8,7 @@ namespace DIALOGUE
     //data container that holds all segments and information about a single dialogue line
     public class DL_DIALOGUE_DATA
     {
+        public string rawData { get; private set; } = string.Empty;
         public List<DIALOGUE_SEGMENT> segments;
         //the regex pattern for locating identifiers in the dialogue lines
         private const string segmentIdentifierPattern = @"\{[ca]\}|\{w[ca]\s\d*\.?\d*\}";
@@ -16,6 +17,7 @@ namespace DIALOGUE
         //into separate data pieces
         public DL_DIALOGUE_DATA(string rawDialogue)
         {
+            this.rawData = rawDialogue;
             segments = RipSegments(rawDialogue);
         }
 

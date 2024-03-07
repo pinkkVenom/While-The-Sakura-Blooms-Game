@@ -16,6 +16,7 @@ public class CanvasGroupController
     public bool isHiding => co_hiding != null;
     public bool isFading => isShowing || isHiding;
     public bool isVisible => co_showing != null || rootCG.alpha > 0;
+    public float alpha { get { return rootCG.alpha; } set { rootCG.alpha = value; } }
 
     public CanvasGroupController(MonoBehaviour owner, CanvasGroup rootCG)
     {

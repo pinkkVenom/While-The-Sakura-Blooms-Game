@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DialougeBox
   - NPC
+  - World
   layers:
   - Default
   - TransparentFX

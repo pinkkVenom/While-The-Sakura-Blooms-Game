@@ -208,10 +208,13 @@ public class GraphicObject
         {
             layer.currentGraphic = null;
         }
+        //remove old graphics from list
+        if (layer.oldGraphics.Contains(this))
+        {
+            layer.oldGraphics.Remove(this);
+        }
 
         Object.Destroy(renderer.gameObject);
-
-
     }
 
     private void DestroyBackgroundGraphicsOnLayer()
