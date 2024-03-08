@@ -16,7 +16,7 @@ public class UseItem : MonoBehaviour
 
     public void Use()
     {
-        if (isNearNPC)
+        if (isNearNPC == true)
         {
             Destroy(gameObject);
         }

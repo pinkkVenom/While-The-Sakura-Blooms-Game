@@ -7,11 +7,13 @@ public class CEOCollision : MonoBehaviour
 {
     [SerializeField] private TextAsset NurseFile = null;
     [SerializeField] private TextAsset NurseFile2 = null;
+    [SerializeField] private CanvasGroup icon;
     bool hasSpoken;
     // Start is called before the first frame update
     void Start()
     {
         hasSpoken = false;
+        icon.alpha = 0;
     }
 
     void StartConversation(TextAsset asset)
@@ -38,5 +40,18 @@ public class CEOCollision : MonoBehaviour
 
         }
 
+    }
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
+        }
+
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        icon.alpha = 0;
     }
 }

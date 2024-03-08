@@ -11,7 +11,7 @@ public class Quest : MonoBehaviour
     public Color activeColor;
     public Color currentColor;
 
-    public QuestArrow arrow;
+    //public QuestArrow arrow;
 
     public Quest[] allQuests; 
 
@@ -22,27 +22,23 @@ public class Quest : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {/*
+    {
         if (collision.tag == "Player")
         { 
             FinishQuest();
-            Destroy(gameObject);
+            
         }
-        */
+        
     }
 
     void FinishQuest()
     {
-        questItem.GetComponent<Button>().interactable = false; 
         currentColor = completedColor; 
         questItem.color = completedColor; 
-        arrow.gameObject.SetActive(false);
     }
     
     public void onQuestClick()
     {
-        arrow.gameObject.SetActive(true);
-        arrow.target = this.transform; 
 
         foreach (Quest quest in allQuests)
         {
