@@ -1,0 +1,9 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/bg library")
+CreateCharacter(Yuki -e true)
+Show(Yuki)
+
+narrator "[He is so preoccupied in his work he doesn't notice you]"
+
+[wait]HideUI()
+Hide(Yuki)

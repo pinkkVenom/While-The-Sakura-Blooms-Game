@@ -8,7 +8,7 @@ public class GraphicPanelManager : MonoBehaviour
     public static GraphicPanelManager instance { get; private set; }
 
     //list of all available graphic panels
-    [SerializeField] private GraphicPanel[] allPanels;
+    [field:SerializeField] public GraphicPanel[] allPanels { get; private set; }
 
     //constants
     public float DEFAULT_TRANSITION_SPEED = 3f;

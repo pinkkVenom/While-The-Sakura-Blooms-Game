@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DIALOGUE;
+using AYellowpaper.SerializedCollections;
 
 //data container that defines the configuration parameters for a character in the visual novel
 namespace CHARACTERS
@@ -22,6 +23,9 @@ namespace CHARACTERS
 
         public float nameFontScale = 1f;
         public float dialogueFontScale = 1f;
+
+        [SerializedDictionary("Path / ID", "Sprite")]
+        public SerializedDictionary<string, Sprite> sprites = new SerializedDictionary<string, Sprite>();
 
         public CharacterConfigData Copy()
         {

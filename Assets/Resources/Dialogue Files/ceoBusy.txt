@@ -1,0 +1,11 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/Town Street")
+CreateCharacter(Kenji -e true)
+Show(Kenji)
+
+Kenji "Go away please."
+"I'm late for my meeting"
+
+
+[wait]HideUI()
+Hide(Kenji)

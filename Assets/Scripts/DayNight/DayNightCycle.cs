@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using TMPro;
 
 public class DayNightCycle : MonoBehaviour
 {
     public Volume ppv;
+    public TMP_Text time;
+    public TMP_Text day;
 
     public float tick;
     public float seconds;
     public int mins;
     public int hours = 12;
-    public int days = 0;
+    public int days = 1;
 
     public bool activateLights; //checks if lights are on
     public GameObject[] lights;
@@ -50,6 +53,8 @@ public class DayNightCycle : MonoBehaviour
             days += 1;
         }
 
+        time.SetText($"{hours} : {mins}");
+        day.SetText($"Day {days}");
         ControlPPV();
     }
 

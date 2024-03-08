@@ -62,6 +62,14 @@ namespace CHARACTERS
 
         public Sprite GetSprite(string spriteName)
         {
+            if(config.sprites.Count > 0)
+            {
+                if(config.sprites.TryGetValue(spriteName, out Sprite sprite))
+                {
+                    return sprite;
+                }
+            }
+
             if(config.characterType == CharacterType.SpriteSheet)
             {
                 string[] data = spriteName.Split(SPRITESHEET_TEX_SPRITE_DELIMITER);

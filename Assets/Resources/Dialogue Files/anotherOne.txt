@@ -1,0 +1,26 @@
+ShowUI()
+
+Show(hanako)
+
+person "heyyy <mainChar>!"
+
+input "Type your name here"
+
+person "nice to meet you <input>"
+
+SetLayerMedia(background -m "~/Graphics/Gallery/flower")
+
+Hanako "Hello and welcome"
+Hanako "do you like cats or dogs?"
+
+choice "do you like cats or dogs"
+{
+	-Dogs
+		Hanako "wow me too!"
+	-Cats
+		Hanako "cats are okay"
+		person "lol no way theyre better"
+}
+
+
+

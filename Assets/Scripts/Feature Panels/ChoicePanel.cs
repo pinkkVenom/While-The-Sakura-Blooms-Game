@@ -105,6 +105,7 @@ public class ChoicePanel : MonoBehaviour
 
     public void Hide()
     {
+        cg.SetInteractableState(active: false);
         cg.Hide();
     }
 

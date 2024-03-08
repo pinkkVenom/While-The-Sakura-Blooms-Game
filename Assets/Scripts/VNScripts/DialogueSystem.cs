@@ -15,7 +15,7 @@ namespace DIALOGUE
 
         //accessible from inspector
         public DialogueContainer dialogueContainer = new DialogueContainer();
-        private ConversationManager conversationManager;
+        public ConversationManager conversationManager { get; private set; }
         private TextManager textManager;
         private AutoReader autoReader;
 
@@ -122,6 +122,7 @@ namespace DIALOGUE
             else
             {
                 HideSpeakerName();
+                dialogueContainer.nameContainer.nameText.text = "";
             }
         }
         public void HideSpeakerName() => dialogueContainer.nameContainer.Hide();
@@ -135,7 +136,13 @@ namespace DIALOGUE
         }
 
         //Type 2: entire conversation (array)
-        public Coroutine Say(List<string> conversation)
+        public Coroutine Say(List<string> lines)
+        {
+            Conversation conversation = new Conversation(lines);
+            return conversationManager.StartConversation(conversation);
+        }
+
+        public Coroutine Say(Conversation conversation)
         {
             return conversationManager.StartConversation(conversation);
         }

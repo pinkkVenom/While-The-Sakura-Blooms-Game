@@ -12,6 +12,7 @@ public class FilePaths
 
     //Resources Paths
     public static readonly string resources_graphics = "Graphics/";
+    public static readonly string resources_fonts = "Fonts/";
     public static readonly string resources_backgroundImages = $"{resources_graphics}BG Images/";
     public static readonly string resources_backgroundVideos = $"{resources_graphics}BG Videos/";
     public static readonly string resources_blendTextures = $"{resources_graphics}Transition Effects/";
@@ -21,6 +22,7 @@ public class FilePaths
     public static readonly string resources_voices = $"{resources_audio}Voices/";
     public static readonly string resources_music = $"{resources_audio}Music/";
 
+    public static readonly string resources_dialogueFiles = $"Dialogue Files/";
 
 
     //returns path to resources using default path or the root of resources folder

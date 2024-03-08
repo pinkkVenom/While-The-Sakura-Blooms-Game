@@ -1,0 +1,56 @@
+CreateCharacter(Hanako -e true)
+
+$money = 50
+
+choice "where to you go?"
+{
+	-the forest
+		$choice = forest
+	-the cave
+		$choice = cave
+}
+if($choice == cave)
+{
+	narrator "to the cave!"
+}
+
+narrator "done with the line"
+
+person "you have '$money' dollars"
+
+
+person "heyyy person!"
+
+input "Type your name here"
+
+person "nice to meet you <input>"
+
+SetLayerMedia(background -m "~/Graphics/Gallery/flower")
+
+Hanako "Hello and welcome"
+Hanako "do you like cats or dogs?"
+
+choice "do you like cats or dogs"
+{
+	-Dogs
+		Hanako "wow me too!"
+		Load(anotherOne 2 -e true)
+	-Cats
+		Hanako "cats are okay"
+		person "lol no way theyre better"
+}
+
+Hanako "do you like cats or other cats?"
+choice "do you like cats or other cats"
+{
+	-cats
+		Hanako "wow me too!"
+		Load(anotherOne 2 -e true)
+	-other cats
+		Hanako "cats are okay"
+		person "lol no way theyre better"
+}
+
+HideUI()
+
+

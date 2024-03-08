@@ -12,7 +12,7 @@ namespace DIALOGUE
     {
         //we want the root (the VN controller) to show the name
         [SerializeField] private GameObject root;
-        [SerializeField] private TextMeshProUGUI nameText;
+        [field:SerializeField] public TextMeshProUGUI nameText { get; private set; }
         public void Show(string nameToShow = "")
         {
             root.SetActive(true);

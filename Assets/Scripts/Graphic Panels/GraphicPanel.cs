@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 //contains layers that can be assigned images and videos on the UI
 
 [System.Serializable]
@@ -8,7 +9,9 @@ public class GraphicPanel
 {
     public string panelName;
     public GameObject rootPanel;
-    private List<GraphicLayer> layers = new List<GraphicLayer>();
+    public List<GraphicLayer> layers { get; private set; } = new List<GraphicLayer>();
+
+    public bool isClear => layers == null || layers.Count == 0 || layers.All(layer => layer.currentGraphic == null);
 
     //see if we have a layer and return if it exists
     public GraphicLayer GetLayer(int layerDepth, bool createIfDoesNotExist = false)

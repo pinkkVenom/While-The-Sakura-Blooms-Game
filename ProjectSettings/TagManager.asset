@@ -9,6 +9,8 @@ TagManager:
   - World
   - Red Portal
   - Blue Portal
+  - Green Portal
+  - Purple Portal
   layers:
   - Default
   - TransparentFX

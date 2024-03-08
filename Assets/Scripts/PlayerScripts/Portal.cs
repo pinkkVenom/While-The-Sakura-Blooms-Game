@@ -8,10 +8,14 @@ public class Portal : MonoBehaviour
     private Transform destination;
 
     public bool isRed;
+    //public bool isGreen;
+    //public bool isPurple;
     public float distance = 0.2f;
 
     [SerializeField] Collider2D confinerRed;
     [SerializeField] Collider2D confinerBlue;
+
+   // [SerializeField] Collider2D confinerPurple;
 
     bool artCamActive = true;
     bool hospitalCamActive = false;
@@ -23,7 +27,7 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(isRed == false)
+        if (isRed == false)
         {
             destination = GameObject.FindGameObjectWithTag("Red Portal").GetComponent<Transform>();
         }
@@ -35,6 +39,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if(Vector2.Distance(transform.position, collision.transform.position) > distance)
         {
             if (confiner.m_BoundingShape2D == confinerRed)

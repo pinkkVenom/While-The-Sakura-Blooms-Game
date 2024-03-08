@@ -36,6 +36,7 @@ public class CanvasGroupController
             co_hiding = null;
         }
         co_showing = DialogueSystem.instance.StartCoroutine(Fading(1, speed, immediate));
+        SetInteractableState(active: true);
         return co_showing;
     }
 
@@ -51,6 +52,7 @@ public class CanvasGroupController
             co_showing = null;
         }
         co_hiding = DialogueSystem.instance.StartCoroutine(Fading(0, speed, immediate));
+        SetInteractableState(active: false);
         return co_hiding;
     }
 

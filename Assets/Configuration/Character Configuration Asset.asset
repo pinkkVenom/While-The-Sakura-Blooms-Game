@@ -20,5 +20,61 @@ MonoBehaviour:
     dialogueColor: {r: 1, g: 1, b: 1, a: 1}
     nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    nameFontSize: 22
-    dialogueFontSize: 18
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: Hanako
+        Value: {fileID: 21300000, guid: 770eef52abe63e24ea509146f53d77f5, type: 3}
+  - name: Kenji
+    alias: kj
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: Kenji
+        Value: {fileID: 21300000, guid: 79c04c8e357b3dc47a049c45367c2d47, type: 3}
+  - name: Emi
+    alias: em
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: Emi
+        Value: {fileID: 21300000, guid: a931ba5e08141624bb93cddabc002d6b, type: 3}
+  - name: Yuki
+    alias: yk
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: Yuki
+        Value: {fileID: 21300000, guid: 0b6b073f921f15b4fa6b65bd4cae8d20, type: 3}
+  - name: Doctor
+    alias: dr
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: Doctor
+        Value: {fileID: 21300000, guid: 15b23e2cc77d86e40bcf6ac089878be0, type: 3}

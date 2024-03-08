@@ -23,6 +23,7 @@ public class TESTING : MonoBehaviour
         
        DialogueSystem.instance.Say(lines);
     }
+    bool hasSpoken = true;
 
     IEnumerator Running()
     {

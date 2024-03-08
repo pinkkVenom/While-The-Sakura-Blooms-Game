@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
     public static bool isNearNPC;
+    public CanvasGroup cg;
+    bool cgActive = false;
     
     private void Awake()
     {
@@ -36,6 +38,27 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Horizontal", moveDirection.x);
         anim.SetFloat("Vertical", moveDirection.y);
         anim.SetFloat("Speed", moveDirection.sqrMagnitude);
+
+        /*
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (cgActive == false)
+            {
+                cg.alpha = 1;
+                cg.interactable = true;
+                cg.blocksRaycasts = true;
+                cgActive = true;
+            }
+            else
+            {
+                cg.alpha = 0;
+                cg.interactable = false;
+                cg.blocksRaycasts = false;
+                cgActive = false;
+            }
+        }
+        */
+
 
     }
 
