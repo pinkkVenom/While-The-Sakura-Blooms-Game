@@ -26,6 +26,7 @@ namespace DIALOGUE
         //event that listens to button press to skip through dialogue faster
         public delegate void DialogueSystemEvent();
         public event DialogueSystemEvent onUserPrompt_Next;
+        public event DialogueSystemEvent OnClear;
 
         public bool isRunningConversation => conversationManager.isRunning;
 
@@ -80,11 +81,32 @@ namespace DIALOGUE
                 autoReader.Disable();
             }
         }
-
         public void OnSystemPrompt_Next()
         {
             //the question mark means that if its null then nothing will happen
             onUserPrompt_Next?.Invoke();
+        }
+        public void OnSystemPrompt_Clear()
+        {
+            OnClear?.Invoke();
+        }
+
+        public void OnStartViewingHistory()
+        {
+            prompt.Hide();
+            autoReader.allowToggle = false;
+            conversationManager.allowUserPrompts = false;
+            if (autoReader.isOn)
+            {
+                autoReader.Disable();
+            }
+        }
+
+        public void OnStopViewingHistory()
+        {
+            prompt.Show();
+            autoReader.allowToggle = true;
+            conversationManager.allowUserPrompts = true;
         }
 
         //apply config data to speaker

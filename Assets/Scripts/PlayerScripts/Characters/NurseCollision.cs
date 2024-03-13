@@ -28,16 +28,19 @@ public class NurseCollision : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (hasSpoken == false)
-            {
-                StartConversation(NurseFile);
-                hasSpoken = true;
-                return;
-            }
-            else
-            {
-                StartConversation(NurseFile2);
-            }
+                if (hasSpoken == false)
+                {
+
+                        StartConversation(NurseFile);
+                        hasSpoken = true;
+                        return;
+
+                }
+                else
+                {
+                        StartConversation(NurseFile2);
+                }
+            
 
         }
 

@@ -23,7 +23,7 @@ public class GraphicLayer
             Debug.LogError($"Could not load graphic texture from path '{filePath}'");
             return null;
         }
-        return SetTexture(tex, transitionSpeed, blendingTexture, filePath);
+        return SetTexture(tex, transitionSpeed, blendingTexture, filePath, immediate);
     }
 
     //create texture 

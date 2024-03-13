@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using DIALOGUE;
+using HISTORY;
 
 [Serializable]
 
@@ -35,6 +36,8 @@ public class InputController : MonoBehaviour
     private void InitializeActions()
     {
         actions.Add((input.actions["Next"], OnNext));
+        actions.Add((input.actions["HistoryBack"], OnHistoryBack));
+        actions.Add((input.actions["HistoryForward"], OnHistoryForward));
     }
 
     //this enables the action map controls
@@ -68,6 +71,18 @@ public class InputController : MonoBehaviour
     public void OnNext(InputAction.CallbackContext c)
     {
         DialogueSystem.instance.OnUserPrompt_Next();
+        //Debug.Log("Success");
+    }
+
+    public void OnHistoryBack(InputAction.CallbackContext c)
+    {
+        HistoryManager.instance.GoBack();
+        //Debug.Log("Success");
+    }
+
+    public void OnHistoryForward(InputAction.CallbackContext c)
+    {
+        HistoryManager.instance.GoForward();
         //Debug.Log("Success");
     }
 

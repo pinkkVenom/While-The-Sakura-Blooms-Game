@@ -3,6 +3,7 @@ narrator "(I feel so dizzy...)"
 
 SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
 CreateCharacter(Doctor -e true)
+Doctor.SetPosition(-x 0.5 -y 0)
 
 Doctor "Woah, don't be so hasty"
 "You were quite disoriented when we found you. I need to monitor you for a bit longer to make sure you don't have any serious symptoms."

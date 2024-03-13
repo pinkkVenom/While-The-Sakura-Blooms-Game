@@ -62,6 +62,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HistoryBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""350faf4a-6a46-487c-a16a-4f4d99242418"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HistoryForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""416d5a3c-95ed-4db7-87c8-c095d20b766f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +181,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""159c81ea-d72e-479b-bdc4-38279f4d4727"",
+                    ""path"": ""<Keyboard>/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HistoryBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5dd7488-74ab-4583-910f-c34c6c393ab6"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HistoryForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -175,6 +215,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_GamePlay_Interaction = m_GamePlay.FindAction("Interaction", throwIfNotFound: true);
         m_GamePlay_Next = m_GamePlay.FindAction("Next", throwIfNotFound: true);
         m_GamePlay_PauseMenu = m_GamePlay.FindAction("PauseMenu", throwIfNotFound: true);
+        m_GamePlay_HistoryBack = m_GamePlay.FindAction("HistoryBack", throwIfNotFound: true);
+        m_GamePlay_HistoryForward = m_GamePlay.FindAction("HistoryForward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,6 +282,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Interaction;
     private readonly InputAction m_GamePlay_Next;
     private readonly InputAction m_GamePlay_PauseMenu;
+    private readonly InputAction m_GamePlay_HistoryBack;
+    private readonly InputAction m_GamePlay_HistoryForward;
     public struct GamePlayActions
     {
         private @Controls m_Wrapper;
@@ -248,6 +292,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Interaction => m_Wrapper.m_GamePlay_Interaction;
         public InputAction @Next => m_Wrapper.m_GamePlay_Next;
         public InputAction @PauseMenu => m_Wrapper.m_GamePlay_PauseMenu;
+        public InputAction @HistoryBack => m_Wrapper.m_GamePlay_HistoryBack;
+        public InputAction @HistoryForward => m_Wrapper.m_GamePlay_HistoryForward;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +315,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @PauseMenu.started += instance.OnPauseMenu;
             @PauseMenu.performed += instance.OnPauseMenu;
             @PauseMenu.canceled += instance.OnPauseMenu;
+            @HistoryBack.started += instance.OnHistoryBack;
+            @HistoryBack.performed += instance.OnHistoryBack;
+            @HistoryBack.canceled += instance.OnHistoryBack;
+            @HistoryForward.started += instance.OnHistoryForward;
+            @HistoryForward.performed += instance.OnHistoryForward;
+            @HistoryForward.canceled += instance.OnHistoryForward;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -285,6 +337,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @PauseMenu.started -= instance.OnPauseMenu;
             @PauseMenu.performed -= instance.OnPauseMenu;
             @PauseMenu.canceled -= instance.OnPauseMenu;
+            @HistoryBack.started -= instance.OnHistoryBack;
+            @HistoryBack.performed -= instance.OnHistoryBack;
+            @HistoryBack.canceled -= instance.OnHistoryBack;
+            @HistoryForward.started -= instance.OnHistoryForward;
+            @HistoryForward.performed -= instance.OnHistoryForward;
+            @HistoryForward.canceled -= instance.OnHistoryForward;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -308,5 +366,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnInteraction(InputAction.CallbackContext context);
         void OnNext(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
+        void OnHistoryBack(InputAction.CallbackContext context);
+        void OnHistoryForward(InputAction.CallbackContext context);
     }
 }
