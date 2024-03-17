@@ -6,6 +6,7 @@ using DIALOGUE;
 namespace HISTORY {
 
     [RequireComponent(typeof(HistoryNavigation))]
+    [RequireComponent(typeof(HistoryLogManager))]
     public class HistoryManager : MonoBehaviour
     {
         public const int HISTORY_CACHE_LIMIT = 50;
@@ -13,11 +14,13 @@ namespace HISTORY {
         public List<HistoryState> history = new List<HistoryState>();
 
         private HistoryNavigation navigation;
+        public HistoryLogManager logManager { get; private set; }
 
         private void Awake()
         {
             instance = this;
             navigation = GetComponent<HistoryNavigation>();
+            logManager = GetComponent<HistoryLogManager>();
 
         }
 
@@ -31,6 +34,7 @@ namespace HISTORY {
         {
             HistoryState state = HistoryState.Capture();
             history.Add(state);
+            logManager.AddLog(state);
 
             if(history.Count > HISTORY_CACHE_LIMIT)
             {

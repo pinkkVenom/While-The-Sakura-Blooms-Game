@@ -80,6 +80,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HistoryLogs"",
+                    ""type"": ""Button"",
+                    ""id"": ""2454c1fb-94d0-4cf0-a88c-d64ba00a7bce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -203,6 +212,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""HistoryForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdfefa28-8038-4bda-80ee-f975b08b0a23"",
+                    ""path"": ""<Keyboard>/slash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HistoryLogs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -217,6 +237,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_GamePlay_PauseMenu = m_GamePlay.FindAction("PauseMenu", throwIfNotFound: true);
         m_GamePlay_HistoryBack = m_GamePlay.FindAction("HistoryBack", throwIfNotFound: true);
         m_GamePlay_HistoryForward = m_GamePlay.FindAction("HistoryForward", throwIfNotFound: true);
+        m_GamePlay_HistoryLogs = m_GamePlay.FindAction("HistoryLogs", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +305,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_PauseMenu;
     private readonly InputAction m_GamePlay_HistoryBack;
     private readonly InputAction m_GamePlay_HistoryForward;
+    private readonly InputAction m_GamePlay_HistoryLogs;
     public struct GamePlayActions
     {
         private @Controls m_Wrapper;
@@ -294,6 +316,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @PauseMenu => m_Wrapper.m_GamePlay_PauseMenu;
         public InputAction @HistoryBack => m_Wrapper.m_GamePlay_HistoryBack;
         public InputAction @HistoryForward => m_Wrapper.m_GamePlay_HistoryForward;
+        public InputAction @HistoryLogs => m_Wrapper.m_GamePlay_HistoryLogs;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -321,6 +344,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @HistoryForward.started += instance.OnHistoryForward;
             @HistoryForward.performed += instance.OnHistoryForward;
             @HistoryForward.canceled += instance.OnHistoryForward;
+            @HistoryLogs.started += instance.OnHistoryLogs;
+            @HistoryLogs.performed += instance.OnHistoryLogs;
+            @HistoryLogs.canceled += instance.OnHistoryLogs;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -343,6 +369,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @HistoryForward.started -= instance.OnHistoryForward;
             @HistoryForward.performed -= instance.OnHistoryForward;
             @HistoryForward.canceled -= instance.OnHistoryForward;
+            @HistoryLogs.started -= instance.OnHistoryLogs;
+            @HistoryLogs.performed -= instance.OnHistoryLogs;
+            @HistoryLogs.canceled -= instance.OnHistoryLogs;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -368,5 +397,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPauseMenu(InputAction.CallbackContext context);
         void OnHistoryBack(InputAction.CallbackContext context);
         void OnHistoryForward(InputAction.CallbackContext context);
+        void OnHistoryLogs(InputAction.CallbackContext context);
     }
 }

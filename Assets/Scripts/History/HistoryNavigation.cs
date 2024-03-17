@@ -19,9 +19,11 @@ namespace HISTORY
 
         public bool isViewingHistory = false;
 
+        public bool canNavigate => !DialogueSystem.instance.conversationManager.isOnLogicalLine;
+
         public void GoForward()
         {
-            if (!isViewingHistory)
+            if (!isViewingHistory || !canNavigate)
             {
                 return;
             }
@@ -55,7 +57,7 @@ namespace HISTORY
 
         public void GoBack()
         {
-            if(progress == 0 && isViewingHistory)
+            if(history.Count == 0 || (progress == 0 && isViewingHistory) || !canNavigate)
             {
                 return;
             }

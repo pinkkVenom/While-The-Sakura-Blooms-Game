@@ -8,7 +8,8 @@ public class FilePaths
     //define root path for project (even once we have executable file)
     public static readonly string root = $"{Application.dataPath}/gameData/";
 
-    //public static readonly string gameSaves = $"{runtimePath}Save Files/";
+    //Runtime Paths
+    public static readonly string gameSaves = $"{runtimePath}Save Files/";
 
     //Resources Paths
     public static readonly string resources_graphics = "Graphics/";
@@ -33,5 +34,17 @@ public class FilePaths
             return resourceName.Substring(HOME_DIRECTORY_SYMBOL.Length);
         }
         return defaultPath + resourceName;
+    }
+
+    public static string runtimePath
+    {
+        get
+        {
+            #if UNITY_EDITOR
+                        return "Assets/appdata/";
+            #else
+                        return Application.persistentDataPath + "/appdata/";
+            #endif
+        }
     }
 }

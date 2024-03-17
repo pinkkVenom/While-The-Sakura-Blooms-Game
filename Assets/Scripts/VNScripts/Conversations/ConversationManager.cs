@@ -17,6 +17,7 @@ namespace DIALOGUE
         //check if there is an ongoing conversation
         private Coroutine process = null;
         public bool isRunning => process != null;
+        public bool isOnLogicalLine { get; private set; } = false;
 
         //gives the conversationmanager access to the text manager so that they
         //can share data without other classes having access to text manager
@@ -42,6 +43,8 @@ namespace DIALOGUE
 
             conversationQueue = new ConversationQueue();
         }
+
+        public Conversation[] GetConversationQueue() => conversationQueue.GetReadOnly();
 
         public void Enqueue(Conversation conversation) => conversationQueue.Enqueue(conversation);
         public void EnqueuePriority(Conversation conversation) => conversationQueue.EnqueuePriority(conversation);
@@ -101,6 +104,7 @@ namespace DIALOGUE
                 //Processing Logical Lines
                 if (logicalLineManager.TryGetLogic(line, out Coroutine logic))
                 {
+                    isOnLogicalLine = true;
                     yield return logic;
                 }
                 else
@@ -126,6 +130,7 @@ namespace DIALOGUE
                 }
 
                 TryAdvanceConversation(currentConversation);
+                isOnLogicalLine = false;
             }
 
             process = null;

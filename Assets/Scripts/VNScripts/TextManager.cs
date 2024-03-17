@@ -300,4 +300,5 @@ public class TextManager
             yield return new WaitForEndOfFrame();
         }
     }
+
 }
