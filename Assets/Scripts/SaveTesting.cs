@@ -20,8 +20,7 @@ public class SaveTesting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            VNGameSave.activeFile = FileManager.Load<VNGameSave>($"{FilePaths.gameSaves}1{VNGameSave.FILE_TYPE}");
-            VNGameSave.activeFile.Load();
+            VNGameSave.VNLoad($"{FilePaths.gameSaves}1{VNGameSave.FILE_TYPE}", activateOnLoad: true);
         }
     }
 }

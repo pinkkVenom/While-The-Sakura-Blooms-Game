@@ -27,6 +27,14 @@ person "nice to meet you <input>"
 
 SetLayerMedia(background -m "~/Graphics/Gallery/flower")
 
+
+input "Whats your name?"
+
+$VN.mainCharName = <input>
+
+narrator "nice to meet you $VN.mainCharName"
+
+
 Hanako "Hello and welcome"
 Hanako "do you like cats or dogs?"
 

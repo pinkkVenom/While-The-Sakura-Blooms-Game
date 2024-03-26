@@ -18,10 +18,12 @@ namespace DIALOGUE
         //sends string to ripcontent method to be separated into 3 parts
         public static DIALOGUE_LINE Parse(string rawLine)
         {
-            Debug.Log($"Parsing line - '{rawLine}'");
+            //Debug.Log($"Parsing line - '{rawLine}'");
             (string speaker, string dialogue, string commands) = RipContent(rawLine);
 
-            Debug.Log($"Speaker='{speaker}'\nDialogue='{dialogue}'\nCommands='{commands}'");
+            commands = TagManager.Inject(commands);
+
+            //Debug.Log($"Speaker='{speaker}'\nDialogue='{dialogue}'\nCommands='{commands}'");
             return new DIALOGUE_LINE(rawLine, speaker, dialogue, commands);
         }
 
