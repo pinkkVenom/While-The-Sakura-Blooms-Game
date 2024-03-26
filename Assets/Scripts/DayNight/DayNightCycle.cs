@@ -17,10 +17,17 @@ public class DayNightCycle : MonoBehaviour
     public int days = 1;
 
     public bool activateLights; //checks if lights are on
-    public GameObject[] lights;
+    GameObject[] lights;
     // Start is called before the first frame update
     void Start()
     {
+        lights = GameObject.FindGameObjectsWithTag("Light");
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].SetActive(false);
+        }
+        activateLights = false;
+
         ppv = gameObject.GetComponent<Volume>();
     }
 
@@ -66,7 +73,7 @@ public class DayNightCycle : MonoBehaviour
             if(activateLights == false)
             {
                 if(mins > 45)
-                {
+                { 
                     for (int i = 0; i < lights.Length; i++)
                     {
                         lights[i].SetActive(true);

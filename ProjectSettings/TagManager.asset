@@ -11,6 +11,7 @@ TagManager:
   - Blue Portal
   - Green Portal
   - Purple Portal
+  - Light
   layers:
   - Default
   - TransparentFX
