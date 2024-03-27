@@ -1,19 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VISUALNOVEL;
 
 public class SaveAndLoadMenu : MenuPage
 {
-    private const int MAX_FILES = 99;
-    //private string savePath = FilePaths
+    public static SaveAndLoadMenu instance { get; private set; }
+
+    public const int MAX_FILES = 99;
+    private string savePath = FilePaths.gameSaves;
 
     private int currentPage = 1;
     private bool loadedFilesForFirstTime = false;
 
     public enum MenuFunction { save, load}
-    private MenuFunction menuFunction = MenuFunction.save;
+    public MenuFunction menuFunction = MenuFunction.save;
 
     public SaveLoadSlot[] saveSlots;
+    public int slotsPerPage => saveSlots.Length;
+
+    public Texture emptyFileImage;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public override void Open()
     {
@@ -25,8 +36,29 @@ public class SaveAndLoadMenu : MenuPage
         }
     }
 
-    private void PopulateSaveSlotsForPage(int pageNumber)
+    public void PopulateSaveSlotsForPage(int pageNumber)
     {
+        currentPage = pageNumber;
+        int startingFile = ((currentPage - 1) * slotsPerPage) + 1;
+        int endingFile = startingFile + slotsPerPage - 1;
 
+        for (int i = 0; i < slotsPerPage; i++)
+        {
+            int fileNum = startingFile + i;
+            SaveLoadSlot slot = saveSlots[i];
+
+            if(fileNum <= MAX_FILES)
+            {
+                slot.root.SetActive(true);
+                string filePath = $"{FilePaths.gameSaves}{fileNum}{VNGameSave.FILE_TYPE}";
+                slot.fileNumber = fileNum;
+                slot.filePath = filePath;
+                slot.PopulateDetails(menuFunction);
+            }
+            else
+            {
+                slot.root.SetActive(false);
+            }
+        }
     }
 }

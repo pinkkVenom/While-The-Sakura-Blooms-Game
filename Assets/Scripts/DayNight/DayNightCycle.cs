@@ -11,7 +11,7 @@ public class DayNightCycle : MonoBehaviour
     public TMP_Text day;
     public DayNightController controller;
 
-    public float tick;
+    public static float tick = 50.0f;
     public float seconds;
     public int mins;
     public int hours = 12;
@@ -30,6 +30,11 @@ public class DayNightCycle : MonoBehaviour
         activateLights = false;
 
         ppv = gameObject.GetComponent<Volume>();
+    }
+
+    public static void SetTick(float tickVal)
+    {
+        tick = tickVal;
     }
 
     // Update is called once per frame

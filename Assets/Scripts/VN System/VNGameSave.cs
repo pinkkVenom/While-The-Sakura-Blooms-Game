@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DIALOGUE;
 using System.Linq;
+using System;
 //file that is written to disk to save a players session progress
 
 namespace VISUALNOVEL
@@ -33,6 +34,8 @@ namespace VISUALNOVEL
         public HistoryState[] historyLogs;
         public VN_VariableData[] variables;
 
+        public string timeStamp;
+
         public static VNGameSave VNLoad(string filePath, bool activateOnLoad = false)
         {
             VNGameSave save = FileManager.Load<VNGameSave>(filePath, ENCRYPT_FILES);
@@ -53,6 +56,10 @@ namespace VISUALNOVEL
             historyLogs = HistoryManager.instance.history.ToArray();
             activeConversations = GetConversationData();
             variables = GetVariableData();
+
+            timeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            ScreenshotMaster.CaptureScreenshot(VNManager.instance.mainCamera, Screen.width, Screen.height, 0.25f, screenshotPath);
 
             string saveJSON = JsonUtility.ToJson(this);
             FileManager.Save(filePath, saveJSON, ENCRYPT_FILES);

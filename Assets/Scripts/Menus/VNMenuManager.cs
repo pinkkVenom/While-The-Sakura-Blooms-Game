@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class VNMenuManager : MonoBehaviour
 {
+    public static VNMenuManager instance;
+
     private MenuPage activePage = null;
     private bool isOpen = false;
 
@@ -12,7 +14,12 @@ public class VNMenuManager : MonoBehaviour
     [SerializeField] private MenuPage[] pages;
 
     private CanvasGroupController rootCG;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         rootCG = new CanvasGroupController(this, root);
@@ -27,12 +34,16 @@ public class VNMenuManager : MonoBehaviour
     public void OpenSavePage()
     {
         var page = GetPage(MenuPage.PageType.SaveAndLoad);
+        var slm = page.anim.GetComponentInParent<SaveAndLoadMenu>();
+        slm.menuFunction = SaveAndLoadMenu.MenuFunction.save;
         OpenPage(page);
     }
 
     public void OpenLoadPage()
     {
         var page = GetPage(MenuPage.PageType.SaveAndLoad);
+        var slm = page.anim.GetComponentInParent<SaveAndLoadMenu>();
+        slm.menuFunction = SaveAndLoadMenu.MenuFunction.load;
         OpenPage(page);
 
     }
@@ -78,12 +89,19 @@ public class VNMenuManager : MonoBehaviour
         rootCG.Show();
         rootCG.SetInteractableState(true);
         isOpen = true;
+        DayNightCycle.SetTick(0.0f);
     }
 
     public void CloseRoot()
     {
+        if (activePage == GetPage(MenuPage.PageType.PauseScreen))
+        {
+             activePage.Close();
+            activePage = null;
+        }
         rootCG.Hide();
         rootCG.SetInteractableState(false);
         isOpen = false;
+        DayNightCycle.SetTick(50.0f);
     }
 }
