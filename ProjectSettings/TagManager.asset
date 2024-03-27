@@ -12,6 +12,7 @@ TagManager:
   - Green Portal
   - Purple Portal
   - Light
+  - Shadow
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3286425951
+    locked: 0
+  - name: Buildings
+    uniqueID: 3131223215
+    locked: 0
+  - name: Lights
+    uniqueID: 3506406161
+    locked: 0
+  - name: UI
+    uniqueID: 4212961067
     locked: 0
