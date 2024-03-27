@@ -17,7 +17,7 @@ namespace DIALOGUE
         public DialogueContainer dialogueContainer = new DialogueContainer();
         public ConversationManager conversationManager { get; private set; }
         private TextManager textManager;
-        private AutoReader autoReader;
+        public AutoReader autoReader { get; private set; }
 
         [SerializeField] private CanvasGroup mainCanvas;
 
@@ -64,8 +64,9 @@ namespace DIALOGUE
             cgController = new CanvasGroupController(this, mainCanvas);
             dialogueContainer.Initialize();
 
+            autoReader = GetComponent<AutoReader>();
             //get auto reader if enabled
-            if(TryGetComponent(out autoReader))
+            if(autoReader != null)
             {
                 autoReader.Initialize(conversationManager);
             }

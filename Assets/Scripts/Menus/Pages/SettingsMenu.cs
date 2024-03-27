@@ -5,13 +5,23 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using DIALOGUE;
 
 public class SettingsMenu : MenuPage
 {
+    public static SettingsMenu instance { get; private set; }
+
     [SerializeField] private GameObject[] panels;
     private GameObject activePanel;
 
-    [SerializeField] private UI_ITEMS ui;
+    public UI_ITEMS ui;
+
+    private VN_Configuration config => VN_Configuration.activeConfig;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +40,20 @@ public class SettingsMenu : MenuPage
     {
         if (File.Exists(VN_Configuration.filePath))
         {
-            //VN_Configuration.activeConfig = FileManager.Load<VN_Configuration>(VN_Configuration.filePath);
+            VN_Configuration.activeConfig = FileManager.Load<VN_Configuration>(VN_Configuration.filePath, encrypt: VN_Configuration.ENCRYPT);
         }
+        else
+        {
+            VN_Configuration.activeConfig = new VN_Configuration();
+        }
+
+        VN_Configuration.activeConfig.Load();
+    }
+
+    private void OnApplicationQuit()
+    {
+        VN_Configuration.activeConfig.Save();
+        VN_Configuration.activeConfig = null;
     }
 
     public void OpenPanel(string panelName)
@@ -69,6 +91,11 @@ public class SettingsMenu : MenuPage
     [System.Serializable]
     public class UI_ITEMS 
     {
+        private static Color button_selectedColor = new Color(0.4f, 0.1f, 0.25f, 1f);
+        private static Color button_unselectedColor = new Color(1f, 1f, 1f, 1f);
+        private static Color text_selectedColor = new Color(1f, 1f, 1f, 1f);
+        private static Color text_unselectedColor = new Color(0.1f, 0.1f, 0.1f, 1f);
+
         [Header("General")]
         public Button fullscreen;
         public Button windowed;
@@ -83,6 +110,60 @@ public class SettingsMenu : MenuPage
         public Slider sfxVolume;
         public Slider voicesVolume;
 
+        public void SetButtonColors(Button A, Button B, bool selectedA)
+        {
+            A.GetComponent<Image>().color = selectedA ? button_selectedColor : button_unselectedColor;
+            B.GetComponent<Image>().color = !selectedA ? button_selectedColor : button_unselectedColor;
+
+            A.GetComponentInChildren<TextMeshProUGUI>().color = selectedA ? text_selectedColor : text_unselectedColor;
+            B.GetComponentInChildren<TextMeshProUGUI>().color = !selectedA ? text_selectedColor : text_unselectedColor;
+        }
+    }
+
+    //UI CALLABLE FUNCTIONS
+    public void SetDisplayToFullscreen(bool fullscreen)
+    {
+        Screen.fullScreen = fullscreen;
+        ui.SetButtonColors(ui.fullscreen, ui.windowed, fullscreen);
+    }
+
+    public void SetDisplayResolution()
+    {
+        string resolution = ui.resolutions.captionText.text;
+        string[] values = resolution.Split('x');
+
+        if(int.TryParse(values[0], out int width) && int.TryParse(values[1], out int height))
+        {
+            //we have valid width and height configuration
+            Screen.SetResolution(width, height, Screen.fullScreen);
+            config.display_resolution = resolution;
+        }
+        else
+        {
+            Debug.LogError($"Parsing error for screen resolution! [{resolution}] could not be pased into widthXheight");
+        }
+    }
+
+    public void SetContinueSkippingAfterChoice(bool continueSkipping)
+    {
+        config.continueSkippingAfterChoice = continueSkipping;
+        ui.SetButtonColors(ui.skippingContinue, ui.skippingStop, continueSkipping);
+    }
+
+    public void SetTextArchitectSpeed()
+    {
+        config.dialogueTextSpeed = ui.textSpeed.value;
+        DialogueSystem.instance.conversationManager.textManager.speed = config.dialogueTextSpeed;
+    }
+
+    public void SetAutoReaderSpeed()
+    {
+        config.dialogueAutoReadSpeed = ui.autoReadSpeed.value;
+        AutoReader autoReader = DialogueSystem.instance.autoReader;
+        if(autoReader != null)
+        {
+            autoReader.speed = config.dialogueAutoReadSpeed;
+        }
     }
 
 }
