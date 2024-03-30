@@ -56,6 +56,11 @@ public class VN_Configuration
         //apply value of architect and auto reader speed
         UI.textSpeed.value = dialogueTextSpeed;
         UI.autoReadSpeed.value = dialogueAutoReadSpeed;
+
+        //apply audio mixer volumes
+        UI.musicVolume.value = musicVolume;
+        UI.sfxVolume.value = sfxVolume;
+        UI.voicesVolume.value = voicesVolume;
     }
 
     public void Save()

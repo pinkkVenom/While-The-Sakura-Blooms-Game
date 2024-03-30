@@ -11,6 +11,7 @@ namespace HISTORY
         public List<CharacterData> characters;
         public List<AudioData> audio;
         public List<GraphicData> graphics;
+        public List<SFXData> sfxData;
 
         public static HistoryState Capture()
         {
@@ -18,6 +19,7 @@ namespace HISTORY
             state.dialogue = DialogueData.Capture();
             state.characters = CharacterData.Capture();
             state.audio = AudioData.Capture();
+            state.sfxData = SFXData.Capture();
             state.graphics = GraphicData.Capture();
 
             return state;
@@ -28,6 +30,7 @@ namespace HISTORY
             DialogueData.Apply(dialogue);
             CharacterData.Apply(characters);
             AudioData.Apply(audio);
+            SFXData.Apply(sfxData);
             GraphicData.Apply(graphics);
         }
     }

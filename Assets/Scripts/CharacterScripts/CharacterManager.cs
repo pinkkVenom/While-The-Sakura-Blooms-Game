@@ -20,7 +20,7 @@ namespace CHARACTERS
         //pointer to config data
         private CharacterConfigSO config => DialogueSystem.instance.config.characterConfigAsset;
 
-        private const string CHARACTER_CASTING_ID = " as ";
+        public const string CHARACTER_CASTING_ID = " as ";
         //find character prefab
         private const string CHARACTER_NAME_ID = "<charname>";
         public string characterRootPathFormat => $"Characters/{CHARACTER_NAME_ID}";
@@ -77,6 +77,11 @@ namespace CHARACTERS
             //at this point we don't have the character created so we must do so
             CHARACTER_INFO info = GetCharacterInfo(characterName);
             Character character = CreateCharacterFromInfo(info);
+
+            if(info.castingName != info.name)
+            {
+                character.castingName = info.castingName;
+            }
 
             //log the character so we dont create them twice
             characters.Add(info.name.ToLower(), character);

@@ -1,11 +1,11 @@
 ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/BG Room_of_Seals")
-CreateCharacter(Hanako -e true)
-Show(Hanako)
+CreateCharacter(Emi -e true)
+Show(Emi)
 
-Hanako "I'm busy right now"
+Emi "I'm busy right now"
 "Come back after I finish class."
 
 
 [wait]HideUI()
-Hide(Hanako)
+Hide(Emi)

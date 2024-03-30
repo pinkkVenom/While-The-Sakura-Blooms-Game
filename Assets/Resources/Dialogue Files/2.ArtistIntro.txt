@@ -1,0 +1,85 @@
+ShowUI()
+
+SetLayerMedia(background -m "~/Graphics/BG Images/BG Room_of_Seals")
+CreateCharacter(Emi -e true)
+
+Emi as Artist "*sigh* We're closed right now."
+
+choice "do you like cats or dogs"
+{
+	-I'm not here to buy art.
+	-I'm here to speak with Hanako
+}
+
+Emi "Oh. I'm Emi. What do you want then?"
+
+choice "do you like cats or dogs"
+{
+	-I was sent by the Doctor
+}
+
+Emi "Oh {a} yeah him."
+"I'm assuming it's an important matter."
+
+choice "do you like cats or dogs"
+{
+	-I'm a human
+}
+
+Emi "Oh cool. I've never met a human before."
+"I'm still not sure what that has to do with me though."
+
+choice "do you like cats or dogs"
+{
+	-I need help getting back home
+}
+
+Emi "Oh that's why you're here."
+"I don't know why the doctor would recommend me."
+"But, nevertheless, I can try to help you to the best of my abilities."
+"Would you mind explaining to me how you got here?"
+
+choice "do you like cats or dogs"
+{
+	-*show necklace*
+}
+
+Emi "I see."
+"Give me a second to sketch this."
+"[Emi quickly scribbles on a notepad]"
+
+choice "do you like cats or dogs"
+{
+	-You won't tell anyone about this right?
+	-I've been told the necklace is a forbidden relic
+}
+
+Emi "Don't worry, I won't tell anyone."
+"I just want to remember how it looks."
+
+choice "do you like cats or dogs"
+{
+	-I don't want you to get in trouble
+}
+
+Emi "Fear not {a}. I can take care of myself."
+"I know how to use a weapon."
+"*smiles*"
+"Listen, I have to get ready for my next art class."
+"I'll try to ask some clients if they know anything about forbidden artifacts."
+"You can come back after my class, and I'll tell you anything I've learned."
+"And you can help me clean up the studio."
+"Whadda ya say?"
+
+choice "do you like cats or dogs"
+{
+	-Sure
+	-Heck yeah!
+}
+
+Emi "Great! See you later."
+
+Hide(Emi)
+HideUI()
+
+

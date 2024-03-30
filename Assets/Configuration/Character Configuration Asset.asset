@@ -25,7 +25,7 @@ MonoBehaviour:
     sprites:
       _serializedList:
       - Key: Hanako
-        Value: {fileID: 21300000, guid: 770eef52abe63e24ea509146f53d77f5, type: 3}
+        Value: {fileID: 21300000, guid: a931ba5e08141624bb93cddabc002d6b, type: 3}
   - name: Kenji
     alias: kj
     characterType: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
     sprites:
       _serializedList:
       - Key: Emi
-        Value: {fileID: 21300000, guid: a931ba5e08141624bb93cddabc002d6b, type: 3}
+        Value: {fileID: 21300000, guid: 770eef52abe63e24ea509146f53d77f5, type: 3}
   - name: Yuki
     alias: yk
     characterType: 1

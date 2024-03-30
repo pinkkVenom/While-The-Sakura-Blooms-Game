@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 using VISUALNOVEL;
+using HISTORY;
 
 public class SaveLoadSlot : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class SaveLoadSlot : MonoBehaviour
 
     [HideInInspector] public int fileNumber = 0;
     [HideInInspector] public string filePath = "";
+
+    private UIConfirmationMenu uiChoiceMenu => UIConfirmationMenu.instance;
 
     public void PopulateDetails(SaveAndLoadMenu.MenuFunction function)
     {
@@ -41,7 +44,7 @@ public class SaveLoadSlot : MonoBehaviour
             saveButton.gameObject.SetActive(function == SaveAndLoadMenu.MenuFunction.save);
             previewImage.texture = SaveAndLoadMenu.instance.emptyFileImage;
         }
-        else
+        else if (function == SaveAndLoadMenu.MenuFunction.save)
         {
             titleText.text = $"{fileNumber}. {file.timeStamp}";
             deleteButton.gameObject.SetActive(true);
@@ -53,9 +56,41 @@ public class SaveLoadSlot : MonoBehaviour
             ImageConversion.LoadImage(screenshotPreview, data);
             previewImage.texture = screenshotPreview;
         }
+        else if(function == SaveAndLoadMenu.MenuFunction.load)
+        {
+            titleText.text = $"{fileNumber}. {file.timeStamp}";
+            deleteButton.gameObject.SetActive(true);
+            loadSaveButton.gameObject.SetActive(function == SaveAndLoadMenu.MenuFunction.load);
+            saveButton.gameObject.SetActive(false);
+
+            byte[] data = File.ReadAllBytes(file.screenshotPath);
+            Texture2D screenshotPreview = new Texture2D(1, 1);
+            ImageConversion.LoadImage(screenshotPreview, data);
+            previewImage.texture = screenshotPreview;
+        }
     }
 
     public void Delete()
+    {
+        uiChoiceMenu.Show(
+            //Title
+            "Delete this file (This cannot be undone!)",
+            //Choice 1
+            new UIConfirmationMenu.ConfirmationButton("Yes", () =>
+                {
+                    uiChoiceMenu.Show("Are you sure?",
+                        //choice 1
+                        new UIConfirmationMenu.ConfirmationButton("Yes", OnConfirmDelete),
+                        //choice 2
+                        new UIConfirmationMenu.ConfirmationButton("No", null));
+                },
+                autoCloseOnClick: false
+            ),
+            //Choice 2
+            new UIConfirmationMenu.ConfirmationButton("No", null)); ;
+    }
+
+    private void OnConfirmDelete()
     {
         File.Delete(filePath);
         PopulateDetails(SaveAndLoadMenu.instance.menuFunction);
@@ -63,14 +98,27 @@ public class SaveLoadSlot : MonoBehaviour
 
     public void Load()
     {
-        VNGameSave file = VNGameSave.VNLoad(filePath, true);
-
+        VNGameSave file = VNGameSave.VNLoad(filePath, false);
         SaveAndLoadMenu.instance.Close(closeAllMenus: true);
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == MainMenu.MAIN_MENU_SCENE)
+        {
+            MainMenu.instance.LoadGame(file);
+        }
+        else
+        {
+            file.Activate();
+        }
 
     }
 
     public void Save()
     {
+        if (HistoryManager.instance.isViewingHistory)
+        {
+            UIConfirmationMenu.instance.Show("Cannot save while looking at history", new UIConfirmationMenu.ConfirmationButton("OK", null));
+            return;
+        }
+
         var activeSave = VNGameSave.activeFile;
         activeSave.slotNumber = fileNumber;
         activeSave.Save();

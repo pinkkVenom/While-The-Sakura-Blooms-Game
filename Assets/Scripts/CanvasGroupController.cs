@@ -32,10 +32,10 @@ public class CanvasGroupController
         }
         else if (isHiding)
         {
-            DialogueSystem.instance.StopCoroutine(co_hiding);
+            owner.StopCoroutine(co_hiding);
             co_hiding = null;
         }
-        co_showing = DialogueSystem.instance.StartCoroutine(Fading(1, speed, immediate));
+        co_showing = owner.StartCoroutine(Fading(1, speed, immediate));
         SetInteractableState(active: true);
         return co_showing;
     }
@@ -48,10 +48,10 @@ public class CanvasGroupController
         }
         else if (isShowing)
         {
-            DialogueSystem.instance.StopCoroutine(co_showing);
+            owner.StopCoroutine(co_showing);
             co_showing = null;
         }
-        co_hiding = DialogueSystem.instance.StartCoroutine(Fading(0, speed, immediate));
+        co_hiding = owner.StartCoroutine(Fading(0, speed, immediate));
         SetInteractableState(active: false);
         return co_hiding;
     }

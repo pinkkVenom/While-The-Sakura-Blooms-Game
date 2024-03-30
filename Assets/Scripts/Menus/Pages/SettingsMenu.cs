@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 using DIALOGUE;
+using UnityEngine.Audio;
 
 public class SettingsMenu : MenuPage
 {
@@ -15,7 +16,6 @@ public class SettingsMenu : MenuPage
     private GameObject activePanel;
 
     public UI_ITEMS ui;
-
     private VN_Configuration config => VN_Configuration.activeConfig;
 
     private void Awake()
@@ -153,17 +153,51 @@ public class SettingsMenu : MenuPage
     public void SetTextArchitectSpeed()
     {
         config.dialogueTextSpeed = ui.textSpeed.value;
-        DialogueSystem.instance.conversationManager.textManager.speed = config.dialogueTextSpeed;
+        if(DialogueSystem.instance != null)
+            DialogueSystem.instance.conversationManager.textManager.speed = config.dialogueTextSpeed;
     }
 
     public void SetAutoReaderSpeed()
     {
         config.dialogueAutoReadSpeed = ui.autoReadSpeed.value;
+
+        if(DialogueSystem.instance == null)
+        {
+            return;
+        }
+
         AutoReader autoReader = DialogueSystem.instance.autoReader;
         if(autoReader != null)
         {
             autoReader.speed = config.dialogueAutoReadSpeed;
         }
+    }
+
+    public void SetMusicVolume()
+    {
+        config.musicVolume = ui.musicVolume.value;
+        AudioMixerGroup mixer = AudioManager.instance.musicMixer;
+        AnimationCurve audioFalloff = AudioManager.instance.audioFalloffCurve;
+
+        mixer.audioMixer.SetFloat(AudioManager.MUSIC_VOLUME_PARAM_NAME, audioFalloff.Evaluate(config.musicVolume));
+    }
+
+    public void SetSFXVolume()
+    {
+        config.sfxVolume = ui.sfxVolume.value;
+        AudioMixerGroup mixer = AudioManager.instance.sfxMixer;
+        AnimationCurve audioFalloff = AudioManager.instance.audioFalloffCurve;
+
+        mixer.audioMixer.SetFloat(AudioManager.SFX_VOLUME_PARAM_NAME, audioFalloff.Evaluate(config.sfxVolume));
+    }
+
+    public void SetVoicesVolume()
+    {
+        config.voicesVolume = ui.voicesVolume.value;
+        AudioMixerGroup mixer = AudioManager.instance.voicesMixer;
+        AnimationCurve audioFalloff = AudioManager.instance.audioFalloffCurve;
+
+        mixer.audioMixer.SetFloat(AudioManager.VOICES_VOLUME_PARAM_NAME, audioFalloff.Evaluate(config.voicesVolume));
     }
 
 }

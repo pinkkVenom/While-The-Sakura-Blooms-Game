@@ -1,0 +1,44 @@
+ShowUI()
+
+SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
+CreateCharacter(Hanako -e true)
+
+Hanako as Nurse "Oh!"
+"I'm sorry I didn't see you there"
+"Are you alright?"
+
+choice "do you like cats or dogs"
+{
+	-Not exactly....
+	-The Doctor suggested I come talk to you
+}
+
+Hanako as Nurse "Oh dear. What can I do to help?"
+
+choice "do you like cats or dogs"
+{
+	-I'm stuck in the Immortal Realm
+}
+
+Hanako as Nurse "*gasp*"
+"That's certainly not good."
+"You're not having any physical symptoms right?"
+"Dizziness? Lightheadedness?"
+
+choice "do you like cats or dogs"
+{
+	-No
+}
+
+Hanako as Nurse "That's good at least."
+"I have studied human physiology. It's quite similar to us immortals."
+"I don't know how you could have traveled into our world, but I'd be more than happy to help you with any health issues you might experience."
+"Right now I need to finish creating files for some patients."
+"But when I finish, please come back, especially if you start experiencing any unpleasant symptoms."
+"If you can't find me, you can ask the information desk for my name."
+Hanako "Hanako Kaori"
+"I hope we will speak again shortly"
+Hide(Hanako)
+HideUI()
+
+

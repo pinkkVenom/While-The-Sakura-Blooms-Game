@@ -10,11 +10,20 @@ public class NurseCollision : MonoBehaviour
     [SerializeField] private TextAsset NurseFile2 = null;
     [SerializeField] private CanvasGroup icon;
     bool hasSpoken;
+    bool inRange = false;
     // Start is called before the first frame update
     void Start()
     {
         hasSpoken = false;
         icon.alpha = 0;
+    }
+
+    private void Update()
+    {
+        if(inRange == true)
+        {
+            StartConvo();
+        }
     }
 
     void StartConversation(TextAsset asset)
@@ -28,20 +37,7 @@ public class NurseCollision : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-                if (hasSpoken == false)
-                {
-
-                        StartConversation(NurseFile);
-                        hasSpoken = true;
-                        return;
-
-                }
-                else
-                {
-                        StartConversation(NurseFile2);
-                }
-            
-
+            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
         }
 
     }
@@ -50,13 +46,32 @@ public class NurseCollision : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
+            inRange = true;
         }
 
+    }
+
+    private void StartConvo()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            icon.alpha = 0;
+            if (hasSpoken == false)
+            {
+                StartConversation(NurseFile);
+                hasSpoken = true;
+                return;
+            }
+            else
+            {
+                StartConversation(NurseFile2);
+            }
+        }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         icon.alpha = 0;
+        inRange = false;
     }
 }

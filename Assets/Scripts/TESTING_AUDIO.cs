@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,3 +37,4 @@ public class TESTING_AUDIO : MonoBehaviour
         AudioManager.instance.PlayTrack("Audio/Music/reflectedLight", startingVolume: 0.7f);
     }
 }
+#endif

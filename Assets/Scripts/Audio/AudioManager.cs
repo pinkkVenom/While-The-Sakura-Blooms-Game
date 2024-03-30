@@ -7,8 +7,14 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public const string MUSIC_VOLUME_PARAM_NAME = "MusicVolume";
+    public const string SFX_VOLUME_PARAM_NAME = "SFXVolume";
+    public const string VOICES_VOLUME_PARAM_NAME = "VoicesVolume";
+
     private const string SFX_PARENT_NAME = "SFX";
-    private const string SFX_NAME_FORMAT = "SFX - [{0}]";
+    public static readonly char[] SFX_NAME_FORMAT_CONTAINERS = new char[] { '[', ']' };
+    private static string SFX_NAME_FORMAT = $"SFX - {SFX_NAME_FORMAT_CONTAINERS[0]}" + "{0}" + $"{SFX_NAME_FORMAT_CONTAINERS[1]}";
+
     //default speed which tracks transition
     public const float TRACK_TRANSITION_SPEED = 1f;
     public static AudioManager instance { get; private set; }
@@ -22,7 +28,11 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup sfxMixer;
     public AudioMixerGroup voicesMixer;
 
+    public AnimationCurve audioFalloffCurve;
+
     private Transform sfxRoot;
+
+    public AudioSource[] allSFX => sfxRoot.GetComponentsInChildren<AudioSource>();
 
     // Start is called before the first frame update
     private void Awake()
@@ -51,12 +61,18 @@ public class AudioManager : MonoBehaviour
             Debug.LogError($"Could not load audio file '{filePath}'");
             return null;
         }
-        return PlaySoundEffect(clip, mixer, volume, pitch, loop);
+        return PlaySoundEffect(clip, mixer, volume, pitch, loop, filePath);
     }
 
-    public AudioSource PlaySoundEffect(AudioClip clip, AudioMixerGroup mixer = null, float volume = 1, float pitch = 1, bool loop = false)
+    public AudioSource PlaySoundEffect(AudioClip clip, AudioMixerGroup mixer = null, float volume = 1, float pitch = 1, bool loop = false, string filePath = "")
     {
-        AudioSource effectSource = new GameObject(string.Format(SFX_NAME_FORMAT, clip.name)).AddComponent<AudioSource>();
+        string fileName = clip.name;
+        if(filePath != string.Empty)
+        {
+            fileName = filePath;
+        }
+
+        AudioSource effectSource = new GameObject(string.Format(SFX_NAME_FORMAT, fileName)).AddComponent<AudioSource>();
         effectSource.transform.SetParent(sfxRoot);
         effectSource.transform.position = sfxRoot.position;
 
@@ -111,6 +127,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public bool isPlayingSFX(string soundName)
+    {
+        soundName = soundName.ToLower();
+
+        AudioSource[] sources = sfxRoot.GetComponentsInChildren<AudioSource>();
+        foreach(var source in sources)
+        {
+            if(source.clip.name.ToLower() == soundName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public AudioTrack PlayTrack(string filePath, int channel = 0, bool loop = true, float startingVolume = 0f, float volumeCap =1f, float pitch = 1f)
     {
         AudioClip clip = Resources.Load<AudioClip>(filePath);
@@ -122,7 +153,7 @@ public class AudioManager : MonoBehaviour
         return PlayTrack(clip, filePath, channel, loop, startingVolume, volumeCap, pitch);
     }
     
-    public AudioTrack PlayTrack(AudioClip clip, string filePath, int channel = 0, bool loop = true, float startingVolume = 0f, float volumeCap = 1f, float pitch = 1f)
+    public AudioTrack PlayTrack(AudioClip clip, string filePath = "", int channel = 0, bool loop = true, float startingVolume = 0f, float volumeCap = 1f, float pitch = 1f)
     {
         AudioChannel audioChannel = TryGetChannel(channel, createIfDoesNotExist: true);
         AudioTrack track = audioChannel.PlayTrack(clip, loop, startingVolume, volumeCap, pitch, filePath);
@@ -137,6 +168,23 @@ public class AudioManager : MonoBehaviour
             return;
         }
         c.StopTrack();
+    }
+
+    public void StopAllTracks()
+    {
+        foreach(AudioChannel channel in channels.Values)
+        {
+            channel.StopTrack();
+        }
+    }
+
+    public void StopAllSoundEffects()
+    {
+        AudioSource[] sources = sfxRoot.GetComponentsInChildren<AudioSource>();
+        foreach (var source in sources)
+        {
+            Destroy(source.gameObject);
+        }
     }
 
     public void StopTrack(string trackName)

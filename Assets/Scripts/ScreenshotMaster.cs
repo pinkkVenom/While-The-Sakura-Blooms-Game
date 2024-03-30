@@ -59,6 +59,8 @@ public class ScreenshotMaster : MonoBehaviour
         if(!filePath.Contains('.'))
             filePath = filePath + extension;
 
+        FileManager.TryCreateDirectoryFromPath(filePath);
+
         System.IO.File.WriteAllBytes(filePath, bytes);
     }
 }

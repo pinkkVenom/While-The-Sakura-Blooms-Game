@@ -15,6 +15,9 @@ public class VNMenuManager : MonoBehaviour
 
     private CanvasGroupController rootCG;
 
+    private UIConfirmationMenu uiChoiceMenu => UIConfirmationMenu.instance;
+
+    private bool inMenu = false;
     private void Awake()
     {
         instance = this;
@@ -23,6 +26,29 @@ public class VNMenuManager : MonoBehaviour
     void Start()
     {
         rootCG = new CanvasGroupController(this, root);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && inMenu == false)
+        {
+            //add something to check if we are in main menu so this wont showup
+
+            inMenu = true;
+
+            if (activePage != null)
+            {
+                ClosePage(activePage);
+            }
+
+            activePage = GetPage(MenuPage.PageType.PauseScreen);
+            OpenPauseMenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && inMenu == true)
+        {
+            inMenu = false;
+            ClosePage(activePage);
+        }
     }
 
     private MenuPage GetPage(MenuPage.PageType pageType)
@@ -84,6 +110,20 @@ public class VNMenuManager : MonoBehaviour
         }
     }
 
+    public void ClosePage(MenuPage page)
+    {
+        if (page == null)
+        {
+            return;
+        }
+        page.Close();
+        activePage = null;
+        if (isOpen)
+        {
+            CloseRoot();
+        }
+    }
+
     public void OpenRoot()
     {
         rootCG.Show();
@@ -103,5 +143,17 @@ public class VNMenuManager : MonoBehaviour
         rootCG.SetInteractableState(false);
         isOpen = false;
         DayNightCycle.SetTick(50.0f);
+    }
+
+    public void Click_Home()
+    {
+        VN_Configuration.activeConfig.Save();
+
+        uiChoiceMenu.Show("Return to Main Menu?", new UIConfirmationMenu.ConfirmationButton("Yes", () => UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu.MAIN_MENU_SCENE)), new UIConfirmationMenu.ConfirmationButton("No", null));
+    }
+
+    public void Click_Quit()
+    {
+        uiChoiceMenu.Show("Quit to desktop?", new UIConfirmationMenu.ConfirmationButton("Yes", ()=> Application.Quit()), new UIConfirmationMenu.ConfirmationButton("No", null));
     }
 }

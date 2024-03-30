@@ -1,10 +1,10 @@
 ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
-CreateCharacter(Emi -e true)
-Show(Emi)
+CreateCharacter(Hanako -e true)
+Show(Hanako)
 
-Emi "Right now I need to finish creating files for some patients."
+Hanako "Right now I need to finish creating files for some patients."
 "We will speak again later."
 
 [wait]HideUI()
-Hide(Emi)
+Hide(Hanako)

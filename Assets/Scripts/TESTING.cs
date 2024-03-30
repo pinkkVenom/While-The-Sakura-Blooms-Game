@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,8 +29,28 @@ public class TESTING : MonoBehaviour
 
         string filePath = Path.ChangeExtension(relativePath, null);
 
-        VNManager.instance.LoadFile(filePath);
+        LoadFile(filePath);
     }
 
-    
+    public void LoadFile(string filePath)
+    {
+        List<string> lines = new List<string>();
+        TextAsset file = Resources.Load<TextAsset>(filePath);
+
+        //catch any loading errors
+        try
+        {
+            lines = FileManager.ReadTextAsset(file);
+        }
+        catch
+        {
+            Debug.LogError($"Dialogue file at path 'Resources/{filePath}' does not exist!");
+            return;
+        }
+
+        DialogueSystem.instance.Say(lines, filePath);
+    }
+
+
 }
+#endif

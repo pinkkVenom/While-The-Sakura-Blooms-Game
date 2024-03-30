@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4264157507662219790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 4728871561631327293}
   - component: {fileID: 9061545884709970931}
   - component: {fileID: 2284177809620712774}
+  - component: {fileID: 3464926754882326806}
   m_Layer: 0
   m_Name: Nurse
   m_TagString: NPC
@@ -131,7 +132,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.99, y: -1.73, z: 0}
-  m_LocalScale: {x: 0.31668937, y: 0.35765547, z: 0.20930003}
+  m_LocalScale: {x: 0.6251592, y: 0.6251591, z: 0.6251592}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1915433155988610519}
@@ -175,8 +176,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1163744081
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: ff2ef95d56f0ce34c8f794289199de16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -238,7 +239,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NurseFile: {fileID: 4900000, guid: ac4ffc5d1fd7ba64e992ea107b0584cc, type: 3}
   NurseFile2: {fileID: 4900000, guid: 5c20f37af8683bd4586ae9682a9a569a, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 1777471438839694035}
+--- !u!114 &3464926754882326806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305973537381693166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b8eb204e92e1048ab9d946868a499e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questItem: {fileID: 0}
+  completedColor: {r: 1, g: 0.29803923, b: 0.27581596, a: 1}
+  activeColor: {r: 1, g: 0.67476875, b: 0.4009434, a: 0}
+  currentColor: {r: 1, g: 1, b: 1, a: 0}
+  allQuests:
+  - {fileID: 3464926754882326806}
 --- !u!1 &5826578425558575558
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +269,7 @@ GameObject:
   - component: {fileID: 6415432532770864057}
   - component: {fileID: 6734756693278009974}
   - component: {fileID: 2817744261761749843}
+  - component: {fileID: 1777471438839694035}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -314,3 +334,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1777471438839694035
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826578425558575558}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

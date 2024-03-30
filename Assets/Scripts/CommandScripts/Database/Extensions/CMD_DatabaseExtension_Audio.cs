@@ -46,14 +46,15 @@ namespace COMMAND
             //try to see if sound loops
             parameters.TryGetValue(PARAM_LOOP, out loop);
 
-            AudioClip sound = Resources.Load<AudioClip>(FilePaths.GetPathToResources(FilePaths.resources_sfx, filePath));
+            string resourcesPath = FilePaths.GetPathToResources(FilePaths.resources_sfx, filePath);
+            AudioClip sound = Resources.Load<AudioClip>(resourcesPath);
 
             if(sound == null)
             {
                 return;
             }
 
-            AudioManager.instance.PlaySoundEffect(sound, volume: volume, pitch: pitch, loop: loop);
+            AudioManager.instance.PlaySoundEffect(sound, volume: volume, pitch: pitch, loop: loop, filePath: resourcesPath);
         }
 
         private static void StopSFX(string data)
