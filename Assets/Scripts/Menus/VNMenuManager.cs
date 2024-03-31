@@ -43,11 +43,13 @@ public class VNMenuManager : MonoBehaviour
 
             activePage = GetPage(MenuPage.PageType.PauseScreen);
             OpenPauseMenu();
+            Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && inMenu == true)
         {
             inMenu = false;
             ClosePage(activePage);
+            Time.timeScale = 1;
         }
     }
 
@@ -126,14 +128,15 @@ public class VNMenuManager : MonoBehaviour
 
     public void OpenRoot()
     {
+        Time.timeScale = 0;
         rootCG.Show();
         rootCG.SetInteractableState(true);
         isOpen = true;
-        DayNightCycle.SetTick(0.0f);
     }
 
     public void CloseRoot()
     {
+        Time.timeScale = 1;
         if (activePage == GetPage(MenuPage.PageType.PauseScreen))
         {
              activePage.Close();
@@ -142,7 +145,6 @@ public class VNMenuManager : MonoBehaviour
         rootCG.Hide();
         rootCG.SetInteractableState(false);
         isOpen = false;
-        DayNightCycle.SetTick(50.0f);
     }
 
     public void Click_Home()

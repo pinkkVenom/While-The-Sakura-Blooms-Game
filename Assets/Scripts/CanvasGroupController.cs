@@ -66,7 +66,7 @@ public class CanvasGroupController
 
         while (cg.alpha != alpha)
         {
-            cg.alpha = Mathf.MoveTowards(cg.alpha, alpha, Time.deltaTime * DEFAULT_FADE_SPEED * speed);
+            cg.alpha = Mathf.MoveTowards(cg.alpha, alpha, Time.unscaledDeltaTime * DEFAULT_FADE_SPEED * speed);
             yield return null;
         }
 

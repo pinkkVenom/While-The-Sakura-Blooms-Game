@@ -36,11 +36,13 @@ public class JournalPage : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && journalOpen == false)
         {
             journalAnim.SetTrigger("Open");
+            Time.timeScale = 0;
             journalOpen = true;
         }
         else if(Input.GetKeyDown(KeyCode.J) && journalOpen == true)
         {
             journalAnim.SetTrigger("Close");
+            Time.timeScale = 1;
             journalOpen = false;
         }
     }

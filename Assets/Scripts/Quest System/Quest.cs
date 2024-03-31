@@ -25,8 +25,7 @@ public class Quest : MonoBehaviour
     {
         if (collision.tag == "Player")
         { 
-            FinishQuest();
-            
+            FinishQuest();  
         }
         
     }
