@@ -27,7 +27,7 @@ namespace VISUALNOVEL
         public string screenshotPath => $"{FilePaths.gameSaves}{slotNumber}{SCREENSHOT_FILE_TYPE}";
 
         public string playerName;
-        //public string playerMoney;
+        public int playerMoney;
 
         public int slotNumber = 1;
 

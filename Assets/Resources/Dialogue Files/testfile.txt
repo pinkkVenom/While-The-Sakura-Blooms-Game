@@ -1,6 +1,13 @@
 CreateCharacter(Hanako -e true)
 
-$money = 50
+Hanako "Hello"
+
+$VN.money = 50
+SetPlayerMoney($VN.money)
+
+$kenjiPoints = 10.0
+
+Kenji "I only like you '$kenjiPoints'% "
 
 choice "where to you go?"
 {
@@ -11,14 +18,14 @@ choice "where to you go?"
 }
 if($choice == cave)
 {
-	narrator "to the cave!"
+	$kenjiPoints += 5.00
+	narrator "to the cave <mainChar> and now you have '$kenjiPoints'% !"
+	narrator "you have $VN.money"
 }
 
 narrator "done with the line"
 
 person "you have '$money' dollars"
-
-$money += 40 
 
 person "you now have '$money' dollars"
 
