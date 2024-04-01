@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class UseItem : MonoBehaviour
 {
-    private Transform player;
-    private Transform npc;
-
     private bool isNearNPC => PlayerController.isNearNPC;
-    // Start is called before the first frame update
-    void Start()
+    string itemname;
+    private const string CLONE_NAME = "(Clone)";
+
+    private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        itemname = this.name;
     }
 
+    //do cases for each item type and each NPC
     public void Use()
     {
-        if (isNearNPC == true)
+        if (isNearNPC == true && itemname == "BluebellButton"+CLONE_NAME)
         {
+            Debug.Log($"its the bluebell {itemname}");
             Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log($"ewwww");
         }
     }
 }

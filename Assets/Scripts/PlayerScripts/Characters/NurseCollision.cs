@@ -11,6 +11,7 @@ public class NurseCollision : MonoBehaviour
     [SerializeField] private CanvasGroup icon;
     bool hasSpoken;
     bool inRange = false;
+
     // Start is called before the first frame update
     void Start()
     {

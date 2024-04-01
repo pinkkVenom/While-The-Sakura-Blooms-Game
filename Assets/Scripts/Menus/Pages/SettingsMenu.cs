@@ -76,12 +76,16 @@ public class SettingsMenu : MenuPage
 
     private void SetAvailableResolutions()
     {
+        //Resolution[] resolutions = Screen.resolutions;
         Resolution[] resolutions = Screen.resolutions;
         List<string> options = new List<string>();
 
         for(int i = resolutions.Length -1; i >= 0; i--)
         {
-            options.Add($"{resolutions[i].width}x{resolutions[i].height}");
+            if (resolutions[i].width != 1000) 
+            {
+                options.Add($"{resolutions[i].width}x{resolutions[i].height}");
+            }
         }
 
         ui.resolutions.ClearOptions();
