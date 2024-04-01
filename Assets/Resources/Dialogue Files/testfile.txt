@@ -18,6 +18,10 @@ narrator "done with the line"
 
 person "you have '$money' dollars"
 
+$money += 40 
+
+person "you now have '$money' dollars"
+
 
 person "heyyy person!"
 

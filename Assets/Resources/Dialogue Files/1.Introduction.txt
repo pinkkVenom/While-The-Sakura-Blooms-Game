@@ -104,7 +104,9 @@ Doctor "You should visit each of them and introduce yourself. If they're hesitan
 
 input "Type your name here"
 
-Doctor "Nice to meet you <input>!"
+$VN.mainCharName = <input>
+
+Doctor "Nice to meet you $VN.mainCharName!"
 "You look much better now. You're free to go whenever you're ready"
 "Just be careful out there. Humans were never meant to be in the immortal world. The longer you stay here, the worse your physical state will become."
 

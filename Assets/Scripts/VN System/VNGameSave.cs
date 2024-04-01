@@ -21,12 +21,14 @@ namespace VISUALNOVEL
         //preview screenshot file extension
         public const string SCREENSHOT_FILE_TYPE = ".jpg";
         //encryption is enabled
-        public const bool ENCRYPT_FILES = true;
+        public const bool ENCRYPT_FILES = false;
 
         public string filePath => $"{FilePaths.gameSaves}{slotNumber}{FILE_TYPE}";
         public string screenshotPath => $"{FilePaths.gameSaves}{slotNumber}{SCREENSHOT_FILE_TYPE}";
 
         public string playerName;
+        //public string playerMoney;
+
         public int slotNumber = 1;
 
         public bool newGame = true;

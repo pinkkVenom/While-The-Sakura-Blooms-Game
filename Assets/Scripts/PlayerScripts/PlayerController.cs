@@ -5,22 +5,18 @@ using DIALOGUE;
 
 //keep rigidbody 2D rotation frozen
 
+[System.Serializable]
 public class PlayerController : MonoBehaviour
 {
     public Animator anim;
 
     public static bool isNearNPC;
     public CanvasGroup cg;
-    bool cgActive = false;
-    
-    private void Awake()
-    {
 
-    }
-    
     
     private void Start()
     {
+        //transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
         isNearNPC = false;
         anim = GetComponent<Animator>();
     }
@@ -34,32 +30,12 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = Vector3.up * vertical + Vector3.right * horizontal;
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        //PlayerPrefs.SetFloat("PlayerX", transform.position.x);
+        //PlayerPrefs.SetFloat("PlayerY", transform.position.y);
 
         anim.SetFloat("Horizontal", moveDirection.x);
         anim.SetFloat("Vertical", moveDirection.y);
         anim.SetFloat("Speed", moveDirection.sqrMagnitude);
-
-        /*
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (cgActive == false)
-            {
-                cg.alpha = 1;
-                cg.interactable = true;
-                cg.blocksRaycasts = true;
-                cgActive = true;
-            }
-            else
-            {
-                cg.alpha = 0;
-                cg.interactable = false;
-                cg.blocksRaycasts = false;
-                cgActive = false;
-            }
-        }
-        */
-
-
     }
 
 
