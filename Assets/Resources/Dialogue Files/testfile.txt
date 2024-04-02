@@ -1,4 +1,8 @@
-CreateCharacter(Hanako -e true)
+CreateCharacter(Emi -e true)
+
+Emi.SetSprite(-s Emi_Surprised -l 1)
+
+Emi "WOAH!"
 
 Hanako "Hello"
 
@@ -25,9 +29,9 @@ if($choice == cave)
 
 narrator "done with the line"
 
-person "you have '$money' dollars"
+person "you have $VN.money dollars"
 
-person "you now have '$money' dollars"
+person "you now have $VN.money dollars"
 
 
 person "heyyy person!"
