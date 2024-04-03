@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
     {
         mainCG.Hide(speed: 0.3f);
         AudioManager.instance.StopTrack(0);
+        //AudioManager.instance.StopAllTracks();
 
         while (mainCG.isVisible)
         {

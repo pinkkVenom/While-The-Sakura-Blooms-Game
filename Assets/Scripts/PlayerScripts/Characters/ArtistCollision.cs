@@ -5,15 +5,28 @@ using DIALOGUE;
 
 public class ArtistCollision : MonoBehaviour
 {
-    [SerializeField] private TextAsset NurseFile = null;
-    [SerializeField] private TextAsset NurseFile2 = null;
+    //Intro
+    [SerializeField] private TextAsset ArtistIntro = null;
+    [SerializeField] private TextAsset ArtistBusy = null;
+    //Romance Questing
+
     [SerializeField] private CanvasGroup icon;
-    bool hasSpoken;
+    public static bool hasSpoken;
+    public static bool chosenRomance;
+    bool inRange = false;
+
     // Start is called before the first frame update
     void Start()
     {
         hasSpoken = false;
         icon.alpha = 0;
+    }
+    private void Update()
+    {
+        if (inRange == true)
+        {
+            StartConvo();
+        }
     }
 
     void StartConversation(TextAsset asset)
@@ -27,26 +40,41 @@ public class ArtistCollision : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (hasSpoken == false)
-            {
-                StartConversation(NurseFile);
-                hasSpoken = true;
-                return;
-            }
-            else
-            {
-                StartConversation(NurseFile2);
-            }
-            
+            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
         }
-        
+
+    }
+
+    private void StartConvo()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (StoryManager.storyIndex == 0)
+            {
+                icon.alpha = 0;
+                if (hasSpoken == false)
+                {
+                    StartConversation(ArtistIntro);
+                    hasSpoken = true;
+                    return;
+                }
+                else
+                {
+                    StartConversation(ArtistBusy);
+                }
+            }
+            if (StoryManager.storyIndex == 3)
+            {
+
+            }
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
+            inRange = true;
         }
 
     }
@@ -54,5 +82,6 @@ public class ArtistCollision : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         icon.alpha = 0;
+        inRange = false;
     }
 }

@@ -5,21 +5,32 @@ using DIALOGUE;
 
 public class LibrarianCollision : MonoBehaviour
 {
-    [SerializeField] private TextAsset NurseFile = null;
-    [SerializeField] private TextAsset NurseFile2 = null;
+    //Intro
+    [SerializeField] private TextAsset LibIntro = null;
+    [SerializeField] private TextAsset LibBusy = null;
+    //Romance Questing
+
     [SerializeField] private CanvasGroup icon;
-    bool hasSpoken;
+    public static bool hasSpoken;
+    public static bool chosenRomance;
+    bool inRange = false;
     // Start is called before the first frame update
     void Start()
     {
         hasSpoken = false;
         icon.alpha = 0;
     }
+    private void Update()
+    {
+        if (inRange == true)
+        {
+            StartConvo();
+        }
+    }
 
     void StartConversation(TextAsset asset)
     {
         List<string> lines = FileManager.ReadTextAsset(asset);
-
         DialogueSystem.instance.Say(lines);
     }
 
@@ -27,25 +38,39 @@ public class LibrarianCollision : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (hasSpoken == false)
-            {
-                StartConversation(NurseFile);
-                hasSpoken = true;
-                return;
-            }
-            else
-            {
-                StartConversation(NurseFile2);
-            }
-
+            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
         }
 
+    }
+    private void StartConvo()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (StoryManager.storyIndex == 0)
+            {
+                icon.alpha = 0;
+                if (hasSpoken == false)
+                {
+                    StartConversation(LibIntro);
+                    hasSpoken = true;
+                    return;
+                }
+                else
+                {
+                    StartConversation(LibBusy);
+                }
+            }
+            if (StoryManager.storyIndex == 3)
+            {
+
+            }
+        }
     }
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            icon.alpha = Mathf.MoveTowards(icon.alpha, 1, 1);
+            inRange = true;
         }
 
     }
@@ -53,5 +78,6 @@ public class LibrarianCollision : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         icon.alpha = 0;
+        inRange = false;
     }
 }

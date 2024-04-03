@@ -94,7 +94,7 @@ public class AudioChannel
                     continue;
                 }
 
-                track.volume = Mathf.MoveTowards(track.volume, targetVol, AudioManager.TRACK_TRANSITION_SPEED * Time.deltaTime);
+                track.volume = Mathf.MoveTowards(track.volume, targetVol, AudioManager.TRACK_TRANSITION_SPEED * Time.unscaledDeltaTime);
 
                 if(track != activeTrack && track.volume == 0)
                 {

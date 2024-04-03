@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 7475696559866667578}
   - component: {fileID: 946030079725436964}
   - component: {fileID: 3840687697409523347}
+  - component: {fileID: 5585101347742635706}
   m_Layer: 0
   m_Name: Librarian
   m_TagString: NPC
@@ -222,8 +223,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493c81938d77dd14a8d004e4129ca2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NurseFile: {fileID: 4900000, guid: 510495dceb44a9046b28fe54970f5506, type: 3}
-  NurseFile2: {fileID: 4900000, guid: 560240c9902c6f240ac784b4df9c1ffd, type: 3}
+  LibIntro: {fileID: 4900000, guid: 510495dceb44a9046b28fe54970f5506, type: 3}
+  LibBusy: {fileID: 4900000, guid: 560240c9902c6f240ac784b4df9c1ffd, type: 3}
+  icon: {fileID: 9218073337732268515}
+--- !u!114 &5585101347742635706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780376350600229181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b8eb204e92e1048ab9d946868a499e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questItem: {fileID: 0}
+  completedColor: {r: 1, g: 0.26386157, b: 0.24056602, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  allQuests:
+  - {fileID: 5585101347742635706}
 --- !u!1 &6115410022368476295
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
+PlaySong(reflectedLight)
 CreateCharacter(Hanako -e true)
 Show(Hanako)
 

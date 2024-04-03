@@ -1,0 +1,7 @@
+ShowUI()
+
+<mainChar> "Okay that's everyone."
+"I should probably get back to the Doctor."
+"I need to ask him what I should do next."
+
+HideUI()

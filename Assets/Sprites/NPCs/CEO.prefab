@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1531586906022159812}
   - component: {fileID: 6752618595516344055}
   - component: {fileID: 1641875594521367840}
+  - component: {fileID: 8194495134750837363}
   m_Layer: 0
   m_Name: CEO
   m_TagString: NPC
@@ -134,8 +135,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb49633decf834a4ca4fc51bc8d15161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NurseFile: {fileID: 4900000, guid: cff808bb7239f6847a58a82357540147, type: 3}
-  NurseFile2: {fileID: 4900000, guid: c7621385557cac44e87ee7b8038cd9c3, type: 3}
+  CEOIntro: {fileID: 4900000, guid: cff808bb7239f6847a58a82357540147, type: 3}
+  CEOBusy: {fileID: 4900000, guid: c7621385557cac44e87ee7b8038cd9c3, type: 3}
+  icon: {fileID: 7071873461786349654}
+--- !u!114 &8194495134750837363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112917594904547915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b8eb204e92e1048ab9d946868a499e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questItem: {fileID: 0}
+  completedColor: {r: 1, g: 0.2028302, b: 0.2028302, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  allQuests:
+  - {fileID: 8194495134750837363}
 --- !u!1 &5836646070456326470
 GameObject:
   m_ObjectHideFlags: 0

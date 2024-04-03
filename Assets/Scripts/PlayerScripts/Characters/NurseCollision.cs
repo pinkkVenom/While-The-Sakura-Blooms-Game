@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DIALOGUE;
-using UnityEngine.UI;
 
 public class NurseCollision : MonoBehaviour
 {
-    [SerializeField] private TextAsset NurseFile = null;
-    [SerializeField] private TextAsset NurseFile2 = null;
+    //Intro
+    [SerializeField]TextAsset NurseIntro = null;
+    [SerializeField] private TextAsset NurseBusy = null;
+    //Romance Questing
+    [SerializeField] TextAsset NurseQ1Start = null;
+    [SerializeField] TextAsset NurseQ1End = null;
+
     [SerializeField] private CanvasGroup icon;
-    bool hasSpoken;
+    public static bool hasSpoken;
+    public static bool chosenRomance;
     bool inRange = false;
+    bool finishedQuest = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +36,6 @@ public class NurseCollision : MonoBehaviour
     void StartConversation(TextAsset asset)
     {
         List<string> lines = FileManager.ReadTextAsset(asset);
-
         DialogueSystem.instance.Say(lines);
     }
 
@@ -56,16 +61,39 @@ public class NurseCollision : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            icon.alpha = 0;
-            if (hasSpoken == false)
+            if (StoryManager.storyIndex <= 2 && StoryManager.storyIndex >=0)
             {
-                StartConversation(NurseFile);
-                hasSpoken = true;
-                return;
+                icon.alpha = 0;
+                if (hasSpoken == false)
+                {
+                    StartConversation(NurseIntro);
+                    hasSpoken = true;
+                    return;
+                }
+                else
+                {
+                    StartConversation(NurseBusy);
+                }
             }
-            else
+            if(StoryManager.storyIndex == 3)
             {
-                StartConversation(NurseFile2);
+                if(CEOCollision.chosenRomance == false && LibrarianCollision.chosenRomance == false && ArtistCollision.chosenRomance == false)
+                {
+                    chosenRomance = true;
+                    StoryManager.storyIndex = 4;
+                }
+            }
+            if(StoryManager.storyIndex == 4)
+            {
+                //Nurse Quest 1
+                if (finishedQuest == false)
+                {
+                    StartConversation(NurseQ1Start);
+                }
+                if(finishedQuest == true)
+                {
+                    StartConversation(NurseQ1End);
+                }
             }
         }
     }

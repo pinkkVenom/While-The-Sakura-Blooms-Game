@@ -20,6 +20,17 @@ public class JournalPage : MonoBehaviour
     //Map Tab
     [SerializeField] private CanvasGroup Map;
 
+    //Points with Characters
+    [SerializeField] GameObject[] heartsHanako;
+    [SerializeField] GameObject[] heartsYuki;
+    [SerializeField] GameObject[] heartsKenji;
+    [SerializeField] GameObject[] heartsEmi;
+
+    public static float pointsHanako = 10f;
+    float pointsYuki;
+    float pointsKenji;
+    float pointsEmi;
+
     private bool journalOpen;
 
     // Start is called before the first frame update
@@ -28,6 +39,7 @@ public class JournalPage : MonoBehaviour
         journalOpen = false;
         journalAnim.SetTrigger("Closed");
         Close();
+        SetHearts();
     }
 
     // Update is called once per frame
@@ -101,6 +113,14 @@ public class JournalPage : MonoBehaviour
         Map.interactable = true;
         Map.blocksRaycasts = true;
         mapTabAnim.Play("Map_Open");
+    }
+
+    void SetHearts()
+    {
+        if(pointsHanako == 10)
+        {
+            heartsHanako[0].SetActive(true);
+        }
     }
 
 

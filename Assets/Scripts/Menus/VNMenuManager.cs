@@ -11,9 +11,11 @@ public class VNMenuManager : MonoBehaviour
     private bool isOpen = false;
 
     [SerializeField] private CanvasGroup root;
+    [SerializeField] private CanvasGroup mainGame;
     [SerializeField] private MenuPage[] pages;
 
     private CanvasGroupController rootCG;
+    private CanvasGroupController mainGameCG;
 
     private UIConfirmationMenu uiChoiceMenu => UIConfirmationMenu.instance;
 
@@ -26,6 +28,7 @@ public class VNMenuManager : MonoBehaviour
     void Start()
     {
         rootCG = new CanvasGroupController(this, root);
+        mainGameCG = new CanvasGroupController(this, mainGame);
     }
 
     private void Update()
@@ -150,12 +153,25 @@ public class VNMenuManager : MonoBehaviour
     public void Click_Home()
     {
         VN_Configuration.activeConfig.Save();
-
-        uiChoiceMenu.Show("Return to Main Menu?", new UIConfirmationMenu.ConfirmationButton("Yes", () => UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu.MAIN_MENU_SCENE)), new UIConfirmationMenu.ConfirmationButton("No", null));
+        uiChoiceMenu.Show("Return to Main Menu?", new UIConfirmationMenu.ConfirmationButton("Yes", () => StartCoroutine(LeavingGame())), new UIConfirmationMenu.ConfirmationButton("No", null));
     }
 
     public void Click_Quit()
     {
         uiChoiceMenu.Show("Quit to desktop?", new UIConfirmationMenu.ConfirmationButton("Yes", ()=> Application.Quit()), new UIConfirmationMenu.ConfirmationButton("No", null));
+    }
+
+
+    private IEnumerator LeavingGame()
+    {
+        mainGameCG.Show(speed: 0.3f);
+        rootCG.Hide(speed: 0.3f);
+        AudioManager.instance.StopAllTracks();
+        while (mainGameCG.isFading || rootCG.isShowing)
+        {
+            yield return null;
+        }
+        VN_Configuration.activeConfig.Save();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu.MAIN_MENU_SCENE);
     }
 }
