@@ -1,6 +1,6 @@
 ShowUI()
 
-SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
+SetLayerMedia(background -m "~/Graphics/BG Images/hospital reception")
 CreateCharacter(Hanako -e true)
 
 Hanako as Nurse "Oh!"

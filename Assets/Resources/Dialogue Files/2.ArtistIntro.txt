@@ -1,6 +1,6 @@
 ShowUI()
 
-SetLayerMedia(background -m "~/Graphics/BG Images/BG Room_of_Seals")
+SetLayerMedia(background -m "~/Graphics/BG Images/art studio")
 CreateCharacter(Emi -e true)
 
 Emi as Artist "*sigh* We're closed right now."
