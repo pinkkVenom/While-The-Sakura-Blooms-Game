@@ -1,6 +1,6 @@
 ShowUI()
 
-SetLayerMedia(background -m "~/Graphics/BG Images/Town Street")
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
 
 narrator "[You walk around trying to find the CEO's building]"
 "*bumps into man*"

@@ -7,6 +7,7 @@ public class StoryManager : MonoBehaviour
 {
     public static int storyIndex = 0;
     [SerializeField] CanvasGroup VN;
+    [SerializeField] Animator sakuraTree;
     //Quest Prefabs
     [SerializeField] GameObject Quest1;
     [SerializeField] GameObject Quest2;
@@ -14,10 +15,10 @@ public class StoryManager : MonoBehaviour
 
 
     //Story part 1
-    bool hasMetNurse => NurseCollision.hasSpoken;
-    bool hasMetArtist =true;
-    bool hasMetCEO =true;
-    bool hasMetLibrarian =true;
+    private bool hasMetNurse => NurseCollision.hasSpoken;
+    private bool hasMetArtist =true;
+    private bool hasMetCEO =true;
+    private bool hasMetLibrarian =true;
 
     //Story part 2
     [SerializeField] private TextAsset monologue1 = null;
@@ -88,11 +89,13 @@ public class StoryManager : MonoBehaviour
     {
         if(storyIndex == 0)
         {
+            sakuraTree.Play("Sakura1");
             Quest1.SetActive(true);
             return;
         }
         if(storyIndex == 1)
         {
+            sakuraTree.Play("Sakura1");
             Quest2.SetActive(true);
             Quest1.SetActive(false);
             StartConversation(monologue1);
@@ -100,19 +103,26 @@ public class StoryManager : MonoBehaviour
         }
         if (storyIndex == 2)
         {
+            sakuraTree.Play("Sakura1");
             doctor.SetActive(true);
             factionGood.SetActive(true);
         }
         if(storyIndex == 3)
         {
+            sakuraTree.Play("Sakura2");
             factionGood.SetActive(false);
             //insert monologue 2 about picking 1 immortal
         }
         if(storyIndex <= 23 && storyIndex >= 4)
         {
+            sakuraTree.Play("Sakura3");
             //romance is happening
             doctor.SetActive(true);
             factionGood.SetActive(false);
+        }
+        if(storyIndex >= 24)
+        {
+            sakuraTree.Play("Sakura4");
         }
     }
 

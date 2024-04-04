@@ -8,7 +8,7 @@ Emi as Artist "*sigh* We're closed right now."
 choice "do you like cats or dogs"
 {
 	-I'm not here to buy art.
-	-I'm here to speak with Hanako
+	-I'm here to speak with Emi
 }
 
 Emi "Oh. I'm Emi. What do you want then?"

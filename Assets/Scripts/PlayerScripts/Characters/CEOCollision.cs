@@ -9,12 +9,14 @@ public class CEOCollision : MonoBehaviour
     [SerializeField] private TextAsset CEOIntro = null;
     [SerializeField] private TextAsset CEOBusy = null;
     //Romance Questing
-
+    [SerializeField] TextAsset CEOQuest1Start = null;
+    [SerializeField] TextAsset CEOQuest1End = null;
 
     [SerializeField] private CanvasGroup icon;
     public static bool hasSpoken;
     public static bool chosenRomance;
     bool inRange = false;
+    bool finishedQuest = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class CEOCollision : MonoBehaviour
     {
         if(inRange == true)
         {
-            
+            StartConvo();
         }
     }
 
@@ -73,7 +75,24 @@ public class CEOCollision : MonoBehaviour
             }
             if (StoryManager.storyIndex == 3)
             {
-
+                if (NurseCollision.chosenRomance == false && LibrarianCollision.chosenRomance == false && ArtistCollision.chosenRomance == false)
+                {
+                    chosenRomance = true;
+                    StoryManager.storyIndex = 9;
+                }
+            }
+            if (StoryManager.storyIndex == 9)
+            {
+                //Nurse Quest 1
+                if (finishedQuest == false)
+                {
+                    //StartConversation();
+                }
+                if (finishedQuest == true)
+                {
+                    //StartConversation();
+                    finishedQuest = false;
+                }
             }
         }
     }
