@@ -16,9 +16,9 @@ public class StoryManager : MonoBehaviour
 
     //Story part 1
     private bool hasMetNurse => NurseCollision.hasSpoken;
-    private bool hasMetArtist =true;
-    private bool hasMetCEO =true;
-    private bool hasMetLibrarian =true;
+    private bool hasMetArtist => ArtistCollision.hasSpoken;
+    private bool hasMetCEO => CEOCollision.hasSpoken;
+    private bool hasMetLibrarian => LibrarianCollision.hasSpoken;
 
     //Story part 2
     [SerializeField] private TextAsset monologue1 = null;
@@ -104,12 +104,18 @@ public class StoryManager : MonoBehaviour
         if (storyIndex == 2)
         {
             sakuraTree.Play("Sakura1");
+            Quest1.SetActive(false);
+            Quest2.SetActive(false);
+            Quest3.SetActive(true);
             doctor.SetActive(true);
             factionGood.SetActive(true);
         }
         if(storyIndex == 3)
         {
             sakuraTree.Play("Sakura2");
+            Quest1.SetActive(false);
+            Quest2.SetActive(false);
+            Quest3.SetActive(false);
             factionGood.SetActive(false);
             //insert monologue 2 about picking 1 immortal
         }

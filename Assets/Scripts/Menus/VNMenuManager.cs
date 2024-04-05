@@ -172,6 +172,7 @@ public class VNMenuManager : MonoBehaviour
             yield return null;
         }
         VN_Configuration.activeConfig.Save();
+        Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu.MAIN_MENU_SCENE);
     }
 }

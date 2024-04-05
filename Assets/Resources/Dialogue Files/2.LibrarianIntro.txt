@@ -1,5 +1,5 @@
 ShowUI()
-SetLayerMedia(background -m "~/Graphics/BG Images/bg library")
+SetLayerMedia(background -m "~/Graphics/BG Images/library inside")
 CreateCharacter(Yuki -e true)
 
 Yuki as Librarian "Greetings! My name is Yuki Tanaka-"

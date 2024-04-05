@@ -1,4 +1,5 @@
 ShowUI()
+SetUIActive(true)
 
 narrator "(Why is it so bright here?)"
 narrator "(I feel so dizzy...)"

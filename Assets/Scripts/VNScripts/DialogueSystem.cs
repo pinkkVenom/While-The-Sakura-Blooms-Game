@@ -31,7 +31,7 @@ namespace DIALOGUE
         public bool isRunningConversation => conversationManager.isRunning;
 
         public DialogueContinuePrompt prompt;
-        private CanvasGroupController cgController;
+        public static CanvasGroupController cgController;
 
         private void Awake()
         {
@@ -170,7 +170,7 @@ namespace DIALOGUE
             return conversationManager.StartConversation(conversation);
         }
 
-        public bool isVisible => cgController.isVisible;
+        public static bool isVisible => cgController.isVisible;
         public Coroutine Show(float speed = 1f, bool immediate = false) => cgController.Show(speed, immediate);
 
         public Coroutine Hide(float speed = 1f, bool immediate = false) => cgController.Hide(speed, immediate);
