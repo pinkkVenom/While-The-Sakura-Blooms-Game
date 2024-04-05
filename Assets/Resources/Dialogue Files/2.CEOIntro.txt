@@ -3,7 +3,7 @@ ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
 
 narrator "[You walk around trying to find the CEO's building]"
-"*bumps into man*"
+"[You bump into a man]"
 
 CreateCharacter(Kenji -e true)
 
@@ -48,7 +48,7 @@ choice "do you like cats or dogs"
 }
 
 Kenji "I suppose that's why you couldn't recognize me immediately."
-"Well {a} that's quite the problem for you buttercup."
+"Well {a}that's quite the problem for you buttercup."
 "I don't have any solutions in regards to that issue."
 
 choice "do you like cats or dogs"

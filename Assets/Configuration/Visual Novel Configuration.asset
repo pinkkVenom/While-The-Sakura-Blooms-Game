@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1642ebe7b55f31c46832172fa33ba33f, type: 3}
   m_Name: Visual Novel Configuration
   m_EditorClassIdentifier: 
-  startingFile: {fileID: 4900000, guid: 17238582bb5bbd94f9f586771c3a3161, type: 3}
+  startingFile: {fileID: 4900000, guid: 831679747a3e04749839b76656c79ad3, type: 3}

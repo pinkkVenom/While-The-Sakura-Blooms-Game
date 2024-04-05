@@ -20,9 +20,11 @@ public class VNMenuManager : MonoBehaviour
     private UIConfirmationMenu uiChoiceMenu => UIConfirmationMenu.instance;
 
     private bool inMenu = false;
+    UnityEngine.SceneManagement.Scene activescene;
     private void Awake()
     {
         instance = this;
+        activescene = UnityEngine.SceneManagement.SceneManager.GetSceneByName("Main Menu");
     }
 
     void Start()
@@ -33,26 +35,29 @@ public class VNMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && inMenu == false)
+        if (activescene.isLoaded == false)
         {
-            //add something to check if we are in main menu so this wont showup
-
-            inMenu = true;
-
-            if (activePage != null)
+            if (Input.GetKeyDown(KeyCode.Escape) && inMenu == false)
             {
-                ClosePage(activePage);
-            }
+                //add something to check if we are in main menu so this wont showup
 
-            activePage = GetPage(MenuPage.PageType.PauseScreen);
-            OpenPauseMenu();
-            Time.timeScale = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && inMenu == true)
-        {
-            inMenu = false;
-            ClosePage(activePage);
-            Time.timeScale = 1;
+                inMenu = true;
+
+                if (activePage != null)
+                {
+                    ClosePage(activePage);
+                }
+
+                activePage = GetPage(MenuPage.PageType.PauseScreen);
+                OpenPauseMenu();
+                Time.timeScale = 0;
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && inMenu == true)
+            {
+                inMenu = false;
+                ClosePage(activePage);
+                Time.timeScale = 1;
+            }
         }
     }
 
@@ -132,6 +137,10 @@ public class VNMenuManager : MonoBehaviour
     public void OpenRoot()
     {
         Time.timeScale = 0;
+        if (activescene.isLoaded)
+        {
+            Time.timeScale = 1;
+        }
         rootCG.Show();
         rootCG.SetInteractableState(true);
         isOpen = true;

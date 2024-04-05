@@ -5,7 +5,7 @@ using DIALOGUE;
 
 public class StoryManager : MonoBehaviour
 {
-    public static int storyIndex = 0;
+    public static int storyIndex = 4;
     [SerializeField] CanvasGroup VN;
     [SerializeField] Animator sakuraTree;
     //Quest Prefabs

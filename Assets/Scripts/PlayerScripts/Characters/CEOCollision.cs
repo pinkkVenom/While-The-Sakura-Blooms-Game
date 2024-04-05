@@ -9,8 +9,14 @@ public class CEOCollision : MonoBehaviour
     [SerializeField] private TextAsset CEOIntro = null;
     [SerializeField] private TextAsset CEOBusy = null;
     //Romance Questing
+    //QUEST 1
     [SerializeField] TextAsset CEOQuest1Start = null;
+    [SerializeField] GameObject shopskeep;
     [SerializeField] TextAsset CEOQuest1End = null;
+    //QUEST 2
+    [SerializeField] GameObject coffee;
+    [SerializeField] TextAsset CEOQuest2Start = null;
+    [SerializeField] TextAsset CEOQuest2End = null;
 
     [SerializeField] private CanvasGroup icon;
     public static bool hasSpoken;
