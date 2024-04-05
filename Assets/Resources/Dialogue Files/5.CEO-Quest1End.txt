@@ -1,6 +1,7 @@
 ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
 CreateCharacter(Kenji -e true)
+Kenji.SetPosition(-x 0.5 -y 0)
 Show(Kenji)
 
 narrator "[Kenji looks up from a sea of paperwork, his facade of indifference slipping ever so slightly at the sight of you.]"
@@ -78,8 +79,15 @@ Kenji "You're a lot smarter than you appear."
 
 choice "ceo"
 {
-	-Okay, I'll find you coffee.
-	-I would like to share it with you.
+	-Where can I find the coffee?
+}
+
+Kenji "There is a coffee shop north from here, in the Art District."
+"Perhaps there you will find what I need."
+
+choice "ceo"
+{
+	-May I share the coffee with you?
 }
 
 narrator ([Kenji studies you for a moment, then smirks.])
@@ -87,3 +95,5 @@ narrator ([Kenji studies you for a moment, then smirks.])
 Kenji "You drive a hard bargain."
 "Very well, bring me the coffee, and we'll share it as equals {a}for a moment"
 
+[wait]HideUI()
+Hide(Kenji)

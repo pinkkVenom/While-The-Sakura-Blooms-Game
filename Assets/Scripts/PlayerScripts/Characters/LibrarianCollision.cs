@@ -60,9 +60,9 @@ public class LibrarianCollision : MonoBehaviour
                     StartConversation(LibBusy);
                 }
             }
-            if (StoryManager.storyIndex == 3)
+            if (StoryManager.storyIndex >= 3)
             {
-
+                StartConversation(LibBusy);
             }
         }
     }

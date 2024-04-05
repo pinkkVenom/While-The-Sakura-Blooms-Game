@@ -1,0 +1,116 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo outside")
+CreateCharacter(Shopkeeper3 -e true)
+Shopkeeper3.SetPosition(-x 0.5 -y 0)
+Show(Shopkeeper3)
+
+Shopkeeper3 as Shopkeeper "Greetings!"
+"Oh..{a}um...{a}I've never seen a customer of your kind before."
+"Where are you from?"
+
+choice "ceo"
+{
+	-I'm from...out of town
+}
+
+Shopkeeper3 as Shopkeeper "Ahh yes of course!"
+
+choice "ceo"
+{
+	-May I ask what species are you?
+	-I've never seen your kind before either
+}
+
+Shopkeeper3 as Shopkeeper "I am a Gnome."
+"My sisters an I manage most markets and local businesses."
+"We are very good at managing expenses."
+"And we're amazing marketers."
+"Would you like to browse our finest collection of diamonds?"
+
+choice "ceo"
+{
+	-I was hoping to negotiate a deal.
+}
+
+Shopkeeper3 as Shopkeeper "Ah I see."
+"We primarily sell jewelery, precious gems, and fine metals."
+"That is what I would be willing to purchase from you."
+
+narrator "[The shop keeper notices your amulet, and begins to stare at it intently.]"
+
+Shopkeeper3 as Shopkeeper "Wait just a minute."
+"That amulet around your neck {a}where did you obtain such a beautiful item?"
+
+choice "ceo"
+{
+	-I..thrifted it?
+}
+
+Shopkeeper3 as Shopkeeper "Oh my!"
+"That must've been a steal!"
+"How much would you be willing to sell it for?"
+
+<mainChar> "(Oh no, this gnome wants to buy the amulet...)"
+"(Perhaps it wouldn't hurt to find out how much she would want for it.)"
+
+choice "ceo"
+{
+	-How much are you willing to pay?
+}
+
+Shopkeeper3 as Shopkeeper "Hmmm..."
+"I'm willing to start negotiating at 15,000$"
+
+<mainChar> "(OH MY GOD!)"
+"(That's so much money!)"
+"(Wait{a}no)"
+"(This is wrong)"
+"(I'm the only person who knows the leader of the Kagayaku is trapped in this amulet.)"
+"(I can't just give it away, even if I would get a lot of money and likely Kenji's approval.)"
+"(Besides, the leader of the Kagayaku might be able to help me leave the immortal realm.)"
+
+choice "ceo"
+{
+	-I'm sorry, but I'm not selling this
+}
+
+Shopkeeper3 as Shopkeeper "What do you say to 30,000$?"
+
+choice "ceo"
+{
+	-No, thankyou
+}
+
+Shopkeeper3 as Shopkeeper "Oh alright then."
+"If you have nothing else then perhaps you should go."
+
+choice "ceo"
+{
+	-Wait, I have a ring
+}
+
+narrator "[You take off a worn silver ring and hand it to the Shopkeeper.]"
+"[She examines it closely.]"
+
+Shopkeeper3 as Shopkeeper "This is a very nice vintage ring."
+"Is this human made silver?"
+
+choice "ceo"
+{
+	-I think so?
+}
+
+Shopkeeper3 as Shopkeeper "Ah yes this is very, very lovely."
+"I would be willing to give 5,000$ for this ring."
+
+choice "ceo"
+{
+	-Yes please!
+	-I'll take it
+}
+
+Shopkeeper3 as Shopkeeper "Wonderful!"
+"Thank-you very much, and have a wonderful day!"
+
+[wait]HideUI()
+Hide(Shopkeeper3)

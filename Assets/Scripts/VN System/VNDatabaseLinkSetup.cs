@@ -14,7 +14,7 @@ namespace VISUALNOVEL
             VariableStore.CreateVariable("VN.gameSaveIndex", 0, () => StoryManager.storyIndex, value => StoryManager.storyIndex = value);
 
             //Character Points
-            VariableStore.CreateVariable("VN.hanakoPoints", 0.0f, () => JournalPage.pointsHanako, value => JournalPage.pointsHanako = value);
+            VariableStore.CreateVariable("VN.kenjiPoints", 0.0f, () => JournalPage.pointsKenji, value => JournalPage.pointsKenji = value);
         }
     }
 }

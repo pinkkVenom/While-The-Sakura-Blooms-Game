@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6752618595516344055}
   - component: {fileID: 1641875594521367840}
   - component: {fileID: 8194495134750837363}
+  - component: {fileID: 5270869206796291943}
   m_Layer: 0
   m_Name: CEO
   m_TagString: NPC
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.84, y: -1.58, z: 0}
-  m_LocalScale: {x: 0.3397085, y: 0.3760914, z: 0.3760914}
+  m_LocalScale: {x: 0.6512748, y: 0.6512749, z: 0.6512749}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4428869944793476708}
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1163744081
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 2aab578e9406029479e4f6c5d934d95c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,6 +138,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CEOIntro: {fileID: 4900000, guid: cff808bb7239f6847a58a82357540147, type: 3}
   CEOBusy: {fileID: 4900000, guid: c7621385557cac44e87ee7b8038cd9c3, type: 3}
+  CEOQuest1Start: {fileID: 4900000, guid: 831679747a3e04749839b76656c79ad3, type: 3}
+  CEOQuest1End: {fileID: 4900000, guid: 2a05b1a73fb7bf549a3f1d32d134282c, type: 3}
+  CEOQuest2End: {fileID: 4900000, guid: 46fc95a90f573f24ab98c987dbf7127b, type: 3}
   icon: {fileID: 7071873461786349654}
 --- !u!114 &8194495134750837363
 MonoBehaviour:
@@ -156,6 +160,27 @@ MonoBehaviour:
   currentColor: {r: 0, g: 0, b: 0, a: 0}
   allQuests:
   - {fileID: 8194495134750837363}
+--- !u!95 &5270869206796291943
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112917594904547915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c03f91369ad254746b1ba1f5005afd5f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5836646070456326470
 GameObject:
   m_ObjectHideFlags: 0

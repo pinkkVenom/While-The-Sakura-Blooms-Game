@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DIALOGUE;
+using TMPro;
 
 public class CEOCollision : MonoBehaviour
 {
@@ -11,18 +12,27 @@ public class CEOCollision : MonoBehaviour
     //Romance Questing
     //QUEST 1
     [SerializeField] TextAsset CEOQuest1Start = null;
-    [SerializeField] GameObject shopskeep;
     [SerializeField] TextAsset CEOQuest1End = null;
+    [SerializeField] TextMeshProUGUI money;
+    public static bool quest1Done = false;
     //QUEST 2
-    [SerializeField] GameObject coffee;
-    [SerializeField] TextAsset CEOQuest2Start = null;
     [SerializeField] TextAsset CEOQuest2End = null;
+    public static bool quest2Done = false;
+    //QUEST 3
+    [SerializeField] TextAsset CEOQuest3End = null;
+    public static bool quest3Done = false;
+    //QUEST 4
+    [SerializeField] TextAsset CEOQuest4End = null;
+    public static bool quest4Done = false;
+    //QUEST 5
+    [SerializeField] TextAsset CEOQuest5End = null;
+    public static bool quest5Done = false;
 
     [SerializeField] private CanvasGroup icon;
     public static bool hasSpoken;
     public static bool chosenRomance;
-    bool inRange = false;
-    bool finishedQuest = false;
+    public static bool inRange = false;
+    public static bool finishedQuest = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +48,7 @@ public class CEOCollision : MonoBehaviour
         }
     }
 
-    void StartConversation(TextAsset asset)
+    public static void StartConversation(TextAsset asset)
     {
         List<string> lines = FileManager.ReadTextAsset(asset);
         DialogueSystem.instance.Say(lines);
@@ -83,21 +93,86 @@ public class CEOCollision : MonoBehaviour
             {
                 if (NurseCollision.chosenRomance == false && LibrarianCollision.chosenRomance == false && ArtistCollision.chosenRomance == false)
                 {
+                    Input.ResetInputAxes();
                     chosenRomance = true;
-                    StoryManager.storyIndex = 9;
+                    StartConversation(CEOQuest1Start);
                 }
             }
             if (StoryManager.storyIndex == 9)
             {
-                //Nurse Quest 1
-                if (finishedQuest == false)
+                //CEO Quest 1 (Diamond Store)
+                
+                if(finishedQuest == true)
                 {
-                    //StartConversation();
+                    Input.ResetInputAxes();
+                    StartConversation(CEOQuest1End);
+                    finishedQuest = false;
+                    quest1Done = true;
+                    money.text = "0";
                 }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(CEOBusy);
+                }
+            }
+            if(StoryManager.storyIndex == 10)
+            {
+                //CEO Quest 2 (Coffee)
                 if (finishedQuest == true)
                 {
-                    //StartConversation();
+                    Input.ResetInputAxes();
+                    StartConversation(CEOQuest2End);
                     finishedQuest = false;
+                    quest2Done = true;
+                }
+                else if(finishedQuest == false)
+                {
+                    StartConversation(CEOBusy);
+                }
+            }
+            if(StoryManager.storyIndex == 11)
+            {
+                //CEO Quest 3 (Talk to Coffee Shop Owner)
+                if (finishedQuest == true)
+                {
+                    Input.ResetInputAxes();
+                    StartConversation(CEOQuest3End);
+                    finishedQuest = false;
+                    quest3Done = true;
+                }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(CEOBusy);
+                }
+            }
+            if(StoryManager.storyIndex == 12)
+            {
+                //CEO Quest 4 (Find Cloak)
+                if (finishedQuest == true)
+                {
+                    Input.ResetInputAxes();
+                    StartConversation(CEOQuest4End);
+                    finishedQuest = false;
+                    quest4Done = true;
+                }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(CEOBusy);
+                }
+            }
+            if(StoryManager.storyIndex == 13)
+            {
+                //CEO Quest 5 (Find family heirloom)
+                if (finishedQuest == true)
+                {
+                    Input.ResetInputAxes();
+                    StartConversation(CEOQuest5End);
+                    finishedQuest = false;
+                    quest5Done = true;
+                }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(CEOBusy);
                 }
             }
         }

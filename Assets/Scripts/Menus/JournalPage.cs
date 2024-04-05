@@ -27,8 +27,8 @@ public class JournalPage : MonoBehaviour
     [SerializeField] GameObject[] heartsEmi;
 
     public static float pointsHanako = 10f;
+    public static float pointsKenji = 10f;
     float pointsYuki;
-    float pointsKenji;
     float pointsEmi;
 
     private bool journalOpen;
@@ -117,9 +117,21 @@ public class JournalPage : MonoBehaviour
 
     void SetHearts()
     {
-        if(pointsHanako == 10)
+        if(pointsKenji == 10)
         {
-            heartsHanako[0].SetActive(true);
+            heartsKenji[0].SetActive(true);
+        }
+        else if(pointsKenji == 30)
+        {
+            heartsKenji[1].SetActive(true);
+        }
+        else if(pointsKenji == 60)
+        {
+            heartsKenji[2].SetActive(true);
+        }
+        else if(pointsKenji == 80)
+        {
+            heartsKenji[3].SetActive(true);
         }
     }
 

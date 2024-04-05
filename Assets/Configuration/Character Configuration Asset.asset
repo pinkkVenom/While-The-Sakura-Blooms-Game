@@ -78,3 +78,16 @@ MonoBehaviour:
       _serializedList:
       - Key: Doctor
         Value: {fileID: 21300000, guid: 15b23e2cc77d86e40bcf6ac089878be0, type: 3}
+  - name: Shopkeeper3
+    alias: shk3
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 10bd0f8f90e078741a45b0b1d7f35e0e, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 10bd0f8f90e078741a45b0b1d7f35e0e, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: Shopkeeper3
+        Value: {fileID: 21300000, guid: c2560c6b630a3e0499280de1dbafcad2, type: 3}

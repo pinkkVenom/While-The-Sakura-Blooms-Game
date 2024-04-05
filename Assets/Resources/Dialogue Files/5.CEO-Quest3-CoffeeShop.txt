@@ -1,0 +1,73 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo outside")
+CreateCharacter(Shopkeeper3 -e true)
+Shopkeeper3.SetPosition(-x 0.5 -y 0)
+Show(Shopkeeper3)
+
+Shopkeeper3 as Coffee Owner "Welcome to the coffee shop!"
+"Can I get you a drink today?"
+
+choice "ceo"
+{
+	-No thank-you
+	-I'm here to talk with the owner
+}
+
+Shopkeeper3 as Coffee Owner "I own this establishment."
+"Are you here to discuss a business matter?"
+
+choice "ceo"
+{
+	-Yes I am
+}
+
+Shopkeeper3 as Coffee Owner "I'm not sure I know you."
+"Who do you work for?"
+
+choice "ceo"
+{
+	-I am...Kenji Sato's assistant
+}
+
+Shopkeeper3 as Coffee Owner "OH!"
+"Please forgive my bluntness."
+"I'm assuming you're here on behalf of Mr.Sato?"
+
+choice "ceo"
+{
+	-Yes, he really enjoys the coffee you serve here
+}
+
+Shopkeeper3 as Coffee Owner "Ah yes of course!"
+"We serve the finest coffee made from the finest beans."
+"All the coffee beans are sourced from the Demonic Region."
+
+choice "ceo"
+{
+	-Mr.Sato greatly appreciates the business you bring to the Demonic Region
+}
+
+
+Shopkeeper3 as Coffee Owner "I am very honored to hear such praise."
+"I do my best to brew the coffee using Demonic traditions."
+
+choice "ceo"
+{
+	-How would you like to partner Mr.Sato himself?
+}
+
+Shopkeeper3 as Coffee Owner "OH MY!"
+"Having Mr.Sato as a business partner would be wonderful!"
+"And considering he himself is a Demon and hails from the Demonic region..."
+"It would be my honor to join forces with Mr.Sato."
+"I will have someone send over formal documents to Mr.Sato's office."
+"I will send them out as soon as possible."
+"I trust you will let Mr.Sato know we are interested?"
+
+choice "ceo"
+{
+	-Yes, I will let him know personally
+}
+
+[wait]HideUI()
+Hide(Shopkeeper3)

@@ -5,7 +5,7 @@ using DIALOGUE;
 
 public class StoryManager : MonoBehaviour
 {
-    public static int storyIndex = 4;
+    public static int storyIndex = 9;
     [SerializeField] CanvasGroup VN;
     [SerializeField] Animator sakuraTree;
     //Quest Prefabs
@@ -31,9 +31,16 @@ public class StoryManager : MonoBehaviour
 
     //Story part 4
     public bool chosenNurse => NurseCollision.chosenRomance;
-    public bool chosenCEO;
+    public bool chosenCEO => CEOCollision.chosenRomance;
     public bool chosenLibrarian;
     public bool chosenArtist;
+
+    //CEO Questing
+    [SerializeField] GameObject CEOQuest1;
+    [SerializeField] GameObject CEOQuest2;
+    [SerializeField] GameObject CEOQuest3;
+    [SerializeField] GameObject CEOQuest4;
+    [SerializeField] GameObject CEOQuest5;
 
     void Start()
     {
@@ -45,6 +52,7 @@ public class StoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log($"{storyIndex}");
         if (VN.alpha == 0)
         {
             //Quest 1: Meet all characters
@@ -65,10 +73,40 @@ public class StoryManager : MonoBehaviour
                 storyIndex = 3;
                 SetStoryIndex();
             }
+            if (chosenCEO == true && storyIndex == 3)
+            {
+                storyIndex = 9;
+                SetStoryIndex();
+            }
             //Quest 4: Pick a single Immortal to romance
             //romancing happens in individual characters scripts
             //4, 5, 6, 7, 8 are nurse
             //9, 10, 11, 12, 13 are CEO
+            if(CEOCollision.quest1Done == true && storyIndex == 9)
+            {
+                storyIndex = 10;
+                SetStoryIndex();
+            }
+            if(CEOCollision.quest2Done == true && storyIndex == 10)
+            {
+                storyIndex = 11;
+                SetStoryIndex();
+            }
+            if (CEOCollision.quest3Done == true && storyIndex == 11)
+            {
+                storyIndex = 12;
+                SetStoryIndex();
+            }
+            if (CEOCollision.quest4Done == true && storyIndex == 12)
+            {
+                storyIndex = 13;
+                SetStoryIndex();
+            }
+            if (CEOCollision.quest5Done == true && storyIndex == 13)
+            {
+                storyIndex = 24;
+                SetStoryIndex();
+            }
             //14, 15, 16, 17, 18 are Artist
             //19, 20, 21, 22, 23 are Librarian
             //24 is start of the ending
@@ -125,6 +163,46 @@ public class StoryManager : MonoBehaviour
             //romance is happening
             doctor.SetActive(true);
             factionGood.SetActive(false);
+            if(storyIndex == 9)
+            {
+                CEOQuest1.SetActive(true);
+                CEOQuest2.SetActive(false);
+                CEOQuest3.SetActive(false);
+                CEOQuest4.SetActive(false);
+                CEOQuest5.SetActive(false);
+            }
+            if(storyIndex == 10)
+            {
+                CEOQuest1.SetActive(false);
+                CEOQuest2.SetActive(true);
+                CEOQuest3.SetActive(false);
+                CEOQuest4.SetActive(false);
+                CEOQuest5.SetActive(false);
+            }
+            if (storyIndex == 11)
+            {
+                CEOQuest1.SetActive(false);
+                CEOQuest2.SetActive(false);
+                CEOQuest3.SetActive(true);
+                CEOQuest4.SetActive(false);
+                CEOQuest5.SetActive(false);
+            }
+            if (storyIndex == 12)
+            {
+                CEOQuest1.SetActive(false);
+                CEOQuest2.SetActive(false);
+                CEOQuest3.SetActive(false);
+                CEOQuest4.SetActive(true);
+                CEOQuest5.SetActive(false);
+            }
+            if (storyIndex == 13)
+            {
+                CEOQuest1.SetActive(false);
+                CEOQuest2.SetActive(false);
+                CEOQuest3.SetActive(false);
+                CEOQuest4.SetActive(false);
+                CEOQuest5.SetActive(true);
+            }
         }
         if(storyIndex >= 24)
         {

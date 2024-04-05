@@ -9,6 +9,8 @@ TagManager:
   - World
   - Light
   - Shadow
+  - DiamondStore
+  - CoffeeShop
   layers:
   - Default
   - TransparentFX

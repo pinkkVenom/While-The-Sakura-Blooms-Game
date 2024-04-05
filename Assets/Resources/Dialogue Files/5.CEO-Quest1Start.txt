@@ -1,6 +1,8 @@
 ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
 CreateCharacter(Kenji -e true)
+Kenji.SetPosition(-x 0.5 -y 0)
+PlaySong(reflectedLight)
 Show(Kenji)
 
 narrator "[Kenji is perched on the edge of his desk, as if he's been waiting for this very moment]"
@@ -62,6 +64,15 @@ Kenji "Anything can be sold with some good marketing skills."
 "If I were you, I would start by talking to vendors."
 "There are some out and about, such as the kind woman at the Diamond Store."
 "Perhaps you could find something of value to sell to her."
+
+choice "ceo"
+{
+	-Where is the diamond store?
+}
+
+Kenji "The diamond store is located west of the Downtown district."
+"It's a bright golden store."
+"Shouldn't be too hard to locate."
 
 choice "ceo"
 {

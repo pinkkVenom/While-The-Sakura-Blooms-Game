@@ -63,9 +63,9 @@ public class ArtistCollision : MonoBehaviour
                     StartConversation(ArtistBusy);
                 }
             }
-            if (StoryManager.storyIndex == 3)
+            if (StoryManager.storyIndex >= 4)
             {
-
+                StartConversation(ArtistBusy);
             }
         }
     }

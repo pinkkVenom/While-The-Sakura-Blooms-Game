@@ -95,6 +95,10 @@ public class NurseCollision : MonoBehaviour
                     StartConversation(NurseQ1End);
                 }
             }
+           if(StoryManager.storyIndex >= 5)
+            {
+                StartConversation(NurseBusy);
+            }
         }
     }
 

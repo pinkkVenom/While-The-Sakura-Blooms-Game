@@ -1,0 +1,5 @@
+ShowUI()
+
+narrator "End quest 4"
+
+HideUI()

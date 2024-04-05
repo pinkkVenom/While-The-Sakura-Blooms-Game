@@ -1,144 +1,135 @@
-narrator "(Why is it so bright here?)"
-narrator "(I feel so dizzy...)"
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
+CreateCharacter(Kenji)
+Kenji.SetPosition(-x 0.5 -y 0)
 
-SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
-CreateCharacter(Doctor -e true)
-Doctor.SetPosition(-x 0.5 -y 0)
+narrator "[With a coffee in hand, you step into Kenji's office.]"
+"[Today, the office feels less like a command center and more like a haven.]"
+"[Kenji is standing by the window.]"
+"[He turns to you, his usual armor of aloofness noticeably absent.]"
 
-Doctor "Woah, don't be so hasty"
-"You were quite disoriented when we found you. I need to monitor you for a bit longer to make sure you don't have any serious symptoms."
+Show(Kenji)
 
-choice "where am i"
+Kenji "Ah, the aroma of a new day - and the aroma of that coffee."
+"This is more than a mere drink;{a} a piece of tranquility amidst the storm."
+"I dearly appreciate you bringing this for me."
+"As promised, I will pour you half."
+"You've never had immortal coffee before have you?"
+
+choice "ceo"
 {
-	-Where am I?
+	-Most definitely not
 }
 
-Doctor "You're at the hospital hun. You were found by the forest's edge on the outskirts of town"
-"What were you doing alone outside the city?"
+"Aha, of course!"
 
-choice "i was shopping"
+narrator "[Kenji pours you half the coffe into a clean mug.]"
+"[Kenji passes you the cup.]"
+"[He takes the first sip, closing his eyes as he savours the flavor of the dark drink.]"
+
+Kenji "What do you think? How does it taste?"
+
+choice "ceo"
 {
-	-I wasn't outside the city. I was shopping at the thrift store.
+	-Kind've the same as human coffee
+	-Less bitter than I expected
 }
 
-Doctor "Interesting..."
-narrator "[The doctor repeatedly looks at you then back to the clipboard in their hands with concern growing on their face]"
+Kenji "Yes immortals typically enjoy less bitter flavors."
+"I'm not sure the specific reason, that is just how we are."
 
-choice "whats wrong"
+narrator "[Kenji eyes the liquid in his cup before turning to you with a heavy look in his eye.]"
+
+Kenji "You've got a way about you."
+"It's disarming."
+"This coffee, most coffee from the immortal realm infact, comes from demonic settlements."
+"There was a coffee plantation close to my home in the Demon Realm."
+"As a child I would start every day watching the sun lift away the mist from the hills..."
+
+choice "ceo"
 {
-	-What's wrong?
+	-Now you watch the sunrise over a city that answers to you
 }
 
-Doctor "You're...{a} human?"
+"Quite the journey isn't it?"
+"Each sunrise brings new challenges, {a}new battles."
+"Tell me what battles do you face in the human world?"
 
-choice "im human"
+choice "ceo"
 {
-	-Obviously
-	-Yeah last I checked...
+	-My battles aren't so different from yours
+	$VN.kenjiPoints += 10
+	narrator "[Kenji's expression softens, a sign of respect and perhaps a spark of approval.]"
+	Kenji "It seems we're more alike than different. Your resilience is admirable."
+	-I just want to return to my world
+	narrator "[Kenji nods, understanding yet slightly distant.]"
+	Kenji "A singular focus can be powerful, but remember, the broader your perspective, the more solutions you might find."
 }
 
-Doctor "Ah that explains the disorientation."
-"It seems you've gotten transported to the Immortal Realm."
+Kenji "Well then we must get going with our mission."
+"I actually need your help with something personal."
 
-choice "no way"
+choice "ceo"
 {
-	-The Immortal Realm?
-	-That's not possible…
+	-What is it?
 }
 
-Doctor "Yes the realm of the fantastic and supernatural."
-"What's this?"
-narrator "[The doctor reaches in the direction of your necklace]"
-"[They furrow their brow as if studying the markings on the necklace]"
-Doctor "It's a shame you stumbled upon this necklace in the human world."
+narrator "[Kenji's eyes twinkle with a mix of mischief and something tender.]"
 
-choice "no way"
+Kenji "I need you to go back to that coffee shop and speak with the owner."
+"They're key players in my next venture."
+"If I win them over, then I can begin merging with their business."
+
+choice "ceo"
 {
-	-What's wrong with it?
+	-You want to expand into the coffee industry?
 }
 
-Doctor "It's imbued with a special power that allows immortals to travel between this world and the human world."
-"But these are forbidden now. Immortals have not been allowed to travel to the human realm in many decades."
-narrator "(If this got me transported here, maybe it can transport me back.)"
-"[You touch the necklace and close your eyes in concentration]"
-Doctor "I'm afraid that won't work."
+Kenji "Yes I do."
+"It almost feels like a familial thing."
+"I want to take back what feels rightfully mine, what rightfully belongs to the demons."
+"What do you say?"
 
-choice "no way"
+choice "ceo"
 {
-	-Why not?
+	-I can handle a business discussion
 }
 
-Doctor "The magic in these amulets is unstable."
-"They can easily transport an immortal back to their world, but it requires a lot of magical power to bring someone to the human world."
-"Humans don't wield magical power so it would be impossible for you to transport yourself back without the use of immortal magic."
+Kenji "Just be your charming self."
+"They can be tough as nuts to crack, but I have a feeling you're up to the task."
 
-choice "no way"
+choice "ceo"
 {
-	-How can I find a way back home?
-	- Why can't you help me?
+	-Do you trust me to represent us without any reservations?
+	narrator "[Kenji pauses, evaluating you closely.]"
+	Kenji "Trust is earned, but yes, I believe you're the right person for this."
+	"Impress them as you have me."
+	-Should I build rapport with them first?
+	$VN.kenjiPoints += 10
+	narrator "[Kenji smiles slightly, impressed by your thoughtfulness.]"
+	Kenji "A good question."
+	"Yes, start with building a rapport."
+	"People are more receptive when they feel connected."
+	"It shows you understand the nuances of negotiation."
 }
 
-Doctor "I don't know how to operate these ancient amulets. I only know the basic information of their function. I'm afraid my limited knowledge on ancient magic will only hinder you."
-"It won't be easy for you to head back unfortunately."
-"The most powerful immortal in the land...she would surely have answers for you, but I doubt they would let a commoner, let alone a human, enter the palace so willingly."
+Kenji "I'm eager to hear about your approach and results."
+"Remember, this is not just about business."
+"It's about establishing a connection that could be beneficial for us in the long run."
 
-choice "no way"
+narrator "(His advice is a reminder that every interaction is a step toward a larger goal.)"
+"(But I must fight for my goal too.)"
+
+choice "ceo"
 {
-	-How can I improve my status?
+	-Will we discuss my situation when I return?
 }
 
-Doctor "I know some immortals that may be able to help you get into the castle."
-"One of my nurses Hanako is a very kind and reliable individual. She volunteers for the royal kingdom's infirmary."
-"The librarian Yuki is incredibly intelligent. He audits the royal archives every few months."
-"Kenji is quite the famous immortal. His popularity alone could get you anywhere you'd want to go."
-"The artist Emi is a very expressive person. She frequently gets commissioned to do artwork in the royal palace."
-"I've had the pleasure of meeting all these individuals. I am confident one of them can help you get home."
+Kenji "Yes we will."
+"I may have found someone who can help me gather the information I need."
+"It may require visiting the castle in the East."
+"But I will have more information regarding that when you return."
 
-choice "no way"
-{
-	-Who should I talk to first?
-}
 
-Doctor "You should visit each of them and introduce yourself. If they're hesitant to talk to you, let them know I sent you."
-"Speaking of which, I need to add your name to my file."
-
-input "Type your name here"
-
-Doctor "Nice to meet you <input>!"
-"You look much better now. You're free to go whenever you're ready"
-"Just be careful out there. Humans were never meant to be in the immortal world. The longer you stay here, the worse your physical state will become."
-
-choice "no way"
-{
-	-Could I die if I don't get home?
-}
-
-Doctor "..."
-"I'm afraid so."
-"But you needn't worry about that yet. It takes some time before you'll get really sick, and I'm confident you'll be home by then."
-"Now, get going."
-"If you have any questions, please let me know."
-
-choice "no way"
-{
-	-I have more questions
-		choice "no way"
-		{
-			-Is is a long trip to the districts?
-				Doctor "Not at all. All the local regions are accessible by foot."
-				choice "woah"
-				{
-					-Is there anything else I should know?
-						Doctor"Oh yes there is something serious I must tell you"
-						"The Immortal Realm has been in a state of political turmoil for years now."
-						"There are two major factions, and they have very polarized followers."
-						"Be careful of who you talk to, and what you talk to them about."
-						"It might cause you more harm than good."
-					}
-		}
-	
-	-Okay thanks!
-}
-
-Hide(Doctor)
-HideUI()
+[wait]HideUI()
+Hide(Kenji)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DIALOGUE;
+using TMPro;
 
 //keep rigidbody 2D rotation frozen
 
@@ -9,9 +10,11 @@ using DIALOGUE;
 public class PlayerController : MonoBehaviour
 {
     public Animator anim;
-
+    public TextAsset diamondStore;
+    public TextAsset coffeeShop;
     public static bool isNearNPC;
     public CanvasGroup cg;
+    [SerializeField]public TextMeshProUGUI money;
 
     
     private void Start()
@@ -52,6 +55,17 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("NPC"))
         {
             isNearNPC = true;
+        }
+        if (collision.CompareTag("DiamondStore") && StoryManager.storyIndex == 9)
+        {
+            CEOCollision.StartConversation(diamondStore);
+            money.text = "5000";
+            CEOCollision.finishedQuest = true;
+        }
+        if(collision.CompareTag("CoffeeShop") && StoryManager.storyIndex == 11)
+        {
+            CEOCollision.StartConversation(coffeeShop);
+            CEOCollision.finishedQuest = true;
         }
     }
 
