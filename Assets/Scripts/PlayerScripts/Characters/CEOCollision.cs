@@ -7,28 +7,28 @@ using TMPro;
 public class CEOCollision : MonoBehaviour
 {
     //Intro
-    [SerializeField] private TextAsset CEOIntro = null;
-    [SerializeField] private TextAsset CEOBusy = null;
+    public TextAsset CEOIntro = null;
+    public TextAsset CEOBusy = null;
     //Romance Questing
     //QUEST 1
-    [SerializeField] TextAsset CEOQuest1Start = null;
-    [SerializeField] TextAsset CEOQuest1End = null;
-    [SerializeField] TextMeshProUGUI money;
+    public TextAsset CEOQuest1Start = null;
+    public TextAsset CEOQuest1End = null;
+    public TextMeshProUGUI money;
     public static bool quest1Done = false;
     //QUEST 2
-    [SerializeField] TextAsset CEOQuest2End = null;
+    public TextAsset CEOQuest2End = null;
     public static bool quest2Done = false;
     //QUEST 3
-    [SerializeField] TextAsset CEOQuest3End = null;
+    public TextAsset CEOQuest3End = null;
     public static bool quest3Done = false;
     //QUEST 4
-    [SerializeField] TextAsset CEOQuest4End = null;
+    public TextAsset CEOQuest4End = null;
     public static bool quest4Done = false;
     //QUEST 5
-    [SerializeField] TextAsset CEOQuest5End = null;
+    public TextAsset CEOQuest5End = null;
     public static bool quest5Done = false;
 
-    [SerializeField] private CanvasGroup icon;
+    public CanvasGroup icon;
     public static bool hasSpoken;
     public static bool chosenRomance;
     public static bool inRange = false;

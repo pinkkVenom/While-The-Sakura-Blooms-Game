@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using DIALOGUE;
 
+
 public class StoryManager : MonoBehaviour
-{
-    public static int storyIndex = 9;
+{ 
+    public static int storyIndex;
     [SerializeField] CanvasGroup VN;
     [SerializeField] Animator sakuraTree;
+    public Animator likeHeart;
+    public Animator badHeart;
+    public static bool animLike;
+    public static bool animDislike;
+    
     //Quest Prefabs
     [SerializeField] GameObject Quest1;
     [SerializeField] GameObject Quest2;
     [SerializeField] GameObject Quest3;
-
+    
 
     //Story part 1
     private bool hasMetNurse => NurseCollision.hasSpoken;
@@ -36,23 +42,25 @@ public class StoryManager : MonoBehaviour
     public bool chosenArtist;
 
     //CEO Questing
-    [SerializeField] GameObject CEOQuest1;
-    [SerializeField] GameObject CEOQuest2;
-    [SerializeField] GameObject CEOQuest3;
-    [SerializeField] GameObject CEOQuest4;
-    [SerializeField] GameObject CEOQuest5;
+    public GameObject CEOQuest1;
+    public GameObject CEOQuest2;
+    public GameObject CEOQuest3;
+    public GameObject CEOQuest4;
+    public GameObject CEOQuest5;
 
     void Start()
     {
         doctor.SetActive(false);
         factionGood.SetActive(false);
         SetStoryIndex();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"{storyIndex}");
+        //Debug.Log($"{animLike}");
+        //Debug.Log($"{storyIndex}");
         if (VN.alpha == 0)
         {
             //Quest 1: Meet all characters
@@ -128,6 +136,7 @@ public class StoryManager : MonoBehaviour
         if(storyIndex == 0)
         {
             sakuraTree.Play("Sakura1");
+            //badHeart.Play("LikedAnswer");
             Quest1.SetActive(true);
             return;
         }

@@ -13,6 +13,8 @@ namespace COMMAND {
             database.AddCommand("setplayermoney", new Action<int>(SetPlayerMoneyVariable));
             database.AddCommand("sethanakopoints", new Action<float>(SetHanakoPoints));
             database.AddCommand("setUIactive", new Action<bool>(SetUIActive));
+            database.AddCommand("setstoryindex", new Action<int>(SetStoryIndex));
+            database.AddCommand("setheartanimation", new Action<bool>(SetHeartAnimation));
         }
 
         private static void SetPlayerNameVariable(string data)
@@ -40,6 +42,15 @@ namespace COMMAND {
             {
                 DialogueSystem.cgController.Hide();
             }
+        }
+        private static void SetStoryIndex(int data)
+        {
+            StoryManager.storyIndex = data;
+            
+        }
+        private static void SetHeartAnimation(bool data)
+        {
+            StoryManager.animLike = data;
         }
     }
 }
