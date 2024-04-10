@@ -9,14 +9,25 @@ public class NurseCollision : MonoBehaviour
     [SerializeField]TextAsset NurseIntro = null;
     [SerializeField] private TextAsset NurseBusy = null;
     //Romance Questing
-    [SerializeField] TextAsset NurseQ1Start = null;
-    [SerializeField] TextAsset NurseQ1End = null;
+    //QUEST 1
+    public TextAsset nurseQuest1Start = null;
+    public TextAsset nurseQuest1End = null;
+    public static bool quest1Done = false;
+    //QUEST 2
+    public TextAsset nurseQuest2End = null;
+    public static bool quest2Done = false;
+    //QUEST 3
+    public TextAsset nurseQuest3End = null;
+    public static bool quest3Done = false;
+    //QUEST 4
+    public TextAsset nurseQuest4End = null;
+    public static bool quest4Done = false;
 
     [SerializeField] private CanvasGroup icon;
     public static bool hasSpoken;
     public static bool chosenRomance;
-    bool inRange = false;
-    bool finishedQuest = false;
+    public static bool inRange = false;
+    public static bool finishedQuest = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +44,7 @@ public class NurseCollision : MonoBehaviour
         }
     }
 
-    void StartConversation(TextAsset asset)
+    public static void StartConversation(TextAsset asset)
     {
         List<string> lines = FileManager.ReadTextAsset(asset);
         DialogueSystem.instance.Say(lines);
@@ -61,7 +72,7 @@ public class NurseCollision : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (StoryManager.storyIndex <= 2 && StoryManager.storyIndex >=0)
+            if (StoryManager.storyIndex == 0)
             {
                 icon.alpha = 0;
                 if (hasSpoken == false)
@@ -75,29 +86,74 @@ public class NurseCollision : MonoBehaviour
                     StartConversation(NurseBusy);
                 }
             }
-            if(StoryManager.storyIndex == 3)
+            if (StoryManager.storyIndex == 3)
             {
-                if(CEOCollision.chosenRomance == false && LibrarianCollision.chosenRomance == false && ArtistCollision.chosenRomance == false)
+                if (CEOCollision.chosenRomance == false && LibrarianCollision.chosenRomance == false && ArtistCollision.chosenRomance == false)
                 {
+                    Input.ResetInputAxes();
                     chosenRomance = true;
-                    StoryManager.storyIndex = 4;
+                    StartConversation(nurseQuest1Start);
                 }
             }
-            if(StoryManager.storyIndex == 4)
+            if (StoryManager.storyIndex == 4)
             {
-                //Nurse Quest 1
-                if (finishedQuest == false)
+                //CEO Quest 2 (Coffee)
+                if (finishedQuest == true)
                 {
-                    StartConversation(NurseQ1Start);
+                    Input.ResetInputAxes();
+                    StartConversation(nurseQuest1End);
+                    finishedQuest = false;
+                    quest1Done = true;
                 }
-                if(finishedQuest == true)
+                else if (finishedQuest == false)
                 {
-                    StartConversation(NurseQ1End);
+                    StartConversation(NurseBusy);
                 }
             }
-           if(StoryManager.storyIndex >= 5)
+            if (StoryManager.storyIndex == 5)
             {
-                StartConversation(NurseBusy);
+                //CEO Quest 2 (Coffee)
+                if (finishedQuest == true)
+                {
+                    Input.ResetInputAxes();
+                    StartConversation(nurseQuest2End);
+                    finishedQuest = false;
+                    quest2Done = true;
+                }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(NurseBusy);
+                }
+            }
+            if (StoryManager.storyIndex == 6)
+            {
+                //CEO Quest 2 (Coffee)
+                if (finishedQuest == true)
+                {
+                    Input.ResetInputAxes();
+                    StartConversation(nurseQuest3End);
+                    finishedQuest = false;
+                    quest3Done = true;
+                }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(NurseBusy);
+                }
+            }
+            if (StoryManager.storyIndex == 7)
+            {
+                //CEO Quest 2 (Coffee)
+                if (finishedQuest == true)
+                {
+                    Input.ResetInputAxes();
+                    StartConversation(nurseQuest4End);
+                    finishedQuest = false;
+                    quest4Done = true;
+                }
+                else if (finishedQuest == false)
+                {
+                    StartConversation(NurseBusy);
+                }
             }
         }
     }

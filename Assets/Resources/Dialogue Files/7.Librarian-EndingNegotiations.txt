@@ -1,9 +1,509 @@
 ShowUI()
-SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
-CreateCharacter(Kenji)
-Kenji.SetPosition(-x 0.5 -y 0)
+SetLayerMedia(background -m "~/Graphics/BG Images/castle")
+CreateCharacter(Yuki)
+Yuki.SetPosition(-x 0.5 -y 0)
+Hide(Yuki)
+
+narrator "[You and Yuki navigate the palace's opulent halls with a blend of caution and speed.]"
+"[The weight of the mission presses down with every silent step, a constant reminder of the stakes at hand.]"
+"[These walls have stood witness to centuries of history..]"
+
+Show(Yuki)
+Yuki "We must find the throne room so we may speak to the Empress."
+
+choice "ceo"
+{
+	-I trust you
+	-Lead the way
+}
+
+narrator "[Your footsteps, light and calculated, are the only evidence of your passage through the corridor, a testament to the urgency of the mission.]"
+
+Yuki "I believe this is it."
+Hide(Yuki)
+
+narrator "[As you reach the grand doors of the throne room, a final glance is exchanged in a moment of silent understanding.]"
+"[With a deep breath, you and Yuki step forward, emerging from the shadows into the heart of power.]"
+"[Inside, the throne room is vast and imposing, the Empress seated upon her throne, a figure of regal authority.]"
+
+CreateCharacter(BadFaction -e true)
+BadFaction.SetPosition(-x 0.5 -y 0)
+Show(BadFaction)
+
+narrator "[Her surprise at the intrusion is quickly masked by indignation.]"
+
+BadFaction as Empress "This audacity is unprecedented. To what do I owe the displeasure of this interruption?"
+
+choice "ceo"
+{
+	-There's a truth you need to hear, a wrong that must be righted
+}
+
+narrator "[Your words hang in the air, a challenge laid bare in the heart of tyranny.]"
+"[The tension in the room spikes as the Good Leader emerges from the amulet, his presence commanding and ethereal.]"
+"[The air crackles with the power of him unveiling.]"
+
+CreateCharacter(GoodFaction -e true)
+Hide(BadFaction)
+Show(GoodFaction)
+
+GoodFaction as Kagayaku Leader "Your reign of deceit ends now. I was imprisoned, but truth cannot be contained forever."
+
+Hide(GoodFaction)
+Show(BadFaction)
+BadFaction as Empress "Lies! Your ambition was your downfall, not my doing."
+
+[wait]Hide(BadFaction)
+narrator "[The room erupts into a cacophony of accusations and defenses, the air thick with the promise of confrontation.]"
+"[The fabric of the realm hangs in the balance, every word a thread in the tapestry of its fate.]"
+
+Hide(BadFaction)
+[wait]Hide(GoodFaction)
+Show(Yuki)
+Yuki "This is it. Be ready for anything."
+
+[wait]Hide(Yuki)
+choice "ceo"
+{
+	-Enough! This conflict has torn the realm apart
+	-Listen to us, and let's find a path to peace
+}
+
+narrator "[Your voice, firm and unwavering, cuts through the turmoil.]"
+"[In the silence that follows, the possibility of a new beginning, fragile as the morning dew, takes root.]"
+"[The room falls silent, all eyes on you, the unexpected mediator in a centuries-old feud.]"
+
+
+
+
+
+
+"[The stage is set for a dialogue that could mend or further fracture the world.]"
+"[The Empress and Kagayaku leader stand across from each other, a mixture of hope and skepticism in their eyes.]"
+"[You clear your throat, ready to mediate this historic dialogue.]"
+
+<mainChar> "This is a critical moment for us all."
+"Let's proceed with care."
+"My questions are meant to unearth solutions, not deepen wounds."
+
+narrator "[The room is silent, all attention focused on your words.]"
+
+$wrongchoice = 0
+choice "ceo"
+{
+	-What shared values do you believe still hold strong in our realm?
+		[The Kagayaku Leader responds with a measured tone, while the Empress eyes you warily.]
+		Show(GoodFaction)
+		GoodFaction as Kagayaku Leader "We both value our realm's heritage and the prosperity of our people, despite our different approaches."
+		[wait]Hide(GoodFaction)
+		Show(BadFaction)
+		BadFaction as Empress "Indeed. Our heritage should not be cast aside, and he speaks truly about our people's welfare."
+		[wait]Hide(BadFaction)
+		narrator "[The room breathes a sigh of relief; that was the right question to ask. The shared values are a solid foundation.]"
+
+	-To both leaders Do you think the other is truly capable of ruling fairly and justly?
+		Show(GoodFaction)
+		GoodFaction as Kagayaku Leader “Questioning our capability only serves to divide us further."
+		[wait]Hide(GoodFaction)
+		BadFaction as Empress "Such doubts are beneath this dialogue. We are here to find unity, not to cast aspersions."
+		narrator "[The air thickens with tension, a misstep in the delicate balance of this negotiation.]"
+		[wait]Hide(BadFaction)
+		$wrongchoice += 1
+}
+
+narrator "[You, emboldened by the positive turn or reflecting on the misstep, poses the next question]"
+
+Show(BadFaction)
+choice "ceo"
+{
+	-Empress, might there be reforms introduced by the Kagayaku Leader that you find beneficial for our realm?
+		BadFaction as Empress "Some of his reforms have merit."
+		"They bring a freshness to our realm that could be invigorating if applied wisely."
+		narrator "[Another step forward; this negotiation is a delicate dance, and you must lead carefully.]"
+
+	-Empress, don't you think your resistance to change has been detrimental to the realm's progress?
+		BadFaction as Empress "Criticizing my governance does not pave the way for productive dialogue."
+		"Every decision I've made was with our realm's strength in mind."
+		narrator "[The critique was not well received, reminding you of the precision required in these discussions.]"
+		$wrongchoice += 1
+}
+
+Hide(BadFaction)
+narrator "[Continuing with this delicate negotiation or reflecting on the need to tread more carefully, your turn to the Kagayaku Leader]"
+Show(GoodFaction)
+
+choice "ceo"
+{
+	-Kagayaku Leader, can you admit that some of your reforms may have been too hasty?
+		GoodFaction as Kagayaku Leader "We are here to bridge divides, not widen them."
+		"Reflection on the pace of change is ongoing, but it's crucial we focus on forward movement."
+		$wrongchoice += 1
+		<mainChar> "(I've struck a nerve, reminding me of the sensitivity required in broaching these subjects.)"
+
+	-Kagayaku Leader, in what ways do you think the realm has benefited from the Empress' governance?
+		GoodFaction as Kagayaku Leader "Her decisiveness has brought us stability in times of turmoil, and for that, I am grateful."
+		<mainChar> "(Mutual respect can be the bridge to peace.)"
+		"(I can feel the tension in the room transforming into cautious optimism.)" 
+
+}
+
+Hide(GoodFaction)
+narrator "[You seize the moment to delve deeper, aiming to strengthen this burgeoning alliance or to mend the rifts that have emerged.]"
+
+choice "ceo"
+{
+	-What lessons do you think each of you could learn from the other to better lead our realm together?
+		narrator "[Both leaders reflect on the question, recognizing the wisdom in learning from each other.]"
+		[wait]Show(GoodFaction)
+		GoodFaction as Kagayaku Leader "Her strength and vigilance could temper my idealism."
+		"Together, we could forge a realm that is both strong and kind."
+		[wait]Hide(GoodFaction)
+		Show(BadFaction)
+		BadFaction as Empress "And I could learn to look beyond the horizon as he does, to seek out new possibilities for us all."
+		<mainChar> "(That question struck a chord. The possibility of unity is closer than ever.)"
+		Hide(BadFaction)
+
+	-Isn't it true that both of you have made mistakes that cost our realm dearly?
+		[wait]Show(GoodFaction)
+		GoodFaction as Kagayaku Leader "It is unproductive to dwell on past mistakes."
+		"We must look forward to what we can achieve together."
+		[wait]Hide(GoodFaction)
+		Show(BadFaction)
+		BadFaction as Empress "Acknowledging past errors is one thing, but fixating on them here serves no one."
+		"Our focus is on reconciliation and progress."
+		<mainChar> "(A reminder that the path to unity is through constructive dialogue, not the allocation of blame.)"
+		Hide(BadFaction)
+		$wrongchoice += 1
+}
+
+
+narrator "[Encouraged by the leaders' openness you deliver the final question.]"
+
+choice "ceo"
+{
+	-Are you both prepared to put aside your egos for the sake of our realm?
+		[wait]Show(GoodFaction)
+		GoodFaction as Kagayaku Leader "Questioning our commitment does not aid reconciliation. Yes, we are ready to unite for our realm's future."
+		[wait]Hide(GoodFaction)
+		Show(BadFaction)
+		BadFaction as Empress "Our egos are not the enemy."
+		"The true challenge is finding common ground."
+		"That is what we are prepared to do."
+		Hide(BadFaction)
+		$wrongchoice += 1
+
+	-If each of you were to take one step towards reconciliation today, what would that step be?
+		narrator "[Both leaders pause, understanding the weight of the question.]"
+		[wait]Show(GoodFaction)
+		GoodFaction as Kagayaku Leader "I would extend my hand in partnership, to rebuild what has been broken."
+		[wait]Hide(GoodFaction)
+		Show(BadFaction)
+		BadFaction as Empress "And I would accept, to blend our strengths and heal our realm's wounds."
+		narrator "[The room is still, hanging on the precipice of a new beginning. You can sense the hope and the fragile promise of peace.]"
+		Hide(BadFaction)
+
+}
+
+
+if ($wrongchoice > 3)
+{
+	narrator "[Despite the provocation, their responses underscore a willingness to overcome personal pride for the greater good.]"
+	"[As you plea for peace, the Kagayaku Leader and the Empress' verbal jabs escalate into an unrestrained exchange of accusations and insults.]"
+
+	Show(GoodFaction)
+	GoodFaction as Kagayaku Leader "Your rule is a blight upon this realm, a tyranny that suffocates its very soul!"
+	[wait]Hide(GoodFaction)
+
+	Show(BadFaction)
+	BadFaction as Empress "And you? A naive idealist, unfit to grasp the reins of power. You endanger us all with your foolishness!"
+	Hide(BadFaction)
+
+	narrator "[The air between them crackles with animosity, their words daggers drawn in a duel of wills.]"
+	"[Unable to bear the other's presence, their argument ignites into a physical confrontation, power clashing against power, as the throne room becomes a battleground.]"
+	
+	choice "ceo"
+	{
+		-Stop this! Violence won't solve anything!
+	}
+
+	narrator "[You rush forward, desperation lending speed to your steps, but the clash of their powers is a tempest too fierce to quell.]"
+	"[In their fury, the leaders are blind to everything else. You, <mainChar>, caught in the crossfire, are thrown back by a wave of magic, a sharp pain signaling injury.]"
+
+	Show(Yuki)
+	narrator "[Yuki, eyes wide with alarm, acts without hesitation.]"
+	"[Muttering an incantation, he envelops you in a shield of magic, transporting away from the chaos into the relative safety of a secluded chamber elsewhere in the castle.]"
+
+	if($Vn.YukiPoints > 80)
+	{
+		Show(Yuki)
+		narrator "[The chamber echoes with the desperate cadence of Yuki's incantations.]"
+		"[The walls, once silent, now seem to resonate with the urgency of his voice. The air is thick with magic and the tang of fear.]"
+
+		Yuki "I have enough power for one last spell."
+		"It's risky, but it might just work."
+
+		choice "ceo"
+		{
+			-Yuki, what are you planning?
+			-What does that look like for you?
+		}
+
+		<mainChar> "(I see it then—the resolution in his eyes, the terrible cost of what he's proposing written in the lines of his face.)"
+
+		Yuki "I'm going to create a portal."
+		"It will take you to a hospital in your world."
+		"But for it to work, for you to live, {a}I cannot survive the process."
+
+		choice "ceo"
+		{
+			-No! 
+			-I won't let you sacrifice your life for mine!
+		}
+
+		<mainChar> "(My heart is a drumbeat of panic. To live at the cost of his life is a price too cruel.)"
+
+		Yuki "It's the only way. I can't... I won't lose you."
+
+		choice "ceo"
+		{
+			-Then I choose us, Yuki. Together, here, now. 
+			-I love you too much to be the cause of your demise.
+		}
+
+		narrator "[But Yuki's decision is made.]"
+		"[With a final, loving glance, he begins the spell.]"
+		"[The room fills with a blinding light, and you feel the world slipping away.]"
+		"[There's a moment of weightlessness, of being untethered from everything that was real. And then, pain, sharp and demanding.]"
+
+		SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
+		narrator "[You awaken in a hospital bed, the sterile beep of a heart monitor a counterpoint to their disoriented thoughts.]"
+		"[On your finger, a ring.]"
+		"[Yuki's ring, his family heirloom, pulses with a soft, mournful light.]"
+
+		<mainChar> "(Yuki... what have you done?)"
+
+		narrator "[The memories flood back—the fight, the throne room, and Yuki's sacrifice. A tear slips down my cheek, a silent river of grief for the man who gave everything.]"
+		"[With a heavy heart, you stare at the ring, the embodiment of Yuki's final, loving act, the weight of his sacrifice a constant presence on your hand.]"
+
+		<mainChar> "(I'll find a way back. I promise, Yuki. Your sacrifice won't be in vain.)"
+		"[...]"
+		"[...]"
+		"[Ending 3/4 - Sacrifical Ending]"
+	}
+	if($Vn.YukiPoints < 80)
+	{
+		Show(Yuki)
+		narrator "[Yuki's hands are a frenzy of light over the your wound, his spells weaving desperately to close what cannot be closed.]"
+		"[The distant clash of the battle is a dissonant chorus to the tragedy unfolding in the quiet room.]"
+
+		Yuki "It's not working... I can't... Why isn't it working?"
+
+		choice "ceo"
+		{
+			-Yuki, it's okay. Some things... some things can't be fixed.
+		}
+
+		<mainChar> "(My words are a faint breeze in the silence between us. I can feel the threads of life loosening, a tapestry coming undone.)"
+
+		narrator "[Yuki shakes his head, refusing to accept the inevitable as tears stream down his face, each one a silent testament to the battle we're losing.]"
+
+		Yuki "No! There's got to be something more, something else I can do."
+		"Think, Yuki, think!"
+
+		choice "ceo"
+		{
+			-Just... stay with me, please. That's all I want... right now.
+		}
+
+		narrator "[The cold is creeping in, but it's the warmth of his presence that you cling to.]"
+		"[In these final moments, it's not the fear of death that fills you, but the sorrow of parting.]"
+		"Your breaths come slower, more labored, as Yuki holds you, his voice a broken whisper."
+		
+
+		Yuki "Don't leave me."
+		"You can't... I haven't told you... I love you."
+
+		choice "ceo"
+		{
+			-I know, Yuki... I love you too. Don't forget that.
+		}
+		Hide(Yuki)
+		narrator "[As darkness closes in, your final breath is a silent echo of that love, a love that found you in a world not of your own.]"
+		"[With a final, shuddering sigh, your life slips away, leaving Yuki alone with his grief in a room that once held promise, now only a mausoleum of your love.]"
+		"[The sakura tree by the window seems to sense the loss, its petals beginning to fall, a silent tribute to your passing.]"
+
+		Yuki "Goodbye, my friend... may your soul find the peace we could not give you here."
+		"[...]"
+		"[...]"
+		"[Ending 4/4 - Tragic Ending]"
+	}
+}
+
+if ($wrongchoice < 3)
+{
+	narrator "[The chamber erupts into soft applause, both from the courtiers and the guards.]"
+	"[There's a sense that this is more than a mere truce; it's the dawn of a new era for the realm, made possible by the courage to ask the right questions and the wisdom to listen, and the determination to overcome moments of discord.]"
+	
+	narrator "[After a tense moment of silence, the Kagayaku Leader and the Empress slowly lower their defenses, the air of hostility dissipating as they regard each other with a newfound understanding.]"
+	Show(GoodFaction)
+	GoodFaction as Kagayaku Leader "Perhaps... we have let this conflict divide us for too long."
+	[wait]Hide(GoodFaction)
+
+	Show(BadFaction)
+	BadFaction as Empress "Your words... the human's words... they hold truth."
+	"Our people have suffered enough."
+	Hide(BadFaction)
+
+	<mainChar> "(Relief washes over me, a gentle tide that soothes the ragged edges of fear. Their words are the first drops of rain after a long drought.)"
+
+	choice "ceo"
+	{
+		-Think of what we could build together, a realm led by both of you, a new era of unity.
+	}
+
+	Show(Yuki)
+	narrator "[Yuki, his expression bright with cautious hope, steps forward.]"
+
+	Yuki "You both have strengths that complement one another."
+	"Let that be the foundation of a new council, one that can lead fairly and justly."
+	Hide(Yuki)
+
+	narrator "[The days that follow see the two leaders working together, forging a tentative alliance strengthened by a council of their peers.]"
+	"[It's a delicate balance, but one that holds the promise of enduring peace.]"
+
+	<mainChar> "(I watch them, these immortal beings who hold the fate of their realm in their hands, now open to the possibilities of what can be rather than what has been.)"
+	
+	choice "ceo"
+	{
+		-Is there anything I can do to aid this transition? Anything to help secure this peace?
+	}
+
+	narrator "[The leaders exchange a look, their animosity a thing of the past, replaced by the shared burden of rulership.]"
+
+	Show(GoodFaction)
+	GoodFaction as Kagayaku Leader "Your insight has been invaluable, human."
+	"But the journey home, it is not a simple path."
+	"It requires power, the kind of which may leave an immortal bound to the mortal realm."
+	[wait]Hide(GoodFaction)
+	Show(BadFaction)
+		
+	BadFaction as Empress "We are indebted to you, and yet we cannot guarantee a safe return."
+	Hide(BadFaction)
+
+	<mainChar> "(The weight of their words settles in my chest, a heavy stone of uncertainty.)"
+	"(The prospect of staying here, of never seeing my world again, it's a price I hadn't fully considered.)"
+
+	choice "ceo"
+	{
+		-I understand the risks. But if there's any chance, any possibility of returning home, I have to take it.
+	}
+	Show(Yuki)
+	[Yuki stands beside you, his hand finding theirs in a silent show of support.]
+
+	Yuki "Whatever your decision, I'm with you. We'll face whatever comes, together."
+
+	narrator "[As you both leave the castle, you feel a mix of emotions.]"
+	"[The hope for the realm's future, bright as the sun on the horizon, and the sorrow of an uncertain fate, dark as the shadows that stretch behind you.]"
+
+	choice "ceo"
+	{
+		-Thank you, for believing in me, for giving me the chance to make a difference.
+	}
+	Hide(Yuki)
+	[As you walk away, you turns for a final look at the castle, its walls a testament to the history you've both changed.]"
+	"[Whatever lies ahead, you both carry the knowledge that you've left a mark on this immortal realm, one that will endure through the ages.]"
+	
+	if($Vn.YukiPoints > 80)
+	{
+		SetLayerMedia(background -m "~/Graphics/BG Images/sakura")
+		Show(Yuki)
+
+		narrator "[You and Yuki stand close, the promise of the evening ahead softening the edges of the world around you.]"
+
+		Yuki "I... I can't imagine a life without you now. I want to go back with you, to your world."
+
+		choice "ceo"
+		{
+			-But if you do that, you'll lose everything here
+			-Your power, your status... Are you sure?
+		}
+
+		Yuki "I've never been more certain of anything. {a}I love you."
+
+		choice "ceo"
+		{
+			-Then let's not waste another moment
+			-I love you too, Yuki
+		}
+		Hide(Yuki)
+		narrator "[Magic swirls around you, a vortex of potential and promise, the end of one chapter and the beginning of another.]"
+		"[You arrive in a burst of light, the human world stretching out before you, familiar yet irrevocably changed by the journey.]"
+
+		Show(Yuki)
+
+		Yuki "It feels different here, but as long as I'm with you, I'm home."
+
+		Hide(Yuki)
+		narrator "[You stand together, hand in hand, as the realization dawns that this is your new reality, a life of your own making.]"
+		"[As days turn to years, you forge a life rich with love and memories, a tapestry woven from two worlds brought together. Yuki may have lost his immortal powers, but he's found something far greater.]"
+
+		"[You feel the weight of his choice, a choice made for love.]"
+		"[...]"
+		"[...]"
+		"[Ending 1/4 - Happy Ending]"
+	}
+	if($Vn.YukiPoints < 80)
+	{
+		SetLayerMedia(background -m "~/Graphics/BG Images/sakura")
+		Show(Yuki)
+		narrator "[You and Yuki stand just outside the city. Yuki looks at you, a somber shadow in his eyes reflecting the fading light.]"
+
+		Yuki "I'm sorry it has to end this way. That there's nothing more I can do for you."
+
+		choice "ceo"
+		{
+			-Don't be. We've come farther than I ever thought possible.
+		}
+
+		narrator "[The words are heavy on my tongue, a bittersweet mixture of gratitude and resignation.]"
+
+		Yuki "Let's not waste the time you have left. We should enjoy it, live it to the fullest with the days we have."
+
+		choice "ceo"
+		{
+			-I'd like that. There are so many things I still want to experience here... with you.
+		}
+
+		narrator "[A small smile finds its way through the encroaching sadness, a spark in the dimming light.]"
+		"[As the city lights begin to twinkle, you and Yuki make plans, a bucket list of experiences and adventures to share, a final dance with life.]"
+
+		choice "ceo"
+		{
+			-And when my time comes... Will you promise me something?
+		}
+
+		Yuki "Anything."
+
+		choice "ceo"
+		{
+			-Keep living boldly, keep changing this world for the better, even when I'm gone.
+		}
+
+		narrator "[Yuki nods, a silent vow made under the watchful eyes of the stars.]"
+		"[You walk back toward the city, toward a future that isn't yours but still holds a glimmer of the life you've touched.]"
+		"[A legacy of moments, of shared laughter and whispers against the eternity.]"
+
+		"[...]"
+		"[...]"
+		"[Ending 2/4 - Bittersweet Ending]"
+		
+	}
+}
+
+
+
 
 
 
 [wait]HideUI()
-Hide(Kenji)
+Hide(Yuki)

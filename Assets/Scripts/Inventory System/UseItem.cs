@@ -52,6 +52,36 @@ public class UseItem : MonoBehaviour
             ArtistCollision.finishedQuest = true;
             Destroy(gameObject);
         }
+        else if (LibrarianCollision.inRange == true && itemname == "ScrollButton" + CLONE_NAME && StoryManager.storyIndex == 19)
+        {
+            Debug.Log($"its the scroll {itemname}");
+            LibrarianCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
+        else if (LibrarianCollision.inRange == true && itemname == "PenButton" + CLONE_NAME && StoryManager.storyIndex == 21)
+        {
+            Debug.Log($"its the pen {itemname}");
+            LibrarianCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
+        else if (LibrarianCollision.inRange == true && itemname == "BookButton" + CLONE_NAME && StoryManager.storyIndex == 19)
+        {
+            Debug.Log($"its the book {itemname}");
+            LibrarianCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
+        else if (NurseCollision.inRange == true && itemname == "BluebellButton" + CLONE_NAME && StoryManager.storyIndex == 4)
+        {
+            Debug.Log($"its the flower {itemname}");
+            NurseCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
+        else if (NurseCollision.inRange == true && itemname == "DangoButton" + CLONE_NAME && StoryManager.storyIndex == 7)
+        {
+            Debug.Log($"its the dango {itemname}");
+            NurseCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
         else
         {
             Debug.Log($"ewwww");

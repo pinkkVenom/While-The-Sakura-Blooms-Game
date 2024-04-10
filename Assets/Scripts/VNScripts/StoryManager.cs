@@ -6,7 +6,7 @@ using DIALOGUE;
 
 public class StoryManager : MonoBehaviour
 { 
-    public static int storyIndex =14;
+    public static int storyIndex;
     [SerializeField] CanvasGroup VN;
     [SerializeField] Animator sakuraTree;
     public Animator likeHeart;
@@ -64,6 +64,12 @@ public class StoryManager : MonoBehaviour
     public GameObject libQuest3;
     public GameObject libQuest4;
 
+    //Nurse Questing
+    public GameObject nurseQuest1;
+    public GameObject nurseQuest2;
+    public GameObject nurseQuest3;
+    public GameObject nurseQuest4;
+
     void Start()
     {
         doctor.SetActive(false);
@@ -84,6 +90,10 @@ public class StoryManager : MonoBehaviour
         libQuest2.SetActive(false);
         libQuest3.SetActive(false);
         libQuest4.SetActive(false);
+        nurseQuest1.SetActive(false);
+        nurseQuest2.SetActive(false);
+        nurseQuest3.SetActive(false);
+        nurseQuest4.SetActive(false);
 
         SetStoryIndex();
         
@@ -129,9 +139,34 @@ public class StoryManager : MonoBehaviour
                 storyIndex = 19;
                 SetStoryIndex();
             }
+            if (chosenNurse == true && storyIndex == 3)
+            {
+                storyIndex = 4;
+                SetStoryIndex();
+            }
             //Quest 4: Pick a single Immortal to romance
             //romancing happens in individual characters scripts
             //4, 5, 6, 7, 8 are nurse
+            if (NurseCollision.quest1Done == true && storyIndex == 4)
+            {
+                storyIndex = 5;
+                SetStoryIndex();
+            }
+            if (NurseCollision.quest2Done == true && storyIndex == 5)
+            {
+                storyIndex = 6;
+                SetStoryIndex();
+            }
+            if (NurseCollision.quest3Done == true && storyIndex == 6)
+            {
+                storyIndex = 7;
+                SetStoryIndex();
+            }
+            if (NurseCollision.quest4Done == true && storyIndex == 7)
+            {
+                storyIndex = 25;
+                SetStoryIndex();
+            }
             //9, 10, 11, 12, 13 are CEO
             if (CEOCollision.quest1Done == true && storyIndex == 9)
             {
@@ -275,8 +310,37 @@ public class StoryManager : MonoBehaviour
             //romance is happening
             doctor.SetActive(true);
             factionGood.SetActive(false);
+            //NURSE
+            if (storyIndex == 4)
+            {
+                nurseQuest1.SetActive(true);
+                nurseQuest2.SetActive(false);
+                nurseQuest3.SetActive(false);
+                nurseQuest4.SetActive(false);
+            }
+            if (storyIndex == 5)
+            {
+                nurseQuest1.SetActive(false);
+                nurseQuest2.SetActive(true);
+                nurseQuest3.SetActive(false);
+                nurseQuest4.SetActive(false);
+            }
+            if (storyIndex == 6)
+            {
+                nurseQuest1.SetActive(false);
+                nurseQuest2.SetActive(false);
+                nurseQuest3.SetActive(true);
+                nurseQuest4.SetActive(false);
+            }
+            if (storyIndex == 7)
+            {
+                nurseQuest1.SetActive(false);
+                nurseQuest2.SetActive(false);
+                nurseQuest3.SetActive(false);
+                nurseQuest4.SetActive(true);
+            }
             //CEO
-            if(storyIndex == 9)
+            if (storyIndex == 9)
             {
                 CEOQuest1.SetActive(true);
                 CEOQuest2.SetActive(false);

@@ -28,7 +28,7 @@ public class LibrarianCollision : MonoBehaviour
     [SerializeField] private CanvasGroup icon;
     public static bool hasSpoken;
     public static bool chosenRomance;
-    bool inRange = false;
+    public static bool inRange = false;
     public static bool finishedQuest = false;
     // Start is called before the first frame update
     void Start()

@@ -8968,7 +8968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a451714beb6aef4f8903581ad6229d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuMusic: {fileID: 8300000, guid: ceecb477d2b4a9747832463102d270b9, type: 3}
+  menuMusic: {fileID: 8300000, guid: 3be87c6a6dff65145a9550ad6ebaaa99, type: 3}
   mainPanel: {fileID: 1740227251}
 --- !u!1 &892489535
 GameObject:

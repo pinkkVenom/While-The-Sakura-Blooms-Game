@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public TextAsset noodleShop;
     //librarian
     public TextAsset temple;
+    //nurse
+    public TextAsset patient;
 
     public static bool isNearNPC;
     public CanvasGroup cg;
@@ -90,6 +92,11 @@ public class PlayerController : MonoBehaviour
         {
             LibrarianCollision.StartConversation(temple);
             LibrarianCollision.finishedQuest = true;
+        }
+        if (collision.CompareTag("Patient") && StoryManager.storyIndex == 4)
+        {
+            NurseCollision.StartConversation(patient);
+            NurseCollision.finishedQuest = true;
         }
     }
 

@@ -60,18 +60,19 @@ Hanako "Show me then."
 
 narrator "[Concentrating on the amulet, the essence of the Kagayaku leader is revealed.]"
 
-Hanako "By the healing blossoms... {a}it’s true."
+Hanako "By the healing blossoms... {a}it's true."
 
 choice "ceo"
 {
 	-We need to get to the palace
 }
-if($VN.hanakoPoints >= 80)
+
+if($VN.hanakoPoints > 80)
 {
 	Hanako "I've never seen clearer purpose than in your eyes at this moment."
 	"I will stand with you."
 }
-if($VN.hanakoPoints < 80)
+if ($VN.hanakoPoints < 80)
 {
 	Hanako "This is more than I ever expected to face... but I cannot turn away from someone in need, not when it matters most."
 }
@@ -79,7 +80,7 @@ if($VN.hanakoPoints < 80)
 
 narrator "[Hanako steps forward, showing solidarity.]"
 
-Hanako "Together, then. Let’s head to the Palace."
+Hanako "Together, then. Let's head to the Palace."
 "We must travel all the way west from here, west of the Main Road."
 "Let us hope the light guides us well."
 

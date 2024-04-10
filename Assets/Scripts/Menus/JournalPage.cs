@@ -117,6 +117,7 @@ public class JournalPage : MonoBehaviour
 
     void SetHearts()
     {
+        //ceo
         if(pointsKenji <= 10)
         {
             heartsKenji[0].SetActive(true);
@@ -132,6 +133,60 @@ public class JournalPage : MonoBehaviour
         if(pointsKenji >= 80)
         {
             heartsKenji[3].SetActive(true);
+        }
+
+        //artist
+        if (pointsEmi <= 10)
+        {
+            heartsEmi[0].SetActive(true);
+        }
+        if (pointsEmi <= 30 && pointsEmi >= 11)
+        {
+            heartsEmi[1].SetActive(true);
+        }
+        if (pointsEmi <= 60 && pointsEmi >= 31)
+        {
+            heartsEmi[2].SetActive(true);
+        }
+        if (pointsEmi >= 80)
+        {
+            heartsEmi[3].SetActive(true);
+        }
+
+        //librarian
+        if (pointsYuki <= 10)
+        {
+            heartsYuki[0].SetActive(true);
+        }
+        if (pointsYuki <= 30 && pointsYuki >= 11)
+        {
+            heartsYuki[1].SetActive(true);
+        }
+        if (pointsYuki <= 60 && pointsYuki >= 31)
+        {
+            heartsYuki[2].SetActive(true);
+        }
+        if (pointsYuki >= 80)
+        {
+            heartsYuki[3].SetActive(true);
+        }
+
+        //nurse
+        if (pointsHanako <= 10)
+        {
+            heartsHanako[0].SetActive(true);
+        }
+        if (pointsHanako <= 30 && pointsHanako >= 11)
+        {
+            heartsHanako[1].SetActive(true);
+        }
+        if (pointsHanako <= 60 && pointsHanako >= 31)
+        {
+            heartsHanako[2].SetActive(true);
+        }
+        if (pointsHanako >= 80)
+        {
+            heartsHanako[3].SetActive(true);
         }
     }
 
