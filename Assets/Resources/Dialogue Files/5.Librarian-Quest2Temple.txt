@@ -1,0 +1,40 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo outside")
+CreateCharacter(Shopkeeper3)
+Shopkeeper3.SetPosition(-x 0.5 -y 0)
+Show(Shopkeeper3)
+
+Shopkeeper3 as Temple Maiden "Hello."
+"Welcome to our humble sanctuary."
+
+choice "ceo"
+{
+	-I'm looking for Alice
+}
+
+Shopkeeper3 as Alice "Yes that is me."
+"May I inquire what this is about?"
+
+choice "ceo"
+{
+	-I'm here for your overdue library book
+}
+
+Shopkeeper3 as Alice "Oh dear."
+"Has the deadline already passed?"
+"I'm so terribly sorry about this."
+"I meant to return it sooner."
+"Do I owe you any late fees?"
+
+choice "ceo"
+{
+	-No, that's okay I'll just take the book
+}
+
+Shopkeeper3 as Alice "Bless your soul."
+"Thank-you for your forgiveness."
+"Here is the book."
+"Send the librarians apoligies for my tardiness."
+
+[wait]HideUI()
+Hide(Shopkeeper3)

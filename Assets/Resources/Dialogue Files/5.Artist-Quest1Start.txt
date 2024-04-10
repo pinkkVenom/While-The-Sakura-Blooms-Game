@@ -1,144 +1,41 @@
-narrator "(Why is it so bright here?)"
-narrator "(I feel so dizzy...)"
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/art studio")
+CreateCharacter(Emi)
+Emi.SetPosition(-x 0.5 -y 0)
 
-SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
-CreateCharacter(Doctor -e true)
-Doctor.SetPosition(-x 0.5 -y 0)
+narrator "[You step back into the studio, where the scent of paint and turpentine mingles with the lingering essence of creativity.]"
+"[Emi is prepping canvases, her movements deliberate and artistic.]"
 
-Doctor "Woah, don't be so hasty"
-"You were quite disoriented when we found you. I need to monitor you for a bit longer to make sure you don't have any serious symptoms."
+Show(Emi)
 
-choice "where am i"
+Emi "Ah, you're back!"
+"I've been thinking about how to help you with your amulet, but first, there's something I need help with."
+"I have a deadline for a painting with an important client."
+"If I even spend one less second working on this then it'll be late."
+
+choice "ceo"
 {
-	-Where am I?
+	-What did you need?
+	-How can I help?
 }
 
-Doctor "You're at the hospital hun. You were found by the forest's edge on the outskirts of town"
-"What were you doing alone outside the city?"
+Emi "I'm working on a series that requires natural pigments."
+"There's a unique pigment powder found in the forest. Could you collect it for me?"
+"The hue is as vibrant as the very soul of our realm."
+"The pigment comes from a Rose plant."
+"They aren't very common in the immortal realm."
+"The forest is to the west of the city."
+"If you head west to the Main Road, then south, you'll surely find a beautiful forest with a variety of life."
 
-choice "i was shopping"
+choice "ceo"
 {
-	-I wasn't outside the city. I was shopping at the thrift store.
+	-I'll find them. Your art deserves nothing less than the full spectrum of this world's beauty.
 }
 
-Doctor "Interesting..."
-narrator "[The doctor repeatedly looks at you then back to the clipboard in their hands with concern growing on their face]"
+narrator "[Emi's eyes dance with gratitude.]"
 
-choice "whats wrong"
-{
-	-What's wrong?
-}
+Emi "Thank-you!"
+"And be mindful of the forest sprites – they're playful and love to lead travelers on merry chases."
 
-Doctor "You're...{a} human?"
-
-choice "im human"
-{
-	-Obviously
-	-Yeah last I checked...
-}
-
-Doctor "Ah that explains the disorientation."
-"It seems you've gotten transported to the Immortal Realm."
-
-choice "no way"
-{
-	-The Immortal Realm?
-	-That's not possible…
-}
-
-Doctor "Yes the realm of the fantastic and supernatural."
-"What's this?"
-narrator "[The doctor reaches in the direction of your necklace]"
-"[They furrow their brow as if studying the markings on the necklace]"
-Doctor "It's a shame you stumbled upon this necklace in the human world."
-
-choice "no way"
-{
-	-What's wrong with it?
-}
-
-Doctor "It's imbued with a special power that allows immortals to travel between this world and the human world."
-"But these are forbidden now. Immortals have not been allowed to travel to the human realm in many decades."
-narrator "(If this got me transported here, maybe it can transport me back.)"
-"[You touch the necklace and close your eyes in concentration]"
-Doctor "I'm afraid that won't work."
-
-choice "no way"
-{
-	-Why not?
-}
-
-Doctor "The magic in these amulets is unstable."
-"They can easily transport an immortal back to their world, but it requires a lot of magical power to bring someone to the human world."
-"Humans don't wield magical power so it would be impossible for you to transport yourself back without the use of immortal magic."
-
-choice "no way"
-{
-	-How can I find a way back home?
-	- Why can't you help me?
-}
-
-Doctor "I don't know how to operate these ancient amulets. I only know the basic information of their function. I'm afraid my limited knowledge on ancient magic will only hinder you."
-"It won't be easy for you to head back unfortunately."
-"The most powerful immortal in the land...she would surely have answers for you, but I doubt they would let a commoner, let alone a human, enter the palace so willingly."
-
-choice "no way"
-{
-	-How can I improve my status?
-}
-
-Doctor "I know some immortals that may be able to help you get into the castle."
-"One of my nurses Hanako is a very kind and reliable individual. She volunteers for the royal kingdom's infirmary."
-"The librarian Yuki is incredibly intelligent. He audits the royal archives every few months."
-"Kenji is quite the famous immortal. His popularity alone could get you anywhere you'd want to go."
-"The artist Emi is a very expressive person. She frequently gets commissioned to do artwork in the royal palace."
-"I've had the pleasure of meeting all these individuals. I am confident one of them can help you get home."
-
-choice "no way"
-{
-	-Who should I talk to first?
-}
-
-Doctor "You should visit each of them and introduce yourself. If they're hesitant to talk to you, let them know I sent you."
-"Speaking of which, I need to add your name to my file."
-
-input "Type your name here"
-
-Doctor "Nice to meet you <input>!"
-"You look much better now. You're free to go whenever you're ready"
-"Just be careful out there. Humans were never meant to be in the immortal world. The longer you stay here, the worse your physical state will become."
-
-choice "no way"
-{
-	-Could I die if I don't get home?
-}
-
-Doctor "..."
-"I'm afraid so."
-"But you needn't worry about that yet. It takes some time before you'll get really sick, and I'm confident you'll be home by then."
-"Now, get going."
-"If you have any questions, please let me know."
-
-choice "no way"
-{
-	-I have more questions
-		choice "no way"
-		{
-			-Is is a long trip to the districts?
-				Doctor "Not at all. All the local regions are accessible by foot."
-				choice "woah"
-				{
-					-Is there anything else I should know?
-						Doctor"Oh yes there is something serious I must tell you"
-						"The Immortal Realm has been in a state of political turmoil for years now."
-						"There are two major factions, and they have very polarized followers."
-						"Be careful of who you talk to, and what you talk to them about."
-						"It might cause you more harm than good."
-					}
-		}
-	
-	-Okay thanks!
-}
-
-Hide(Doctor)
-HideUI()
+[wait]HideUI()
+Hide(Emi)

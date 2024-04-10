@@ -2,7 +2,71 @@ ShowUI()
 SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
 CreateCharacter(Kenji)
 Kenji.SetPosition(-x 0.5 -y 0)
+Show(Kenji)
 
+narrator "[Kenji looks up as the player enters, a satisfied grin speading across his face.]"
 
+Kenji "Your reputation precedes you. I've already heard from the businessmen. They were... thoroughly charmed."
 
-HideUI()
+<mainChar> "(The recognition feels good, but I can't let it go to my head.)"
+"(There's always another challenge around the corner with Kenji.)"
+
+choice "whats wrong"
+{
+	-They were interesting. I learned a lot from them
+	$VN.kenjiPoints += 10
+	-I did what was needed. Glad it was up to your standards
+
+}
+
+narrator "[Kenji's expression grows earnest]"
+
+Kenji "I knew you were more than capable for the job."
+"And I now have a new business contact for my future investments."
+"I thank-you you for that."
+"Now allow me to share some information with you."
+"Merging with the coffee shop isn't simply for me to grow my business."
+"I have sent a proposal to the Royal Castle to bring some samples of the product for the Empress."
+"I am awaiting a response from them."
+
+choice "whats wrong"
+{
+	-What are you looking to get from the Empress?
+}
+
+Kenji "You will be joining me there as a business associate."
+"The Empress is the most powerful immortal in the realm after the disapearance of the Kagayaku leader."
+
+<mainChar> "(It seems even Kenji doesn't know the exact details of the Kagayaku leaders disapearance.)"
+
+Kenji "The Empress might be able to help you get back home."
+"At least that's the plan right now."
+"Now, <mainChar>..."
+"You have shown resilience thus far, for a mere human in our immortal realm you have outdone yourself."
+"This next task I ask of you is like no other."
+"I had once in my possession {a} a cloak of invisibility."
+"It was stolen from me, and I have not since been able to find it."
+
+<mainChar> "(A cloak of invisibility? Sounds like we're stepping out of the realm of business and into more personal matters.)"
+
+choice "whats wrong"
+{
+	-The cloak of invisibility?
+	-What happened that it got lost?
+
+}
+
+Kenji "The last information I had about it was from a colleague of mine."
+"He said some imps in the forest west of the city were spotted with an purple piece of fabric."
+"I don't imagine they will be too keen on returning it empty-handed."
+
+<mainChar> "(Dealing with imps for a mythical cloak?)"
+"(This is far from what I expected when I got involved with Kenji.)"
+"(But if it's a test of my abilities or my resolve, I'll meet it head-on.)"
+
+Kenji "If you manage to find the cloak, I'll tell you more about myself."
+"As well as the plan to head to the Castle."
+"I wish you the best of luck."
+
+[wait]HideUI()
+Hide(Kenji)

@@ -1,0 +1,54 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo outside")
+CreateCharacter(Emi)
+Emi.SetPosition(-x 0.5 -y 0)
+Show(Emi)
+
+narrator "[You head inside and see Emi waiting for you in the foyer.]"
+
+Emi "Yay!"
+"You made it."
+"I've already paid for our entry into the museum."
+"Come lets go."
+
+Hide(Emi)
+
+narrator "[You wander the vast open halls with Emi.]"
+"[When you arrive at the exhibition hall, you can see the vibrant and emotional art pieces created by Emi herself.]"
+"[Emi silently guides you throught the exhibit.]"
+"[When she pauses at an art piece, you pause and look onwards as she does.]"
+"[After seeing several art pieces, the story becomes clear.]"
+"[The first paintings were very colorful, and very exciting.]"
+"[The paintings after that stayed colorful, but became more violent.]"
+"[Eventually the pieces were a mess of colors.]"
+"[Almost like a scene of gore and carnage, not that that was explicitly painted.]"
+"[Finally the end of the exhibit.]"
+"[These paintings were less violent, and much more peaceful.]"
+"[You couldn't help but notice these final pieces were painted with duller colors.]"
+"[What story was Emi trying to tell?]"
+
+"[You and Emi exit the exhibition hall.]"
+"[She turns to look at you.]"
+"[A smile on her face, but a glossy sheen over her eyes.]"
+
+Show(Emi)
+
+Emi "So, what did you think?"
+
+<mainChar> "(Perhaps I should wait to ask her about the meaning of her exhibit.)"
+
+choice "ceo"
+{
+	-It was very beautiful Emi
+	-I loved the colors
+}
+
+Emi "I'm glad you enjoyed it."
+"The Empress actually first saw this collection when she came to visit the city a while ago."
+"She thought the story was so wonderful that it should become a permanent display in the museum."
+"It was a very honorable moment."
+"Well, I must get back to the art studio."
+"Meet me there as soon as possible, I have some more work I need to get done and I could really use your help."
+
+[wait]HideUI()
+Hide(Emi)

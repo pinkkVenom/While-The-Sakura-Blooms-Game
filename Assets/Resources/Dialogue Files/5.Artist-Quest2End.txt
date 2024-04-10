@@ -1,0 +1,80 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/art studio")
+CreateCharacter(Emi)
+Emi.SetPosition(-x 0.5 -y 0)
+Show(Emi)
+
+narrator "[The studio feels warmer, more intimate, yet also somewhat heavy.]"
+"[There is an important story behind Emi's paintings, and you've come to discover the truth.]"
+"[But first, you share more of your views on Emi's paintings.]"
+"[She listens to your opinions intently.]"
+
+Emi "Your perspective is refreshing."
+"To see my work through your eyes... it's as if I'm discovering it anew."
+"It’s funny, isn’t it, how art can bridge worlds?"
+
+choice "ceo"
+{
+	-Your paintings did more than that
+	-They spoke of passion, of struggle, of triumph. It was... inspiring
+}
+
+narrator "[Emi leans in, her proximity closing the space between artist and muse.]"
+
+Emi "You inspire me too."
+"There's an artistry in the way you view the world, in the way you've embraced this quest of yours."
+"I find myself drawn to it... to you."
+"I've also found a way I might be able to help you get back home."
+"I mentioned previously that the Empress has seen and enjoyed my works."
+"Well...since she's an incredibly powerful and all knowing immortal, I thought I could maybe ask her about you."
+
+choice "ceo"
+{
+	-Do you think she will let us talk to her?
+}
+
+Emi "Sure I think so."
+"I've sent a letter to her castle offering to create a custom piece for her."
+"I'm confident she'll get back to me quickly."
+"Or someone from her staff perhaps..."
+"Either way, I believe that's your ticket home."
+
+narrator "[You feel the weight of her words, the shared understanding of two souls meeting not just in task, but in spirit.]"
+
+choice "ceo"
+{
+	-Emi I need to ask you about your paintings
+}
+
+narrator "[Emi's cheerful mood suddenly dampens.]"
+"[She takes a deep breath before speaking.]"
+
+Emi "It's a very emotional story for me."
+"I'm not sure that I'm ready to share it with you just yet."
+"However, I do need another item for my studio."
+"I promise if you get me what I need then I'll tell you more about my story."
+
+choice "ceo"
+{
+	-Of course
+	-What do you need?
+}
+
+Emi "I am looking for a specific paintbrush."
+"Perhaps you could venture around the world and find it for me."
+"If you venture south of here, to the library district, then you might have some luck finding it there."
+"Try looking around the shops located there."
+"They might have what I need in stock."
+"..."
+"I'm sorry {a}I'm not as open as I should be."
+
+choice "ceo"
+{
+	-Don't worry Emi, I respect your decision
+}
+
+Emi "Thank-you <mainChar>."
+"I'll see you when you get back."
+
+[wait]HideUI()
+Hide(Emi)

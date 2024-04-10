@@ -1,0 +1,81 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/art studio")
+CreateCharacter(Emi)
+Emi.SetPosition(-x 0.5 -y 0)
+Show(Emi)
+
+narrator "[Emi awaits with a quiet excitement, which breaks into a radiant smile as you present the brush.]"
+
+Emi "You found it!"
+"Only someone with a true artist's soul could have located exactly what I was looking for."
+
+narrator "[Emi’s cheeks flush with a soft rose hue.]"
+
+Emi "To be seen through your eyes, to be... {a}understood, it means more to me than I can say."
+"And, as promised, I must tell you more about my past."
+
+narrator "[Emi takes a deep breath before beginning her story.]"
+
+Emi "Long ago, when I was only a little girl, I used to live with the wealthy in the Castle."
+"I had so many siblings, most of them were so wonderful and talented compared to me."
+"So my parents didn't pay mind to me or my brother since we were the least gifted of the bunch."
+"My parents however got unlawfully punished."
+
+<mainChar> "(She speaks of her family as if they are no more...)"
+
+Emi "My family had always supported the Empress before she came into power."
+"They believed in her values and what she stood for."
+"But, because my family was so influential..."
+"The leader of the Kagayaku had given them the ultimate punishment for their alliance with the Empress."
+"My brother and I were spared because they deemed us worthless members to society."
+"No family, no money, no influence."
+"Eventually I made a life for myself as an artist."
+"My brother had a difficult time handling the loss of our family."
+"He set off to travel the world."
+"But when the Empress came into power, she recognized me."
+"She had always felt terrible sorrow for me and my brother."
+"I do trust her a lot, and I appreciate her more than your know."
+
+choice "ceo"
+{
+	-That's why you created that exhibit
+	-The paintings are a story of your emotional past
+}
+
+Emi "Yes."
+"I still have awful memories of that time."
+"Painting has allowed me to free those memories."
+"To give them some meaning, some purpose other than making me suffer."
+
+choice "ceo"
+{
+	-Thank-you for sharing your story with me Emi
+	-You don't have to suffer alone, I'm here for you
+	$VN.emiPoints += 10
+}
+
+Emi "Thank-you for listening <mainChar>."
+"I feel a lot better that you know more about me."
+"I'm sorry for this being such a heavy topic."
+"OH!"
+"This reminded me of something very important."
+"I need to deliver a painting to a client."
+"They work at the noodle shop."
+"Could you help me?"
+
+choice "ceo"
+{
+	-Of course
+	-I will deliver the painting
+}
+
+"Perfect!"
+"The noodle shop is here in the art district."
+"They close by, with some vending machines next to their building."
+"Please come back when you finish."
+"I'm eagerly awaitng a response from the Empress."
+"I want you to be here when she officially welcomes us to the palace."
+
+$VN.emiPoints += 10
+[wait]HideUI()
+Hide(Emi)

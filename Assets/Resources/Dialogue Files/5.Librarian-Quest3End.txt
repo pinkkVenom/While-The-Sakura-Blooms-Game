@@ -1,0 +1,118 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/library inside")
+CreateCharacter(Yuki)
+Yuki.SetPosition(-x 0.5 -y 0)
+Show(Yuki)
+
+narrator "[With a fresh pen, you return to Yuki, who is now visibly eager to hear about your trip.]"
+
+Yuki "Welcome back. I could see you from here, on your way back to the library."
+"Have you located my pen?"
+
+choice "ceo"
+{
+	-I found you a feather pen
+}
+
+Yuki "Oh wow!"
+"This is a really nice pen."
+"Surely I can't lose this right?"
+"It has a bright feather attatched to it."
+
+narrator "[Yuki's eyes light up, a clear sign of his growing affection for your dedication.]"
+
+Yuki "Now I am ready to take proper notes."
+"However, I found something interesting while you were away."
+"There's a book here in the library, 'Amulets of the Ages.' Within it, there's a spell – one that might resonate with your amulet. It's time we take a closer look."
+"Come, I know where it's located."
+
+choice "ceo"
+{
+	-Let's find it, then
+	-I'm ready when you are
+}
+Hide(Yuki)
+narrator "[Yuki leads you to a secluded section of the library. Together, you comb through the stacks until you find the tome.]"
+"[Yuki carefully opens the book, and turns the ancient pages until he finds the spell. You read the words in your head seeming to thrum with power.]"
+Show(Yuki)
+Yuki "This... This could be it. The spell speaks of binding and pathways... it might be the key to your return."
+
+choice "ceo"
+{
+	-I can't believe we might be close to a breakthrough
+}
+
+narrator "[Yuki’s gaze lingers on you, filled with admiration and something deeper, more profound.]"
+
+Yuki "Your presence here has been a catalyst for many things, it seems... changes in routine, new discoveries, and... unexpected emotions."
+
+narrator "[You look up, your heart skipping a beat at the unspoken sentiment in Yuki’s voice.]"
+
+Yuki "I find myself... affected by your plight, but also by your person."
+"It's more than just scholarly interest. I'm drawn to you, to the humanity you embody."
+
+narrator "[The air between you is charged with a new energy, a connection that transcends realms and lore.]"
+
+Yuki "Perhaps, when this is all over, when we've deciphered the amulet's secrets... could there be a chapter for us."
+"Written not in these books, but in the reality of our shared experiences?"
+
+narartor "[Your response is a smile, genuine and hopeful, reflecting the librarian's sentiment.]"
+
+Yuki "For now, let's focus on this spell, on your journey."
+But know that my thoughts are with you, as someone very special."
+
+narrator "[In the quiet sanctum of the library, with the wisdom of ages around them, you and Yuki stand at the precipice of a new and exciting chapter of your own.]"
+"[Some time goes by...]"
+"[Amidst the labyrinth of bookshelves, you find Yuki Tanaka lost in thought, his gaze distant as he runs his fingers over the spines of ancient tomes.]"
+"[The hushed whispers of the library seem to pause in anticipation of the moment.]"
+"[Yuki looks up, noticing you, and a subtle warmth crosses his features—a stark contrast to the cool intellect usually present.]"
+
+Yuki "Ah, you're here. I was just reflecting on a book from my childhood, 'The Book of Countless Travels.'"
+"It's a treasured compilation of adventures and journeys, including some journeys my parents travelled on."
+"It was lost to time, a casualty of war and strife."
+
+choice "ceo"
+{
+	-That sounds like a book filled with wonders
+	-I'd love to read it.
+}
+
+narrator "[Yuki smiles softly, a mix of fondness and sadness in his expression.]"
+
+Yuki "It would be wonderful to share it with you."
+"It’s a book close to my heart, filled with notes from my parents."
+"I spent countless nights as a child pouring over those pages, imagining the places they described."
+
+choice "ceo"
+{
+	-What if I could find it for you, Yuki?
+}
+
+narrator "[Yuki’s eyes meet yours, a hopeful glint within them.]"
+
+Yuki "If you could... it would mean more to me than I can express."
+"But it's not a task, it's a dream. One I'd almost given up on."
+
+choice "ceo"
+{
+	-Could you tell me more about your past if you're comfortable?
+}
+
+Yuki "Perhaps I must give you some context for this."
+"When the current Empress took over the government, she started war against any rebels who didn't want her in power."
+"That war stayed out of the major cities in the immortal realm..."
+"But my family lived up in the mountains outside the city."
+"Many rebels were camped out in those regions."
+"We lost our home and had to flee as war refugees."
+"That was my favorite book as a kid."
+"I didn't have time to grab it before we had to run out of the home."
+"That place is in ruins now."
+"I've returned there countless times and have never found the book."
+"If you could find it I would be eternally grateful to you."
+"To reach the mountains you must head west of the city to the Main Road."
+"Then head north and east from there."
+"Please be sure to bring some warm clothes."
+"It can be chilly up there."
+
+[wait]HideUI()
+Hide(Yuki)

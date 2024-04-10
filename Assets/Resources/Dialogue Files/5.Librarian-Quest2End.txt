@@ -1,0 +1,60 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/library inside")
+CreateCharacter(Yuki)
+Yuki.SetPosition(-x 0.5 -y 0)
+Show(Yuki)
+
+narrator "[The library is bathed in the golden glow of afternoon light as you arrive.]"
+"[Yuki is rearranging a section of books, but he pauses and brightens upon noticing you.]"
+"Yuki steps away from the shelves, adjusting his hair with a thoughtful air.]"
+
+Yuki "Good to see you. I've been pondering over the amulet dilemma."
+"Before we dive into the books, how was Alice?"
+
+choice "ceo"
+{
+	-She returned the book
+}
+
+Yuki "Okay good good."
+"Thanks for that by the way."
+"I hope she didn't give too much trouble."
+
+choice "ceo"
+{
+	-She wanted to apoligize for returning the book late
+}
+
+Yuki "Aww, she's too kind."
+"Normally she brings her books back well before they're due."
+"Oh well, things happen sometimes."
+"You know better than anyone."
+
+narrator "[Yuki's lips quirk up in a small, knowing smile.]"
+
+Yuki "Now, I've found some additional books and scrolls about ancient artifacts."
+"If you'd like to sit down, then we can both start doing some research into your case."
+
+narrator "[You sit next to Yuki at a rectangular table.]"
+
+Yuki "Now that everything is in place..."
+"Hold on a second."
+"Ugh, where is my pen?"
+"I swear I keep losing it."
+"I need it to be able to take important notes, and mark pages of interest."
+
+choice "ceo"
+{
+	-I could find you another pen
+}
+
+Yuki "Yes please, I would really appreciate that."
+"Any pen will do at this point."
+"If you head north from there to the downtown district there might be a pen you can snag there."
+"You know...office buildings have a lot of those."
+"I'll get a head start on skimming through these texts."
+"Maybe I'll have a breakthrough before you return."
+
+$VN.yukiPoints += 10
+[wait]HideUI()
+Hide(Yuki)

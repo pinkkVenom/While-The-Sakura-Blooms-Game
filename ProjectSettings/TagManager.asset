@@ -11,6 +11,9 @@ TagManager:
   - Shadow
   - DiamondStore
   - CoffeeShop
+  - Museum
+  - NoodleShop
+  - Temple
   layers:
   - Default
   - TransparentFX

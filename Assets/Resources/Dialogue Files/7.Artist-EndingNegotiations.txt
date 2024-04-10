@@ -1,0 +1,64 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
+CreateCharacter(Kenji)
+Kenji.SetPosition(-x 0.5 -y 0)
+Show(Kenji)
+
+narrator "[Shafts of sunlight pierce through the blinds, dust motes dancing in the beams that fall across the room's minimalist grandeur.]"
+"[You hold the amulet out towards Kenji, its core emanating a faint glow.]"
+
+choice "ceo"
+{
+	-There's something you need to know about me, and this amulet
+}
+
+Kenji "I've learned to expect the unexpected around you. What's going on?"
+
+<mainChar> "(The amulet feels warm in my grasp, almost as if it's responding to Kenji's presence.)"
+
+choice "ceo"
+{
+	-This amulet holds the essence of the Kagayaku
+	-This will explain everything better than I ever could
+}
+
+narartor "(As you focus on the amulet, it begins to glow brightly, casting shadows across Kenji's face.)"
+
+Kenji "This... is a lot to take in. It's almost surreal."
+
+choice "ceo"
+{
+	-We need to unite to confront the Empress. Your help is crucial.
+}
+
+Kenji "The Empress had something to do with this?"
+"That would certainly explain his sudden disapearance..."
+
+choice "ceo"
+{
+	-Thank you, Kenji. I knew I could count on you.
+}
+
+if($VN.kenjiPoints >= 80)
+{
+	Kenji "Then let's not waste another moment."
+}
+if($VN.kenjiPoints < 80)
+{
+	Kenji "You're asking me to gamble on a reality I've just now witnessed. This is... difficult."
+	narrator "[There's a hesitation in his voice, but it's undercut with a note of intrigue. He's considering it.]"
+	Kenji "Alright. I'll help you. But understand, we proceed with my rules."
+}
+
+narrator "[Reluctance colours his commitment, yet there's a glimmer of the trust shining through.]"
+"[The light of day casts an ethereal glow over Kenji's face, the earlier surprise now settled into a look of steely resolve.]"
+
+Kenji "I've already secured our visit to the Palace."
+"I have the coffee product set up to bring as samples."
+"Lets meet at the Palace gates."
+"If you head as far west as possible to the Main Road, you will get there."
+"If any guards give you trouble, just say you're with me."
+"I'll see you there <mainChar>."
+
+[wait]HideUI()
+Hide(Kenji)

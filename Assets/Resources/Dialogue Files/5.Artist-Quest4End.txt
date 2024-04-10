@@ -1,0 +1,82 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/art studio")
+CreateCharacter(Emi)
+Emi.SetPosition(-x 0.5 -y 0)
+Show(Emi)
+
+narrator "[Emi eagerly walks towards you awaitng to hear about your adventure.]"
+
+Emi "How did it go?"
+"Was she happy with the painting?"
+
+choice "ceo"
+{
+	-She loved it a lot
+}
+
+Emi "Whew.."
+"I'm very glad to hear that."
+"If I'm being honest, I was a bit late on finishing it..."
+
+choice "ceo"
+{
+	-She didn't mention that at all...
+}
+
+Emi "Haha well..."
+"Perhaps a personalized delivery swayed her emotions on that."
+"Thankyou again for doing that."
+"I find myself so busy nowadays with the popularity I've amassed."
+"Perhaps I should hire an assistant."
+"I cannot keep asking you to do things for me, not considering the way I feel about you."
+"You’ve become part of my world, part of my art."
+"You’ve added color to my life that I didn't know was missing."
+"I feel... I feel a connection with you that goes beyond friendship."
+
+narrator "[As Emi steps closer, the space between artist and muse diminishes.]"
+"[The studio, once a place of solitary creation, now holds the promise of shared inspiration and a mutual affection that is as vivid and real as the art that surrounds you.]"
+
+Emi "The Empress responded by the way."
+"We are formally invited to the Castle."
+"I will present some concepts I have for the Empress."
+"And while we're there, I will ask her for help getting you home."
+"If only I had something really nice to wear..."
+"I've been wanting to make a necklace out of moonstone for the longest time now."
+"But I've never been able to find any."
+
+choice "ceo"
+{
+	-I will go find you moonstone
+}
+
+Emi "No no it's okay."
+"You've already done enough for me."
+
+choice "ceo"
+{
+	-Please I insist
+}
+
+Emi "Okay okay fine."
+"But please <mainChar> if you can't find any don't worry about it."
+
+choice "ceo"
+{
+	-Where is the best location to find some moonstone?
+}
+
+Emi "It hides within minerals located in cold and high altitude regions."
+"If you head west to the Main Road, then north, then east, there should be a cold mountain area there."
+"Perhaps there may be some moonstone there, although I'm not certain there is."
+
+choice "ceo"
+{
+	-I will do everything I can to find it
+	-I want you looking your best for the Empress
+	$VN.emiPoints += 10
+
+}
+
+$VN.emiPoints += 10
+[wait]HideUI()
+Hide(Emi)

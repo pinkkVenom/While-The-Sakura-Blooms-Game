@@ -15,6 +15,9 @@ namespace VISUALNOVEL
 
             //Character Points
             VariableStore.CreateVariable("VN.kenjiPoints", 0.0f, () => JournalPage.pointsKenji, value => JournalPage.pointsKenji = value);
+            VariableStore.CreateVariable("VN.hanakoPoints", 0.0f, () => JournalPage.pointsHanako, value => JournalPage.pointsHanako = value);
+            VariableStore.CreateVariable("VN.emiPoints", 0.0f, () => JournalPage.pointsEmi, value => JournalPage.pointsEmi = value);
+            VariableStore.CreateVariable("VN.yukiPoints", 0.0f, () => JournalPage.pointsYuki, value => JournalPage.pointsYuki = value);
         }
     }
 }

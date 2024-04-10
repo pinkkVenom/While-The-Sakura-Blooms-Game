@@ -1,5 +1,70 @@
 ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
+CreateCharacter(Kenji)
+Kenji.SetPosition(-x 0.5 -y 0)
+Show(Kenji)
 
-narrator "End quest 4"
+narrator "[The cloak feels like vapor, like holding onto a pillowy soft dream.]" 
+"[You present it to Kenji. His eyes reflect a storm of emotions.]"
 
-HideUI()
+Kenji "This... {a}I never thought I'd see it again. 
+"The cloak of invisibility; it's proof of our history, Demonic history, of our people's resilience."
+"How can I thank you?"
+
+choice "ceo"
+{
+	- But I can't help wondering, why is this cloak so important to you?
+}
+
+narrator "[Kenji hesitates, the veneer crumbling to reveal the man beneath.]"
+
+Kenji "My father... {a}he loved the old tales and magical items."
+"He believed in the honor behind them."
+"This cloak, it's a reminder of who I am beneath the suits and strategies."
+
+narrator "[You step closer, the air charged with a new intimacy.]"
+
+Kenji "You've done more than complete a task."
+"You've brought back a piece of my past."
+"And... {a} I find myself wanting to share more than just stories with you."
+
+narrator "[Your heart skips a beat, the connection between them now undeniable.]"
+
+Kenji "Dinner, tonight. No talks of tasks or gold. Just... us?"
+
+narrator "[You nod, your smile matching Kenji's - eager and genuine.]"
+
+Kenji "I'm looking forward to it."
+"Until then, keep the cloak. It suits you, being wrapped in a piece of my world."
+
+narrator "[As you leave, cloak in hand, you realize you're taking a piece of Kenji's heart with you.]"
+"[Some time passes...]"
+"[Following an evening that had been both revealing and intimate, you return to Kenji’s office.]"
+"[Memories of shared laughter and lingering looks over dinner the night before add a new layer to your connection.]"
+"[Kenji stands by his desk, anticipation etched in his posture.]"
+"[His usual stoic facade is replaced by an openness, a direct result of the night prior.]"
+
+Kenji "There you are."
+"I must admit, last night’s dinner has left me with a sense of... expectation for our encounters. "
+"Now, I have another important task – my family's heirloom, an old ring, has gone missing much like the cloak."
+"It’s always guided us through trials and triumphs, and now I need it —{a}need you— {a}to guide it back to me."
+
+choice "ceo"
+{
+	- I'll find it for you, Kenji
+	-I'll navigate the city for your heirloom
+}
+
+narrator "[Kenji’s eyes soften, the corner of his mouth lifting in an appreciative smile.]"
+
+Kenji "You are someone who I can trust get my tasks done for me."
+"Your tenacity is as endearing as it is impressive."
+"The ring was last seen in my home town village. Begin your search there..."
+"The demon area is west of the city."
+"Once you get to the Main road, head north, then head west from there."
+"The landscape of the region is very unique."
+"Demonic areas are coverd in a lot of purple foliage."
+"Once you see that, you'll know you're there."
+
+[wait]HideUI()
+Hide(Kenji)

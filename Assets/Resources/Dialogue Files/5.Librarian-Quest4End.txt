@@ -1,0 +1,101 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/library inside")
+CreateCharacter(Yuki)
+Yuki.SetPosition(-x 0.5 -y 0)
+Show(Yuki)
+
+narrator "[Yuki is reorganizing a section when you enter, the recovered book in hand.]"
+"[He stops abruptly, his heart on his sleeve as he sees the tome.]"
+
+Yuki "Is that...?"
+"Can it truly be 'The Book of Countless Travels'?"
+
+narrator "[You present the book to Yuki, and as he takes it, his hands tremble with emotion.]"
+
+choice "ceo"
+{
+	-This is your heritage, Yuki
+}
+
+[Yuki opens the book, his parents' notes and thoughts interwoven with the text.]
+[He looks up at you, eyes brimming.]
+
+Yuki "This... This is a piece of my soul returned to me."
+"Thank you doesn't begin to cover what I'm feeling right now."
+"This book... it was their legacy, and now it's ours."
+
+narrator "[You watch as Yuki composes himself, the silent strength in his posture belying the tears he blinks away.]"
+
+Yuki "You've done something incredible today."
+"You've brought back the voices of my past, and with them, you've given me a future filled with hope."
+"A future I long to explore, with you by my side."
+
+narrator "[The intimacy of the moment is palpable, the connection between you deepening beyond words.]"
+
+Yuki "I've lived a life surrounded by stories, but I never anticipated being part of one so profound."
+"You've entered my story, not as a fleeting character, but as the co-author of the next chapter."
+
+narrator "[Yuki steps closer, his usual reserve cast aside.]"
+
+Yuki "I am, quite simply, smittened. With the person who walked into my library and changed everything."
+
+narrator "[In the quiet sanctuary of the library, surrounded by the echoes of countless tales, you and Yuki stand together, your own story just beginning.]"
+
+<mainChar> "(Considering our growing intimacy, it's time to let Yuki know about the amulets hidden powers.)"
+
+choice "ceo"
+{
+	-Yuki, there's something important I need to tell you.
+}
+
+Yuki "Oh? What's that? You always have the most interesting stories."
+
+choice "ceo"
+{
+	-It's about this amulet... and the leader of the Kagayaku.
+}
+
+[Yuki's hands pause, books half-forgotten. His brow furrows as he looks at you more intently.]
+Yuki "The good faction leader? That sounds quite serious. What about them?"
+Player "The leader is trapped inside this amulet. I need to get back to the human world, and they're my key home."
+Player "This is going to sound crazy, but the good faction leader is sealed within my amulet. And I think they can help me return to my world."
+[Yuki shocked] 
+Yuki "Inside the amulet? That's... rather unbelievable. Are you certain?"
+Player "I can prove it. Just watch."
+[You hold out the amulet, concentrating on the presence within. A glow begins to emanate from the jewel at its core.]
+[The figure of the good faction leader materializes, regal and imposing, even as an apparition.]
+Good Faction Leader "Yuki Tanaka, your help is crucial. We must reach the palace to confront the bad leader and restore balance."
+[Yuki astonished] 
+Yuki "This... This is extraordinary."
+Player "Yuki, I need you. Will you help us get to the palace?"
+Player "It's going to be dangerous, but we could really use your knowledge and bravery."
+[Yuki determined] 
+Yuki "For you, I'd walk into the storm itself. Lead the way, my friend."
+[You feels a rush of gratitude]
+[Yuki hesitant] 
+Yuki "This is... a lot to take in. But I cannot ignore the plight before us. I will assist you."
+[You feels a rush of relief]
+Player "Thank you, Yuki. With your help, I know we can do this."
+[You prepare to leave the library, the weight of the journey ahead looming, but with Yuki by your side, you feel ready to face whatever may come.]
+[Yuki paces back and forth, deep in thought, the spectral leader of the good faction watching on with patient gravity.]
+Yuki "If we are to enter the palace without raising suspicion, we need a valid reason for our visit."
+[He stops suddenly, snapping his fingers as the idea takes shape in his mind.]
+Yuki "I've got it! The palace's library is vast, and they often acquire new volumes. It's customary for them to invite librarians to catalog new additions."
+Player "That's brilliant! But how do we convince them to let us in?"
+Yuki "I have connections with the palace's head archivist. I've aided them before with rare texts. They trust my expertise."
+[He pulls out an ornate, feathered quill and a piece of parchment, scribbling a message.]
+Yuki "I'll send word that I've come across a unique collection of books that could greatly enrich their library."
+[He seals the letter with a stamp emblazoned with an intricate 'Y'.]
+Player "Do you think they'll believe it?"
+Player "What if they become suspicious?"
+[Yuki confident] 
+Yuki "They will. I've never offered false information before. My reputation will grant us entry."
+[Yuki reassuring] 
+Yuki "It's a risk, but a calculated one. My credibility is not so easily questioned."
+[You nods, understanding the delicacy of the situation.]
+Player "Once we're in, how do we find the bad leader without drawing attention to ourselves?"
+Yuki "We'll split up. I'll take the lead in the library, drawing their focus. You'll have the opportunity to search for the leader."
+
+
+[wait]HideUI()
+Hide(Yuki)

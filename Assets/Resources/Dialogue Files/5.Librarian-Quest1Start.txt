@@ -1,0 +1,48 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/library inside")
+CreateCharacter(Yuki)
+Yuki.SetPosition(-x 0.5 -y 0)
+
+narrator "[The library is a haven of knowledge, its silence as welcoming as a soft-spoken invitation.]"
+Show(Yuki)
+"[Yuki is reshelving books when you walk in, his attention caught between the pages and your presence.]"
+"[Yuki turns, the faint surprise from your first meeting giving way to a measured smile.]"
+
+Yuki "Ah, you've returned."
+"I trust you've been keeping out of trouble, yes?"
+"Now, how where do we start?"
+
+choice "ceo"
+{
+	-Perhaps we could find more info from the library?
+}
+
+narrator "[Yuki nods thoughtfully, pushing his glasses up the bridge of his nose.]"
+
+Yuki "The wisdom of immortals is bound within these tomes."
+"Your first task here, then, is to find a scroll."
+"Wait actually now that I look at my records..."
+"I'm not sure what happened to the scroll..."
+
+choice "ceo"
+{
+	-Do you have any clues as to where it may be?
+}
+
+Yuki "It should be somewhere here..."
+"Perhaps it was misplaced outside?"
+"Try looking around the library district and see if you can't locate that pesky thing."
+"There's some valuable information on that scroll."
+"I'd get in a lot of trouble if I lost it."
+
+choice "ceo"
+{
+	-Do not fear, I'll find it!
+}
+
+Yuki "You're a light saver!"
+"Thank-you <mainChar>."
+"I'll await your return."
+
+[wait]HideUI()
+Hide(Yuki)

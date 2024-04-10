@@ -91,3 +91,29 @@ MonoBehaviour:
       _serializedList:
       - Key: Shopkeeper3
         Value: {fileID: 21300000, guid: c2560c6b630a3e0499280de1dbafcad2, type: 3}
+  - name: FactionM
+    alias: fm
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 10bd0f8f90e078741a45b0b1d7f35e0e, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 10bd0f8f90e078741a45b0b1d7f35e0e, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: GoodFaction
+        Value: {fileID: 21300000, guid: 65d9677f7c486b443bd0635131bc7650, type: 3}
+  - name: FactionF
+    alias: ff
+    characterType: 1
+    nameColor: {r: 0.7830189, g: 0.22530258, b: 0.22530258, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 10bd0f8f90e078741a45b0b1d7f35e0e, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 10bd0f8f90e078741a45b0b1d7f35e0e, type: 2}
+    nameFontScale: 1
+    dialogueFontScale: 1
+    sprites:
+      _serializedList:
+      - Key: BadFaction
+        Value: {fileID: 21300000, guid: 7f5ff576fa55c3c438bf273caa35b63c, type: 3}

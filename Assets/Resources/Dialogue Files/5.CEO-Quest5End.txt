@@ -1,5 +1,65 @@
 ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
+CreateCharacter(Kenji)
+Kenji.SetPosition(-x 0.5 -y 0)
+Show(Kenji)
 
-narrator "end quest 5"
+narrator "[You presents the ring to Kenji, who handles it with a reverence that speaks volumes of its significance.]"
+"He sets it gently on the desk, his focus entirely on you.]"
 
-HideUI()
+Kenji "You've done more than retrieve a lost item; you've brought back a piece of history, a token of my family's path."
+"And after our dinner, I can't help but feel you’re part of that path."
+
+<mainChar> "(His words resonate with an unexpected intensity.)"
+"(Is this the moment where everything changes?)"
+
+choice "ceo"
+{
+	-It’s an honor to be considered part of your path
+}
+
+narrator "[Kenji steps around the desk, closing the distance.]"
+
+Kenji "Last night, we shared stories and dreams over dinner."
+"Today, you've turned those dreams into a tangible reality."
+"I find myself very open with you."
+"I can't say I've ever felt that way for someone before."
+
+choice "ceo"
+{
+	-what exactly are you suggesting?
+}
+
+narrator "[Kenji’s voice is low, earnest.]"
+
+Kenji "I’m suggesting that maybe it’s time we explore this new journey together."
+"Not as CEO and associate, but as Kenji and... well, as two people who have found something rare."
+
+<mainChar> "(This is uncharted territory. Am I prepared to navigate it with him?"
+"(His gaze holds a promise of something more, something beyond the confines of this office.)"
+
+choice "ceo"
+{
+	-Exploring this journey with you... it feels right
+	$VN.kenjiPoints += 10
+	-I need to think about what this means, Kenji
+}
+
+
+narrator "[You meet his gaze, and in it, you see the reflection of your own heart.]"
+
+Kenji "You've navigated the city, the tasks, and found your way to the core of my world."
+"Now, I find myself at a crossroads, with this heirloom, with you."
+"And I choose us."
+
+narrator "[In the quiet of the office, with the city as your witness, you come together.]"
+"[Not just in proximity but on purpose, your shared path now clear.]"
+
+<mainChar> "(I have an important relationship with Kenji now.)"
+"(Far beyond what I had expected.)"
+"(It is time to talk to him about my amulet, and the leader of the Kagayaku.)"
+
+Load(6.CEO-EndGameStart)
+
+[wait]HideUI()
+Hide(Kenji)

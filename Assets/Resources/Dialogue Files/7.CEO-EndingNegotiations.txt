@@ -1,0 +1,9 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo inside")
+CreateCharacter(Kenji)
+Kenji.SetPosition(-x 0.5 -y 0)
+
+
+
+[wait]HideUI()
+Hide(Kenji)

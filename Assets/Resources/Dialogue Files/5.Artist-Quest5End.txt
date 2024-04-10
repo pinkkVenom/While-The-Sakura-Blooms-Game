@@ -1,0 +1,90 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/art studio")
+CreateCharacter(Emi)
+Emi.SetPosition(-x 0.5 -y 0)
+Show(Emi)
+
+Emi "You've returned!"
+"I hope the trip to the mountains wasn't too much trouble."
+
+choice "ceo"
+{
+	-Not at all
+	-I found what you need
+}
+
+narrator "[Emi smiles her brightest smile yet.]"
+"[She takes the moonstone from your hand. She stares for a while as it reflects irridescent light.]"
+
+Emi "It's beautiful <mainChar>."
+"What could I ever do to thank you?"
+
+choice "ceo"
+{
+	-Seeing you happy is all I need
+	$VN.emiPoints += 10
+	Emi "Oh stop, you're making me blush."
+	-I don't need anything from you
+}
+
+Emi "I have great love and appreciation for you."
+"You have made my world a wonderful place."
+
+<mainChar> "(My bond with Emi is very strong.)"
+"(Although I am hesitant, I must tell her about the amulet and it's true power.)"
+
+narrator "[The art studio, filled with the scent of oil paints and fresh canvas suddenly feels comforting for what you are about to say.]"
+"[You stand before Emi, the amulet in hand.]
+
+choice "ceo"
+{
+	-Emi, there's something important I need to tell you about my amulet
+}
+
+Emi “The beautiful amulet you showed me when we first met?”
+"That reminds me, I was never able to find information from clients regarding it."
+"Have you discovered something perhaps?"
+
+narrator "[You reveal the amulet, its surface glimmering with a light that's not quite of this realm.]"
+
+choice "ceo"
+{
+	-The leader of the Kagayaku is trapped inside this amulet
+}
+
+narrator "[Emi’s eyes widen with a mix of skepticism and intrigue.]"
+
+Emi “Trapped? In there? That’s... hard to believe."
+
+narrator "[You focus on the amulet, channeling a silent plea for the good leader to reveal themselves.]"
+"[The amulet glows brightly, and a translucent figure emerges, the visage of the good faction leader becoming clear.]"
+"[Emi stands, shock apparent on her features.]"
+
+Emi "Oh my god."
+"It really is him."
+"But...how can I help him after what he's done to my family?"
+
+choice "ceo"
+{
+	-Emi, he's been wrongfully trapped by the Empress
+
+}
+if($VN.emiPoints >= 80)
+{
+	Emi “Okay okay, I will help. For the realm, and for you. Let’s not waste another moment.”
+}
+if($VN.emiPoints < 80)
+{
+	Emi  “I... I will help. It’s a lot to take in, but I can’t turn a blind eye to this.”
+}
+
+
+narrator "[Emi gathers her thoughts, pacing the studio with a furrowed brow, brushes clutched in hand.]"
+"[A moment later, she stops and turns to face you, a spark of inspiration in her eyes.]
+
+Emi "Okay we will head to the Castle as soon as possible then."
+"The guards will be expecting us so we shouldn't have any trouble getting in."
+"Meet me there as soon as you can."
+
+[wait]HideUI()
+Hide(Emi)

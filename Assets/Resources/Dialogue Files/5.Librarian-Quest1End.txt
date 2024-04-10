@@ -1,0 +1,68 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/library inside")
+CreateCharacter(Yuki)
+Yuki.SetPosition(-x 0.5 -y 0)
+Show(Yuki)
+
+narrator "[Yuki is at his desk, surrounded by stacks of books, but he stands to greet you.]"
+
+Yuki "Welcome back."
+"Please tell me you found it."
+
+choice "ceo"
+{
+	-Indeed I did
+}
+
+narrator "[Yuki's demeanor softens, a spark of kinship in his eyes.]"
+
+Yuki "I'm so happy to hear this."
+"Please don't tell anyone this was ever lost."
+"My boss would kill me."
+"Now let's examine this scroll..."
+"There should be information on important immortal artifacts here."
+
+narrator "[Yuki examines the pages intently.]"
+"[He's skimming the text faster than you can keep up with.]"
+
+Yuki "What..?"
+"There's nothing here?"
+"I could've sworn this was the solution for you."
+"There isn't any information on any kind of magical amulets here."
+
+choice "ceo"
+{
+	-That's okay, let's find another scroll
+}
+
+Yuki "I'm not sure what else is in our catalog that could help."
+"Actually wait..."
+"The Palace archives have the largest library collection in the realm."
+"Even larger than our collection here."
+
+choice "ceo"
+{
+	-How can we get to the Palace?
+}
+
+Yuki "Well it's not gonna be easy."
+"I'm gonna have to think about a plan for that."
+"While I think of a brilliant solution, I need you to do something else for me."
+"This woman is late on returning her borrowed books."
+"Normally I would go find her myself, but since I'm researching for you right now..."
+
+choice "ceo"
+{
+	-I will go find her
+}
+
+Yuki "Ah! I knew you'd jump at the opportunity."
+"She should be located at the temple."
+"The temple is in the art district which is north of here."
+"You have to travel north to downtown, and then north again to the art district."
+"Then look towards the west side of the area."
+"Also the woman's name is Alice, so make sure to ask around for her."
+"Please come back once you finish the task."
+
+[wait]HideUI()
+Hide(Yuki)
