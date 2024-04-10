@@ -41,6 +41,9 @@ public class StoryManager : MonoBehaviour
     public bool chosenLibrarian => LibrarianCollision.chosenRomance;
     public bool chosenArtist => ArtistCollision.chosenRomance;
 
+    //End Game
+    [SerializeField] GameObject factionbad;
+
     //CEO Questing
     public GameObject CEOQuest1;
     public GameObject CEOQuest2;
@@ -64,6 +67,7 @@ public class StoryManager : MonoBehaviour
     void Start()
     {
         doctor.SetActive(false);
+        factionbad.SetActive(false);
         factionGood.SetActive(false);
 
         CEOQuest1.SetActive(false);
@@ -204,18 +208,22 @@ public class StoryManager : MonoBehaviour
             //24 is CEO ending
             if (storyIndex == 24)
             {
-                
+                SetStoryIndex();
             }
             //25 is Nurse ending
+            if (storyIndex == 25)
+            {
+                SetStoryIndex();
+            }
             //26 is Librarian ending
             if (storyIndex == 26)
             {
-
+                SetStoryIndex();
             }
             //27 is Artist ending
             if (storyIndex == 27)
             {
-
+                SetStoryIndex();
             }
         }
         
@@ -384,6 +392,8 @@ public class StoryManager : MonoBehaviour
             sakuraTree.Play("Sakura4");
             doctor.SetActive(true);
             factionGood.SetActive(false);
+
+            factionbad.SetActive(true);
         }
     }
 
