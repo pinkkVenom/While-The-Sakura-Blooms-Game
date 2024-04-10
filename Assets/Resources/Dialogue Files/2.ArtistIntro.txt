@@ -78,6 +78,7 @@ choice "do you like cats or dogs"
 }
 
 Emi "Great! See you later."
+$VN.emiPoints + 10
 
 Hide(Emi)
 HideUI()

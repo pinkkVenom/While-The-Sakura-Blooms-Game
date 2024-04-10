@@ -49,5 +49,6 @@ choice "ceo"
 "Alright if you insist."
 "Please send my thanks to Mrs.Kaito."
 
+
 [wait]HideUI()
 Hide(Shopkeeper3)

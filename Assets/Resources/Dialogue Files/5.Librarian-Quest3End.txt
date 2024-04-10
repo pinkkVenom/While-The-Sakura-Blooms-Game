@@ -29,6 +29,7 @@ Yuki "Now I am ready to take proper notes."
 choice "ceo"
 {
 	-Let's find it, then
+	$VN.yukiPoints + 10
 	-I'm ready when you are
 }
 Hide(Yuki)
@@ -75,6 +76,7 @@ choice "ceo"
 {
 	-That sounds like a book filled with wonders
 	-I'd love to read it.
+	$VN.yukiPoints + 10
 }
 
 narrator "[Yuki smiles softly, a mix of fondness and sadness in his expression.]"
@@ -114,5 +116,6 @@ Yuki "Perhaps I must give you some context for this."
 "Please be sure to bring some warm clothes."
 "It can be chilly up there."
 
+$VN.yukiPoints + 10
 [wait]HideUI()
 Hide(Yuki)

@@ -23,7 +23,7 @@ Emi "Good, I'm glad it wasn't too much trouble for you."
 narrator "[Emi looks away briefly, emotional at the though of you getting hurt.]"
 
 Emi "Would you perhaps like to go see some of my work?"
-"They’re exhibited at the musem."
+"They're exhibited at the musem."
 "You have to head south into the downtown district."
 "When you spot Mr.Sato's huge skyscraper, then head east from there."
 "The museum is a very rectangular building, with some flowers out front."
@@ -34,6 +34,7 @@ choice "ceo"
 }
 
 Emi "I'll meet you there and we can explore the exhibit together."
+$VN.emiPoints + 10
 
 [wait]HideUI()
 Hide(Emi)

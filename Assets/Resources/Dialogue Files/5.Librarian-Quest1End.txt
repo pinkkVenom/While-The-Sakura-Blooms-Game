@@ -64,5 +64,6 @@ Yuki "Ah! I knew you'd jump at the opportunity."
 "Also the woman's name is Alice, so make sure to ask around for her."
 "Please come back once you finish the task."
 
+$VN.yukiPoints + 10
 [wait]HideUI()
 Hide(Yuki)

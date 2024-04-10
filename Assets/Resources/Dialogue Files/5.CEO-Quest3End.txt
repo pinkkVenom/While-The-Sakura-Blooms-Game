@@ -68,5 +68,6 @@ Kenji "If you manage to find the cloak, I'll tell you more about myself."
 "As well as the plan to head to the Castle."
 "I wish you the best of luck."
 
+$VN.kenjiPoints + 10
 [wait]HideUI()
 Hide(Kenji)

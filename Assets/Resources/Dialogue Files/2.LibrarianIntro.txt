@@ -58,6 +58,7 @@ Yuki "Right now I'm going to do my best to help you."
 "I'll research what I can about these ancient devices."
 "Come back and find me later. And try to keep a low profile."
 
+$VN.yukiPoints + 10
 Hide(Yuki)
 HideUI()
 

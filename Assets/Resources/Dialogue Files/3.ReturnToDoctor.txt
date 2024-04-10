@@ -8,7 +8,7 @@ Doctor “Ah, the human returns! Tell me, how was your trip through the city?”
 
 choice "ceo"
 {
-	-Everyone told me to come back later and didn’t help.
+	-Everyone told me to come back later and didn't help.
 	-It was interesting, but I'm still stuck.
 }
 
@@ -46,8 +46,8 @@ Doctor “If I were you, I would help them with their daily activities.”
 	"If at any point you need to leave the game, press [ESC] to quit or to adjust settings."
 	"When saving your game, make sure to save while you're in conversation with someone."
 	"More information is available in the Instructions tab when you press [ESC]"
-	“I’m confident you can handle it from here.”
-	“If there’s any other questions you may have, come back anytime to chat.”
+	“I'm confident you can handle it from here.”
+	“If there's any other questions you may have, come back anytime to chat.”
 
 Hide(Doctor)
 narrator "[As the doctor shares his wisdom, you realize the journey ahead is not just about finding a way back, but also about forging bonds in this unknown realm.]"

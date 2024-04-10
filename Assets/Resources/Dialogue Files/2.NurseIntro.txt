@@ -38,6 +38,8 @@ Hanako as Nurse "That's good at least."
 "If you can't find me, you can ask the information desk for my name."
 Hanako "Hanako Kaori"
 "I hope we will speak again shortly"
+
+$VN.hanakoPoints + 10
 Hide(Hanako)
 HideUI()
 

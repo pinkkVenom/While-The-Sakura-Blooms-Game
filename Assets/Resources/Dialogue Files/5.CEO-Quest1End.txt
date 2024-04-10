@@ -94,6 +94,7 @@ narrator ([Kenji studies you for a moment, then smirks.])
 
 Kenji "You drive a hard bargain."
 "Very well, bring me the coffee, and we'll share it as equals {a}for a moment"
+$VN.kenjiPoints + 10
 
 [wait]HideUI()
 Hide(Kenji)

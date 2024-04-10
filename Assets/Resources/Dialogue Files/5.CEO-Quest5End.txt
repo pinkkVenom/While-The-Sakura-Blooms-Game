@@ -61,5 +61,6 @@ narrator "[In the quiet of the office, with the city as your witness, you come t
 
 Load(6.CEO-EndGameStart)
 
+$VN.kenjiPoints + 10
 [wait]HideUI()
 Hide(Kenji)

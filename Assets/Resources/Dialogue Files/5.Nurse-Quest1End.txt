@@ -51,6 +51,6 @@ Hanako "I have another favor to ask, and it's an important task for this tonic I
 "I'll be eagerly awaiting your return."
 
 
-
+$VN.hanakoPoints + 20
 [wait]HideUI()
 Hide(Hanako)

@@ -14,7 +14,7 @@ choice "do you like cats or dogs"
 	-I'm so sorry
 }
 
-Kenji as Man "Right. I’m late enough for my meeting as is."
+Kenji as Man "Right. I'm late enough for my meeting as is."
 
 choice "do you like cats or dogs"
 {
@@ -30,7 +30,7 @@ choice "do you like cats or dogs"
 }
 
 Kenji "sigh* That would be me."
-"I’m seriously in a rush though, can't I give you my business card?"
+"I'm seriously in a rush though, can't I give you my business card?"
 
 choice "do you like cats or dogs"
 {
@@ -63,7 +63,7 @@ Kenji "Well that much is clear."
 "*phone rings*"
 "I gotta go"
 
-
+$VN.kenjiPoints + 10
 Hide(Kenji)
 HideUI()
 

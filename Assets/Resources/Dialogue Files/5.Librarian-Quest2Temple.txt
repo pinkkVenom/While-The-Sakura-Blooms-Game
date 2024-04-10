@@ -36,5 +36,6 @@ Shopkeeper3 as Alice "Bless your soul."
 "Here is the book."
 "Send the librarians apoligies for my tardiness."
 
+$VN.yukiPoints + 10
 [wait]HideUI()
 Hide(Shopkeeper3)

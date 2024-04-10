@@ -9,7 +9,7 @@ narrator "[Emi awaits with a quiet excitement, which breaks into a radiant smile
 Emi "You found it!"
 "Only someone with a true artist's soul could have located exactly what I was looking for."
 
-narrator "[Emi’s cheeks flush with a soft rose hue.]"
+narrator "[Emi's cheeks flush with a soft rose hue.]"
 
 Emi "To be seen through your eyes, to be... {a}understood, it means more to me than I can say."
 "And, as promised, I must tell you more about my past."
@@ -40,6 +40,7 @@ choice "ceo"
 {
 	-That's why you created that exhibit
 	-The paintings are a story of your emotional past
+	$VN.emiPoints + 10
 }
 
 Emi "Yes."

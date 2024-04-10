@@ -77,5 +77,5 @@ Hide(Hanako)
 narrator "[As you set off on your new task, you feel a bond forming with the kind nurse.]"
 "[One that promises not just friendship, but a deep connection rooted in care and shared experience.]"
 
-
+$VN.hanakoPoints + 10
 [wait]HideUI()

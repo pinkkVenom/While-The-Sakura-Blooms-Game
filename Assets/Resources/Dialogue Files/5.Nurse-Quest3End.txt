@@ -90,6 +90,6 @@ choice "ceo"
 Hanako "Thank-you!"
 "And make sure to get one for yourself to try."
 
-
+$VN.hanakoPoints + 10
 [wait]HideUI()
 Hide(Hanako)

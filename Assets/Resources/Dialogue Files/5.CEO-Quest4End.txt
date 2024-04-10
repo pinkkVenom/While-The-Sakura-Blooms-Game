@@ -52,6 +52,7 @@ Kenji "There you are."
 choice "ceo"
 {
 	- I'll find it for you, Kenji
+	$VN.kenjiPoints + 10
 	-I'll navigate the city for your heirloom
 }
 
@@ -66,5 +67,6 @@ Kenji "You are someone who I can trust get my tasks done for me."
 "Demonic areas are coverd in a lot of purple foliage."
 "Once you see that, you'll know you're there."
 
+$VN.kenjiPoints + 10
 [wait]HideUI()
 Hide(Kenji)

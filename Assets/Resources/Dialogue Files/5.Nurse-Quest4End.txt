@@ -15,6 +15,7 @@ Hanako "Oh my!"
 choice "ceo"
 {
 	-Yes I have some for myself
+	$VN.hanakoPoints + 10
 }
 
 Hanako "Excellent!"
@@ -84,5 +85,6 @@ Hanako "Together, then. Let's head to the Palace."
 "We must travel all the way west from here, west of the Main Road."
 "Let us hope the light guides us well."
 
+$VN.hanakoPoints + 10
 [wait]HideUI()
 Hide(Hanako)

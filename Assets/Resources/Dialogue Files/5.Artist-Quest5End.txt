@@ -52,9 +52,9 @@ choice "ceo"
 	-The leader of the Kagayaku is trapped inside this amulet
 }
 
-narrator "[Emi’s eyes widen with a mix of skepticism and intrigue.]"
+narrator "[Emi's eyes widen with a mix of skepticism and intrigue.]"
 
-Emi “Trapped? In there? That’s... hard to believe."
+Emi “Trapped? In there? That's... hard to believe."
 
 narrator "[You focus on the amulet, channeling a silent plea for the good leader to reveal themselves.]"
 "[The amulet glows brightly, and a translucent figure emerges, the visage of the good faction leader becoming clear.]"
@@ -71,11 +71,11 @@ choice "ceo"
 }
 if($VN.emiPoints >= 80)
 {
-	Emi “Okay okay, I will help. For the realm, and for you. Let’s not waste another moment.”
+	Emi “Okay okay, I will help. For the realm, and for you. Let's not waste another moment.”
 }
 if($VN.emiPoints < 80)
 {
-	Emi  “I... I will help. It’s a lot to take in, but I can’t turn a blind eye to this.”
+	Emi  “I... I will help. It's a lot to take in, but I can't turn a blind eye to this.”
 }
 
 
@@ -85,6 +85,7 @@ narrator "[Emi gathers her thoughts, pacing the studio with a furrowed brow, bru
 Emi "Okay we will head to the Castle as soon as possible then."
 "The guards will be expecting us so we shouldn't have any trouble getting in."
 "Meet me there as soon as you can."
+$VN.emiPoints + 10
 
 [wait]HideUI()
 Hide(Emi)

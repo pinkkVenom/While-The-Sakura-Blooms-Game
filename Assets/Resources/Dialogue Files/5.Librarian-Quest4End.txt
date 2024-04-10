@@ -103,5 +103,6 @@ Yuki "I have secured us a visit to the Palace and it's royal archive."
 narrator "[You prepare to leave the library, the weight of the journey ahead looming]"
 "[But with Yuki by your side, you feel ready to face whatever may come.]
 
+$VN.yukiPoints + 10
 [wait]HideUI()
 Hide(Yuki)

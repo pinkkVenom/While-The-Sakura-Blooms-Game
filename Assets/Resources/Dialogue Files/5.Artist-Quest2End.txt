@@ -11,12 +11,13 @@ narrator "[The studio feels warmer, more intimate, yet also somewhat heavy.]"
 
 Emi "Your perspective is refreshing."
 "To see my work through your eyes... it's as if I'm discovering it anew."
-"It’s funny, isn’t it, how art can bridge worlds?"
+"It's funny, isn't it, how art can bridge worlds?"
 
 choice "ceo"
 {
 	-Your paintings did more than that
 	-They spoke of passion, of struggle, of triumph. It was... inspiring
+	$VN.emiPoints + 10
 }
 
 narrator "[Emi leans in, her proximity closing the space between artist and muse.]"
@@ -75,6 +76,7 @@ choice "ceo"
 
 Emi "Thank-you <mainChar>."
 "I'll see you when you get back."
+$VN.emiPoints + 10
 
 [wait]HideUI()
 Hide(Emi)
