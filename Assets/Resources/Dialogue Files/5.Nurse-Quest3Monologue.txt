@@ -1,0 +1,6 @@
+ShowUI()
+
+<mainChar> "(I can't find anything remotely resembling the Tsukimi Plant.)"
+"(I have to head back and let Hanako know I couldn't find it.)"
+
+[wait]HideUI()

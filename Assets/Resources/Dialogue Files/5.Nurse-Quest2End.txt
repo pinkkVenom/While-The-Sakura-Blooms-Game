@@ -1,0 +1,81 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/hospital reception")
+CreateCharacter(Hanako -e true)
+Show(Hanako)
+
+narrator "[Hanako is exactly where you left her, though now there's a hint of anticipation as she awaits their return.]"
+
+Hanako "You found it!"
+"Oh, I knew you would. You have a natural gift for this, it seems."
+"This bluebell will help many people get the medicine they need. Thank-you."
+
+choice "ceo"
+{
+	-It was an interesting journey
+	-The forest here is quite lively
+}
+
+narrator "[A gentle laugh escapes Hanako, her demeanor as soothing as the remedies she prepares.]"
+
+Hanako "Lively is one way to put it."
+"Also I'm trying to find a way to help you get back home."
+"I keep running into the same conclusion though..."
+"Which is that the Empress likely has the most knowledge on how to help."
+"I'm gonna think of a way for us to get to the Palace."
+"It's not like her to invite just anyone in, you know?"
+
+choice "ceo"
+{
+	-Makes sense
+	-I understand
+}
+
+Hanako "Excellent!"
+"Now, if you're up for it I have another task for you."
+"There is another herb I've been trying to find forever but I can't seem to locate where it grows."
+"It's called a Tsukimi Plant."
+"It's said they only bloom during a full moon"
+It’s said to have healing properties that are almost... magical."
+
+choice "ceo"
+{
+	-It sounds beautiful
+	-Is it still around?
+}
+
+narrator "[Hanako sighs, a wistful smile on her lips.]"
+
+Hanako "I haven't seen it since I was a child."
+"But if it does still exist, it would be a treasure to behold, a link to happier times."
+"I wonder if anyone could ever find it again."
+
+choice "ceo"
+{
+	-Maybe I could look for it?
+}
+
+narrator "[Hanako’s eyes widen, the idea taking root.]"
+
+Hanako "Would you? That's so kind of you."
+"But it's just an old tale from my mother but I remember her saying it only blooms on a full moon and one is coming up I believe."
+"If it were true, though, finding it would be... It would mean so much to me."
+"If I remember correctly, they grow in cold climates."
+"If you head west to the Main Road, then north, and then east, you will get to the cold mountains."
+"Perhaps begin your exploration there."
+"Also when you return.."
+"I'd like to know more about you... and perhaps share more about myself."
+
+choice "ceo"
+{
+	-Sounds good
+	-I look forward to hearing everything about you
+	$VN.hanakoPoints += 10
+}
+
+Hide(Hanako)
+
+narrator "[As you set off on your new task, you feel a bond forming with the kind nurse.]"
+"[One that promises not just friendship, but a deep connection rooted in care and shared experience.]"
+
+
+[wait]HideUI()

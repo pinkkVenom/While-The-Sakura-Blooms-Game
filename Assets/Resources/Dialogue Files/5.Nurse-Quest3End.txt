@@ -1,0 +1,95 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/hospital reception")
+CreateCharacter(Hanako -e true)
+Show(Hanako)
+
+narrator "[Hanako greets you at the reception desk, giddy that you've returned.]"
+
+Hanako "Did you find it?"
+"You didn't suffer any hypothermia or severe cold effects did you?"
+
+choice "ceo"
+{
+	-I'm okay, but I couldn't find it
+}
+
+narrator "[Hanako had a brief look of disapointment on her face.]"
+"[But she quickly smiled at you.]"
+
+Hanako "Hey <mainChar> it's okay."
+"It's been so long since those plants have been spotted in the wild."
+"If I'm being honest, I believe most of them died off from the rebel wars several years ago."
+"The Tsukimi Plants have incredible power, yet they are so fragile to violence."
+"Much like humans in a way."
+"Even being in a hostile environment is enough to wither a person away."
+"It's alright you didn't find the plant really."
+"And I appreciate your efforts greatly."
+"I have also secured us a visit to the Palace."
+"We will attend as healers and visit the elderly nobles to assess their medical conditions."
+"You have a chance at getting home now dear."
+
+narrator "[Hanako's eyes reflect a multitude of emotions, at the idea of your departure.]"
+
+Hanako "Now as promised, I will share a bit about myself."
+
+choice "ceo"
+{
+	-Yes please
+}
+
+Hanako "Hmm...{a}what should I start with?"
+"Well I suppose you don't know much about immortal species."
+"I am a Caladrius."
+"It's in my nature to be a healer really."
+"My parents also loved to offer their healing abilities to those in need."
+"Unfortunately, when the war broke out so many people needed help."
+"We took in as many injured as we could, but we were quickly overwhelmed and under-supplied."
+"That's when my mother went looking for the Tsukimi Plant, as a last ditch effort to help as many as we could."
+"Despite the fact that she was wearing a healer's uniform, she got caught in crossfire between the rebels and the Empress' soldiers."
+"My father went out to look for her..."
+"She was injured, but not in critical condition."
+"She did find the Tsukimi Plant, but it was so withered, so decayed."
+"That's why I've always suspected the war made the plants disappear."
+"That was the last time I ever saw the Tsukimi Plant."
+"My mother did recover well, and we did our best to help everyone who came to us for healing."
+"Good riddance the war is over now."
+"Even though we have an established hospital, we don't have enough staff to help that many people."
+"It's a terrible thing really."
+
+choice "ceo"
+{
+	-I'm very sorry Hanako
+}
+
+"It was a long time ago."
+"And I'm doing much better now."
+"My parents are doing well, and I feel very happy with my life and my job."
+
+choice "ceo"
+{
+	-I would like to get you something to cheer you up
+}
+
+narrator "[Hanako blushes as your kind offer.]"
+
+Hanako "Oh...um...okay sure."
+"That's very sweet of you."
+"Mmm speaking of something sweet..."
+"I would love some dango right now."
+"It's one of my favorite snacks."
+"If you head north from here, you'll enter the art district."
+"There's a dango shop right there."
+"They always have plenty in stock."
+
+choice "ceo"
+{
+	-I'll get right on it!
+	$VN.hanakoPoints += 10
+}
+
+Hanako "Thank-you!"
+"And make sure to get one for yourself to try."
+
+
+[wait]HideUI()
+Hide(Hanako)

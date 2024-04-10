@@ -56,46 +56,52 @@ choice "ceo"
 }
 
 [Yuki's hands pause, books half-forgotten. His brow furrows as he looks at you more intently.]
-Yuki "The good faction leader? That sounds quite serious. What about them?"
-Player "The leader is trapped inside this amulet. I need to get back to the human world, and they're my key home."
-Player "This is going to sound crazy, but the good faction leader is sealed within my amulet. And I think they can help me return to my world."
-[Yuki shocked] 
-Yuki "Inside the amulet? That's... rather unbelievable. Are you certain?"
-Player "I can prove it. Just watch."
-[You hold out the amulet, concentrating on the presence within. A glow begins to emanate from the jewel at its core.]
-[The figure of the good faction leader materializes, regal and imposing, even as an apparition.]
-Good Faction Leader "Yuki Tanaka, your help is crucial. We must reach the palace to confront the bad leader and restore balance."
-[Yuki astonished] 
-Yuki "This... This is extraordinary."
-Player "Yuki, I need you. Will you help us get to the palace?"
-Player "It's going to be dangerous, but we could really use your knowledge and bravery."
-[Yuki determined] 
-Yuki "For you, I'd walk into the storm itself. Lead the way, my friend."
-[You feels a rush of gratitude]
-[Yuki hesitant] 
-Yuki "This is... a lot to take in. But I cannot ignore the plight before us. I will assist you."
-[You feels a rush of relief]
-Player "Thank you, Yuki. With your help, I know we can do this."
-[You prepare to leave the library, the weight of the journey ahead looming, but with Yuki by your side, you feel ready to face whatever may come.]
-[Yuki paces back and forth, deep in thought, the spectral leader of the good faction watching on with patient gravity.]
-Yuki "If we are to enter the palace without raising suspicion, we need a valid reason for our visit."
-[He stops suddenly, snapping his fingers as the idea takes shape in his mind.]
-Yuki "I've got it! The palace's library is vast, and they often acquire new volumes. It's customary for them to invite librarians to catalog new additions."
-Player "That's brilliant! But how do we convince them to let us in?"
-Yuki "I have connections with the palace's head archivist. I've aided them before with rare texts. They trust my expertise."
-[He pulls out an ornate, feathered quill and a piece of parchment, scribbling a message.]
-Yuki "I'll send word that I've come across a unique collection of books that could greatly enrich their library."
-[He seals the letter with a stamp emblazoned with an intricate 'Y'.]
-Player "Do you think they'll believe it?"
-Player "What if they become suspicious?"
-[Yuki confident] 
-Yuki "They will. I've never offered false information before. My reputation will grant us entry."
-[Yuki reassuring] 
-Yuki "It's a risk, but a calculated one. My credibility is not so easily questioned."
-[You nods, understanding the delicacy of the situation.]
-Player "Once we're in, how do we find the bad leader without drawing attention to ourselves?"
-Yuki "We'll split up. I'll take the lead in the library, drawing their focus. You'll have the opportunity to search for the leader."
 
+Yuki "The Kagayaku leader? That sounds quite serious considering his suspicious disapearance. What about him?"
+
+choice "ceo"
+{
+	-The leader is trapped inside this amulet
+	-I need to get back to the human world, and they're my key home
+}
+
+narrator "[Yuki gasps in shock.]"
+
+Yuki "Inside the amulet? That's... rather unbelievable. Are you certain?"
+
+choice "ceo"
+{
+	-I can prove it. Just watch
+}
+
+narrator "[You hold out the amulet, concentrating on the presence within.]"
+"[A glow begins to emanate from the jewel at its core.]"
+
+Yuki "This... This is extraordinary."
+"I can certainly feel a powerful presence within this amulet."
+
+choice "ceo"
+{
+	-Yuki, I need you. Will you help us get to the palace?
+}
+
+if($VN.yukiPoints >= 80)
+{
+	Yuki "For you, I'd walk into the storm itself. Lead the way, my friend."
+	narrator "[You feel a rush of gratitude.]"
+}
+if($VN.yukiPoints < 80)
+{
+	Yuki "This is... a lot to take in. But I cannot ignore the plight before us. I will assist you."
+	narrator "[You feel a rush of relief.]"
+}
+
+Yuki "I have secured us a visit to the Palace and it's royal archive."
+"Let us leave at once."
+"They are expecting guests after all."
+
+narrator "[You prepare to leave the library, the weight of the journey ahead looming]"
+"[But with Yuki by your side, you feel ready to face whatever may come.]
 
 [wait]HideUI()
 Hide(Yuki)

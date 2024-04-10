@@ -1,0 +1,87 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/hospital reception")
+CreateCharacter(Hanako -e true)
+Show(Hanako)
+
+narrator "[Hanako was a bit pre-occupied with work to notice you come into the reception area.]"
+"[While she wasn't looking, you offer her a stick of dango.]"
+
+Hanako "Oh my!"
+"I'm so sorry I didn't see you there."
+"This dango looks and smells delicious!"
+"I appreciate this dearly <mainChar>."
+"You did get one for yourself yes?"
+
+choice "ceo"
+{
+	-Yes I have some for myself
+}
+
+Hanako "Excellent!"
+"Let us enjoy a delicious snack after a long day."
+
+narrator "[Hanako eats her dango methodically, making sure to savor every bite.]"
+"[You try to match the pace she's eating at.]"
+"[Everytime Hanako looks to you, her smile radiates warmth and happiness.]"
+
+<mainChar> "(Hanako and I share a special, magical bond.)"
+"(I must tell her of my amulet and it's secret powers.)"
+
+narrator "[The hospital room, usually a beacon of sterile tranquility, feels suddenly charged with an electric tension.]"
+"[Hanako, whose demeanor is as calming as the medicinal herbs she often administers, looks upon you with a focused intent that belies her usually gentle nature.]"
+
+Hanako "Is something wrong <mainChar>?"
+
+choice "ceo"
+{
+	-You won't believe what I'm about to tell you
+}
+
+narrator "[Clutching the amulet that has become the heart of this unfolding mystery.]"
+
+Hanako "In my time, I have witnessed the unbelievable become reality."
+"Speak, I am listening."
+
+choice "ceo"
+{
+	-The leader of the Kagayaku is trapped in this amulet
+}
+
+Hanako "That... that is a heavy burden to bear."
+"Are you certain of this?"
+
+choice "ceo"
+{
+	-Please, Hanako, we need your help
+}
+
+Hanako "Show me then."
+"If what you say is true, I must see with my own eyes."
+
+narrator "[Concentrating on the amulet, the essence of the Kagayaku leader is revealed.]"
+
+Hanako "By the healing blossoms... {a}it’s true."
+
+choice "ceo"
+{
+	-We need to get to the palace
+}
+if($VN.hanakoPoints >= 80)
+{
+	Hanako "I've never seen clearer purpose than in your eyes at this moment."
+	"I will stand with you."
+}
+if($VN.hanakoPoints < 80)
+{
+	Hanako "This is more than I ever expected to face... but I cannot turn away from someone in need, not when it matters most."
+}
+
+
+narrator "[Hanako steps forward, showing solidarity.]"
+
+Hanako "Together, then. Let’s head to the Palace."
+"We must travel all the way west from here, west of the Main Road."
+"Let us hope the light guides us well."
+
+[wait]HideUI()
+Hide(Hanako)

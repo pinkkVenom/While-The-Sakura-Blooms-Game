@@ -1,0 +1,30 @@
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/ceo outside")
+CreateCharacter(Shopkeeper3 -e true)
+Shopkeeper3.SetPosition(-x 0.5 -y 0)
+Show(Shopkeeper3)
+
+Shopkeeper3 as Patient "Greetings."
+"*coughs*"
+"May I help you?"
+
+choice "ceo"
+{
+	-I'm here to help you
+	-Here's your medication
+}
+
+Shopkeeper3 as Patient "Thank-you so much."
+"I've been meaning to see nurse Hanako, but I feel far to unwell to leave my home right now."
+"You have my gratitude stranger."
+
+choice "ceo"
+{
+	-There's instructions inside the bag
+}
+
+Shopkeeper3 as Patient "I'll have a look at those."
+"Send Hanako my thanks."
+
+[wait]HideUI()
+Hide(Shopkeeper3)

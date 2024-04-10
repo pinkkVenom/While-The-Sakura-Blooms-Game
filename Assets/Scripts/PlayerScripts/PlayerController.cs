@@ -10,8 +10,15 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public Animator anim;
+    //ceo
     public TextAsset diamondStore;
     public TextAsset coffeeShop;
+    //artist
+    public TextAsset museum;
+    public TextAsset noodleShop;
+    //librarian
+    public TextAsset temple;
+
     public static bool isNearNPC;
     public CanvasGroup cg;
     [SerializeField]public TextMeshProUGUI money;
@@ -56,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             isNearNPC = true;
         }
+        //CEO
         if (collision.CompareTag("DiamondStore") && StoryManager.storyIndex == 9)
         {
             CEOCollision.StartConversation(diamondStore);
@@ -66,6 +74,22 @@ public class PlayerController : MonoBehaviour
         {
             CEOCollision.StartConversation(coffeeShop);
             CEOCollision.finishedQuest = true;
+        }
+        //ARTIST
+        if (collision.CompareTag("Museum") && StoryManager.storyIndex == 15)
+        {
+            ArtistCollision.StartConversation(museum);
+            ArtistCollision.finishedQuest = true;
+        }
+        if (collision.CompareTag("NoodleShop") && StoryManager.storyIndex == 17)
+        {
+            ArtistCollision.StartConversation(noodleShop);
+            ArtistCollision.finishedQuest = true;
+        }
+        if (collision.CompareTag("Temple") && StoryManager.storyIndex == 20)
+        {
+            LibrarianCollision.StartConversation(temple);
+            LibrarianCollision.finishedQuest = true;
         }
     }
 

@@ -1,144 +1,112 @@
-narrator "(Why is it so bright here?)"
-narrator "(I feel so dizzy...)"
+ShowUI()
+SetLayerMedia(background -m "~/Graphics/BG Images/sakura")
+CreateCharacter(GoodFaction -e true)
+GoodFaction.SetPosition(-x 0.5 -y 0)
 
-SetLayerMedia(background -m "~/Graphics/BG Images/hospital bed")
-CreateCharacter(Doctor -e true)
-Doctor.SetPosition(-x 0.5 -y 0)
+GoodFaction as Ominous Man "Don't worry, you're under my protection now."
 
-Doctor "Woah, don't be so hasty"
-"You were quite disoriented when we found you. I need to monitor you for a bit longer to make sure you don't have any serious symptoms."
-
-choice "where am i"
+choice "do you like cats or dogs"
 {
-	-Where am I?
+	-Woah!
+	-Who are you?!
 }
 
-Doctor "You're at the hospital hun. You were found by the forest's edge on the outskirts of town"
-"What were you doing alone outside the city?"
+GoodFaction as Kagayaku Leader "I am the leader of the Kagayaku Chokugo."
+"In truth, I must thank you."
+"If it wasn't for you, I would've been trapped in that amulet a long time."
 
-choice "i was shopping"
+choice "do you like cats or dogs"
 {
-	-I wasn't outside the city. I was shopping at the thrift store.
+	-Wait aren't you the true Emperor?
+	-Aren't you supposed to be at the castle?
 }
 
-Doctor "Interesting..."
-narrator "[The doctor repeatedly looks at you then back to the clipboard in their hands with concern growing on their face]"
 
-choice "whats wrong"
+GoodFaction as Kagayaku Leader "I was trapped in this amulet by Empress of the Mizube no Ikiryo, the usurper."
+"She isn't supposed to be in the castle right now, nor was she supposed to use forbidden magic, but here we are."
+
+choice "do you like cats or dogs"
 {
-	-What's wrong?
+	-Is that how I got transported here?
 }
 
-Doctor "You're...{a} human?"
+GoodFaction as Kagayaku Leader "Unfortunately, yes."
+"The Empress cursed me into this amulet using ancient magic that has long been forbidden."
+"The amulet's power awoke when you decided to wear it."
+"Believe it or not, humans have enough life force to awaken such a device because it requires very little energy."
+"I had to outlaw the magic because too many immortals were entering the human realm and disrupting their world."
+"I knew some immortals hated this rule, but I never imagined they would overthrow their rightful ruler in an act of defiance."
+"Can you help me <mainChar>?"
 
-choice "im human"
+choice "do you like cats or dogs"
 {
-	-Obviously
-	-Yeah last I checked...
+	-I want to. What can I do?
+	-This sounds dangerous. How can I be sure I can help?
 }
 
-Doctor "Ah that explains the disorientation."
-"It seems you've gotten transported to the Immortal Realm."
+GoodFaction as Kagayaku Leader "I need to get back to the castle."
+"Even though I am no longer dormant in the amulet, the full potential of my powers isn't available to me."
+"I must get to the throne so that I may become corporeal once again."
 
-choice "no way"
+choice "do you like cats or dogs"
 {
-	-The Immortal Realm?
-	-That's not possible…
+	-How can I trust you?
 }
 
-Doctor "Yes the realm of the fantastic and supernatural."
-"What's this?"
-narrator "[The doctor reaches in the direction of your necklace]"
-"[They furrow their brow as if studying the markings on the necklace]"
-Doctor "It's a shame you stumbled upon this necklace in the human world."
+GoodFaction as Kagayaku Leader "Do you have a choice in the matter?"
+"I would send you back home right now if I could, but as I said I need to regain my true form at the castle."
+"And I cannot do that until you take me there."
+"You have my word I will help you return home."
 
-choice "no way"
+
+choice "do you like cats or dogs"
 {
-	-What's wrong with it?
+	-Okay, I will do my best to help you.
 }
 
-Doctor "It's imbued with a special power that allows immortals to travel between this world and the human world."
-"But these are forbidden now. Immortals have not been allowed to travel to the human realm in many decades."
-narrator "(If this got me transported here, maybe it can transport me back.)"
-"[You touch the necklace and close your eyes in concentration]"
-Doctor "I'm afraid that won't work."
+GoodFaction as Kagayaku Leader "Thank you, human."
+"I know I am a stranger to you, but I sincerely appreciate all that you have done for me."
+"And I must apologize for putting you in this dangerous situation."
 
-choice "no way"
+choice "do you like cats or dogs"
 {
-	-Why not?
+	-Dangerous?
+	-Apologize?
 }
 
-Doctor "The magic in these amulets is unstable."
-"They can easily transport an immortal back to their world, but it requires a lot of magical power to bring someone to the human world."
-"Humans don't wield magical power so it would be impossible for you to transport yourself back without the use of immortal magic."
 
-choice "no way"
+GoodFaction as Kagayaku Leader "You cannot stay in the immortal realm long."
+"As a human, you become weaker the longer you stay here."
+"And once we get to the palace, the Empress won't be so welcoming once she realizes your intentions."
+"But I will do everything in my power to protect the kind and brave human who helped restore balance to the immortal realm."
+"These sakura trees are from the human realm."
+"Ancient immortals were obsessed with the botania in your world."
+"The only plant type that truly stuck around were the sakura trees."
+"This large sakura is sacred."
+"It was the first one of it's kind planted here."
+"This tree is imbued with magical power linked to your life force."
+"Right now the trees are pink and blooming, but the longer you remain here, the more the trees will wilt and even decay if your life force is on its last leg."
+"Keep this in mind while you're here."
+"Also, there's one more important thing."
+"Don't tell any of the immortals about this."
+"About me being alive."
+"It's been a few decades now that I've been gone, and every immortal has taken a side."
+"My side, or the Empress' side."
+"I don't want to put you at any more risk."
+
+choice "do you like cats or dogs"
 {
-	-How can I find a way back home?
-	- Why can't you help me?
+	-Okay, I understand. I won't tell anyone about you.
+	-But what if someone suspects something?
 }
 
-Doctor "I don't know how to operate these ancient amulets. I only know the basic information of their function. I'm afraid my limited knowledge on ancient magic will only hinder you."
-"It won't be easy for you to head back unfortunately."
-"The most powerful immortal in the land...she would surely have answers for you, but I doubt they would let a commoner, let alone a human, enter the palace so willingly."
+GoodFaction as Kagayaku Leader "Trust me, it is safer for you to keep this a secret."
+"Come now."
+"You must continue our mission."
+"You have the choice of speaking with Hanako, Yuki, Emi, or Kenji."
+"The immortal you speak to next will be locked into your story."
+"Choose wisely, as your choice cannot be changed once you speak to the one you wish to befriend."
 
-choice "no way"
-{
-	-How can I improve my status?
-}
 
-Doctor "I know some immortals that may be able to help you get into the castle."
-"One of my nurses Hanako is a very kind and reliable individual. She volunteers for the royal kingdom's infirmary."
-"The librarian Yuki is incredibly intelligent. He audits the royal archives every few months."
-"Kenji is quite the famous immortal. His popularity alone could get you anywhere you'd want to go."
-"The artist Emi is a very expressive person. She frequently gets commissioned to do artwork in the royal palace."
-"I've had the pleasure of meeting all these individuals. I am confident one of them can help you get home."
-
-choice "no way"
-{
-	-Who should I talk to first?
-}
-
-Doctor "You should visit each of them and introduce yourself. If they're hesitant to talk to you, let them know I sent you."
-"Speaking of which, I need to add your name to my file."
-
-input "Type your name here"
-
-Doctor "Nice to meet you <input>!"
-"You look much better now. You're free to go whenever you're ready"
-"Just be careful out there. Humans were never meant to be in the immortal world. The longer you stay here, the worse your physical state will become."
-
-choice "no way"
-{
-	-Could I die if I don't get home?
-}
-
-Doctor "..."
-"I'm afraid so."
-"But you needn't worry about that yet. It takes some time before you'll get really sick, and I'm confident you'll be home by then."
-"Now, get going."
-"If you have any questions, please let me know."
-
-choice "no way"
-{
-	-I have more questions
-		choice "no way"
-		{
-			-Is is a long trip to the districts?
-				Doctor "Not at all. All the local regions are accessible by foot."
-				choice "woah"
-				{
-					-Is there anything else I should know?
-						Doctor"Oh yes there is something serious I must tell you"
-						"The Immortal Realm has been in a state of political turmoil for years now."
-						"There are two major factions, and they have very polarized followers."
-						"Be careful of who you talk to, and what you talk to them about."
-						"It might cause you more harm than good."
-					}
-		}
-	
-	-Okay thanks!
-}
-
-Hide(Doctor)
-HideUI()
+Hide(GoodFaction)
+[wait]HideUI()

@@ -6,7 +6,7 @@ using DIALOGUE;
 
 public class StoryManager : MonoBehaviour
 { 
-    public static int storyIndex;
+    public static int storyIndex =14;
     [SerializeField] CanvasGroup VN;
     [SerializeField] Animator sakuraTree;
     public Animator likeHeart;
@@ -38,8 +38,8 @@ public class StoryManager : MonoBehaviour
     //Story part 4
     public bool chosenNurse => NurseCollision.chosenRomance;
     public bool chosenCEO => CEOCollision.chosenRomance;
-    public bool chosenLibrarian;
-    public bool chosenArtist;
+    public bool chosenLibrarian => LibrarianCollision.chosenRomance;
+    public bool chosenArtist => ArtistCollision.chosenRomance;
 
     //CEO Questing
     public GameObject CEOQuest1;
@@ -48,10 +48,39 @@ public class StoryManager : MonoBehaviour
     public GameObject CEOQuest4;
     public GameObject CEOQuest5;
 
+    //Artist Questing
+    public GameObject artistQuest1;
+    public GameObject artistQuest2;
+    public GameObject artistQuest3;
+    public GameObject artistQuest4;
+    public GameObject artistQuest5;
+
+    //Librarian Questing
+    public GameObject libQuest1;
+    public GameObject libQuest2;
+    public GameObject libQuest3;
+    public GameObject libQuest4;
+
     void Start()
     {
         doctor.SetActive(false);
         factionGood.SetActive(false);
+
+        CEOQuest1.SetActive(false);
+        CEOQuest2.SetActive(false);
+        CEOQuest3.SetActive(false);
+        CEOQuest4.SetActive(false);
+        CEOQuest5.SetActive(false);
+        artistQuest1.SetActive(false);
+        artistQuest2.SetActive(false);
+        artistQuest3.SetActive(false);
+        artistQuest4.SetActive(false);
+        artistQuest5.SetActive(false);
+        libQuest1.SetActive(false);
+        libQuest2.SetActive(false);
+        libQuest3.SetActive(false);
+        libQuest4.SetActive(false);
+
         SetStoryIndex();
         
     }
@@ -86,11 +115,21 @@ public class StoryManager : MonoBehaviour
                 storyIndex = 9;
                 SetStoryIndex();
             }
+            if (chosenArtist == true && storyIndex == 3)
+            {
+                storyIndex = 14;
+                SetStoryIndex();
+            }
+            if (chosenLibrarian == true && storyIndex == 3)
+            {
+                storyIndex = 19;
+                SetStoryIndex();
+            }
             //Quest 4: Pick a single Immortal to romance
             //romancing happens in individual characters scripts
             //4, 5, 6, 7, 8 are nurse
             //9, 10, 11, 12, 13 are CEO
-            if(CEOCollision.quest1Done == true && storyIndex == 9)
+            if (CEOCollision.quest1Done == true && storyIndex == 9)
             {
                 storyIndex = 10;
                 SetStoryIndex();
@@ -116,11 +155,67 @@ public class StoryManager : MonoBehaviour
                 SetStoryIndex();
             }
             //14, 15, 16, 17, 18 are Artist
+            if (ArtistCollision.quest1Done == true && storyIndex == 14)
+            {
+                storyIndex = 15;
+                SetStoryIndex();
+            }
+            if (ArtistCollision.quest2Done == true && storyIndex == 15)
+            {
+                storyIndex = 16;
+                SetStoryIndex();
+            }
+            if (ArtistCollision.quest3Done == true && storyIndex == 16)
+            {
+                storyIndex = 17;
+                SetStoryIndex();
+            }
+            if (ArtistCollision.quest4Done == true && storyIndex == 17)
+            {
+                storyIndex = 18;
+                SetStoryIndex();
+            }
+            if (ArtistCollision.quest5Done == true && storyIndex == 18)
+            {
+                storyIndex = 27;
+                SetStoryIndex();
+            }
             //19, 20, 21, 22, 23 are Librarian
-            //24 is start of the ending
+            if (LibrarianCollision.quest1Done == true && storyIndex == 19)
+            {
+                storyIndex = 20;
+                SetStoryIndex();
+            }
+            if (LibrarianCollision.quest2Done == true && storyIndex == 20)
+            {
+                storyIndex = 21;
+                SetStoryIndex();
+            }
+            if (LibrarianCollision.quest3Done == true && storyIndex == 21)
+            {
+                storyIndex = 22;
+                SetStoryIndex();
+            }
+            if (LibrarianCollision.quest4Done == true && storyIndex == 22)
+            {
+                storyIndex = 26;
+                SetStoryIndex();
+            }
+            //24 is CEO ending
             if (storyIndex == 24)
             {
                 
+            }
+            //25 is Nurse ending
+            //26 is Librarian ending
+            if (storyIndex == 26)
+            {
+
+            }
+            //27 is Artist ending
+            if (storyIndex == 27)
+            {
+
             }
         }
         
@@ -172,6 +267,7 @@ public class StoryManager : MonoBehaviour
             //romance is happening
             doctor.SetActive(true);
             factionGood.SetActive(false);
+            //CEO
             if(storyIndex == 9)
             {
                 CEOQuest1.SetActive(true);
@@ -212,10 +308,82 @@ public class StoryManager : MonoBehaviour
                 CEOQuest4.SetActive(false);
                 CEOQuest5.SetActive(true);
             }
+            //ARTIST
+            if (storyIndex == 14)
+            {
+                artistQuest1.SetActive(true);
+                artistQuest2.SetActive(false);
+                artistQuest3.SetActive(false);
+                artistQuest4.SetActive(false);
+                artistQuest5.SetActive(false);
+            }
+            if (storyIndex == 15)
+            {
+                artistQuest1.SetActive(false);
+                artistQuest2.SetActive(true);
+                artistQuest3.SetActive(false);
+                artistQuest4.SetActive(false);
+                artistQuest5.SetActive(false);
+            }
+            if (storyIndex == 16)
+            {
+                artistQuest1.SetActive(false);
+                artistQuest2.SetActive(false);
+                artistQuest3.SetActive(true);
+                artistQuest4.SetActive(false);
+                artistQuest5.SetActive(false);
+            }
+            if (storyIndex == 17)
+            {
+                artistQuest1.SetActive(false);
+                artistQuest2.SetActive(false);
+                artistQuest3.SetActive(false);
+                artistQuest4.SetActive(true);
+                artistQuest5.SetActive(false);
+            }
+            if (storyIndex == 18)
+            {
+                artistQuest1.SetActive(false);
+                artistQuest2.SetActive(false);
+                artistQuest3.SetActive(false);
+                artistQuest4.SetActive(false);
+                artistQuest5.SetActive(true);
+            }
+            //LIBRARIAN
+            if (storyIndex == 19)
+            {
+                libQuest1.SetActive(true);
+                libQuest2.SetActive(false);
+                libQuest3.SetActive(false);
+                libQuest4.SetActive(false);
+            }
+            if (storyIndex == 20)
+            {
+                libQuest1.SetActive(false);
+                libQuest2.SetActive(true);
+                libQuest3.SetActive(false);
+                libQuest4.SetActive(false);
+            }
+            if (storyIndex == 21)
+            {
+                libQuest1.SetActive(false);
+                libQuest2.SetActive(false);
+                libQuest3.SetActive(true);
+                libQuest4.SetActive(false);
+            }
+            if (storyIndex == 22)
+            {
+                libQuest1.SetActive(false);
+                libQuest2.SetActive(false);
+                libQuest3.SetActive(false);
+                libQuest4.SetActive(true);
+            }
         }
         if(storyIndex >= 24)
         {
             sakuraTree.Play("Sakura4");
+            doctor.SetActive(true);
+            factionGood.SetActive(false);
         }
     }
 

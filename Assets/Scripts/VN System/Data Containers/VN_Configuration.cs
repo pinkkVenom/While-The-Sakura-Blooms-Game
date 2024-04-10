@@ -51,7 +51,7 @@ public class VN_Configuration
         UI.resolutions.value = resIndex;
 
         //apply continue after skipping option
-        UI.SetButtonColors(UI.skippingContinue, UI.skippingStop, continueSkippingAfterChoice);
+        //UI.SetButtonColors(UI.skippingContinue, UI.skippingStop, continueSkippingAfterChoice);
 
         //apply value of architect and auto reader speed
         UI.textSpeed.value = dialogueTextSpeed;

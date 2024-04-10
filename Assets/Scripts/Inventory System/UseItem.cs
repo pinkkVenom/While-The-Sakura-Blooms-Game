@@ -34,6 +34,24 @@ public class UseItem : MonoBehaviour
             CEOCollision.finishedQuest = true;
             Destroy(gameObject);
         }
+        else if (ArtistCollision.inRange == true && itemname == "RoseButton" + CLONE_NAME && StoryManager.storyIndex == 14)
+        {
+            Debug.Log($"its the rose {itemname}");
+            ArtistCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
+        else if (ArtistCollision.inRange == true && itemname == "BrushButton" + CLONE_NAME && StoryManager.storyIndex == 16)
+        {
+            Debug.Log($"its the brush {itemname}");
+            ArtistCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
+        else if (ArtistCollision.inRange == true && itemname == "MoonstoneButton" + CLONE_NAME && StoryManager.storyIndex == 18)
+        {
+            Debug.Log($"its the moonstone {itemname}");
+            ArtistCollision.finishedQuest = true;
+            Destroy(gameObject);
+        }
         else
         {
             Debug.Log($"ewwww");

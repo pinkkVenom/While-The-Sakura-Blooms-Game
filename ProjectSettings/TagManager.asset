@@ -14,6 +14,8 @@ TagManager:
   - Museum
   - NoodleShop
   - Temple
+  - Patient
+  - Ruins
   layers:
   - Default
   - TransparentFX
