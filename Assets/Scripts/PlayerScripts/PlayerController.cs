@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public TextAsset temple;
     //nurse
     public TextAsset patient;
+    public TextAsset tsukimi;
 
     public static bool isNearNPC;
     public CanvasGroup cg;
@@ -96,6 +97,11 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Patient") && StoryManager.storyIndex == 4)
         {
             NurseCollision.StartConversation(patient);
+            NurseCollision.finishedQuest = true;
+        }
+        if (collision.CompareTag("Ruins") && StoryManager.storyIndex == 6)
+        {
+            NurseCollision.StartConversation(tsukimi);
             NurseCollision.finishedQuest = true;
         }
     }

@@ -54,7 +54,7 @@ choice "ceo"
 	-Maybe I could look for it?
 }
 
-narrator "[Hanako’s eyes widen, the idea taking root.]"
+narrator "[Hanako's eyes widen, the idea taking root.]"
 
 Hanako "Would you? That's so kind of you."
 "But it's just an old tale from my mother but I remember her saying it only blooms on a full moon and one is coming up I believe."

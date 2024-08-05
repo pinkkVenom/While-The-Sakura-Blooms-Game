@@ -6,7 +6,7 @@ using DIALOGUE;
 
 public class StoryManager : MonoBehaviour
 { 
-    public static int storyIndex =4;
+    public static int storyIndex;
     [SerializeField] CanvasGroup VN;
     [SerializeField] Animator sakuraTree;
     public Animator likeHeart;

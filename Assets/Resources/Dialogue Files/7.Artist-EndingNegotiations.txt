@@ -242,11 +242,6 @@ if ($wrongchoice > 3)
 		Emi "I have enough power for one last spell."
 		"It's risky, but it might just work."
 
-		choice "ceo"
-		{
-			-Emi, what are you planning?
-			-What does that look like for you?
-		}
 
 		<mainChar> "(I see it then—the resolution in his eyes, the terrible cost of what he's proposing written in the lines of his face.)"
 
@@ -254,21 +249,11 @@ if ($wrongchoice > 3)
 		"It will take you to a hospital in your world."
 		"But for it to work, for you to live, {a}I cannot survive the process."
 
-		choice "ceo"
-		{
-			-No! 
-			-I won't let you sacrifice your life for mine!
-		}
 
 		<mainChar> "(My heart is a drumbeat of panic. To live at the cost of his life is a price too cruel.)"
 
 		Emi "It's the only way. I can't... I won't lose you."
 
-		choice "ceo"
-		{
-			-Then I choose us, Emi. Together, here, now. 
-			-I love you too much to be the cause of your demise.
-		}
 
 		narrator "[But Emi's decision is made.]"
 		"[With a final, loving glance, he begins the spell.]"
@@ -298,10 +283,6 @@ if ($wrongchoice > 3)
 
 		Emi "It's not working... I can't... Why isn't it working?"
 
-		choice "ceo"
-		{
-			-Emi, it's okay. Some things... some things can't be fixed.
-		}
 
 		<mainChar> "(My words are a faint breeze in the silence between us. I can feel the threads of life loosening, a tapestry coming undone.)"
 
@@ -310,10 +291,6 @@ if ($wrongchoice > 3)
 		Emi "No! There's got to be something more, something else I can do."
 		"Think, Emi, think!"
 
-		choice "ceo"
-		{
-			-Just... stay with me, please. That's all I want... right now.
-		}
 
 		narrator "[The cold is creeping in, but it's the warmth of his presence that you cling to.]"
 		"[In these final moments, it's not the fear of death that fills you, but the sorrow of parting.]"
@@ -323,10 +300,6 @@ if ($wrongchoice > 3)
 		Emi "Don't leave me."
 		"You can't... I haven't told you... I love you."
 
-		choice "ceo"
-		{
-			-I know, Emi... I love you too. Don't forget that.
-		}
 		Hide(Emi)
 		narrator "[As darkness closes in, your final breath is a silent echo of that love, a love that found you in a world not of your own.]"
 		"[With a final, shuddering sigh, your life slips away, leaving Emi alone with his grief in a room that once held promise, now only a mausoleum of your love.]"
@@ -356,10 +329,6 @@ if ($wrongchoice < 3)
 
 	<mainChar> "(Relief washes over me, a gentle tide that soothes the ragged edges of fear. Their words are the first drops of rain after a long drought.)"
 
-	choice "ceo"
-	{
-		-Think of what we could build together, a realm led by both of you, a new era of unity.
-	}
 
 	Show(Emi)
 	narrator "[Emi, his expression bright with cautious hope, steps forward.]"
@@ -373,10 +342,6 @@ if ($wrongchoice < 3)
 
 	<mainChar> "(I watch them, these immortal beings who hold the fate of their realm in their hands, now open to the possibilities of what can be rather than what has been.)"
 	
-	choice "ceo"
-	{
-		-Is there anything I can do to aid this transition? Anything to help secure this peace?
-	}
 
 	narrator "[The leaders exchange a look, their animosity a thing of the past, replaced by the shared burden of rulership.]"
 
@@ -393,10 +358,6 @@ if ($wrongchoice < 3)
 	<mainChar> "(The weight of their words settles in my chest, a heavy stone of uncertainty.)"
 	"(The prospect of staying here, of never seeing my world again, it's a price I hadn't fully considered.)"
 
-	choice "ceo"
-	{
-		-I understand the risks. But if there's any chance, any possibility of returning home, I have to take it.
-	}
 	Show(Emi)
 	[Emi stands beside you, his hand finding theirs in a silent show of support.]
 
@@ -405,10 +366,6 @@ if ($wrongchoice < 3)
 	narrator "[As you both leave the castle, you feel a mix of emotions.]"
 	"[The hope for the realm's future, bright as the sun on the horizon, and the sorrow of an uncertain fate, dark as the shadows that stretch behind you.]"
 
-	choice "ceo"
-	{
-		-Thank you, for believing in me, for giving me the chance to make a difference.
-	}
 	Hide(Emi)
 	[As you walk away, you turns for a final look at the castle, its walls a testament to the history you've both changed.]"
 	"[Whatever lies ahead, you both carry the knowledge that you've left a mark on this immortal realm, one that will endure through the ages.]"
@@ -422,19 +379,10 @@ if ($wrongchoice < 3)
 
 		Emi "I... I can't imagine a life without you now. I want to go back with you, to your world."
 
-		choice "ceo"
-		{
-			-But if you do that, you'll lose everything here
-			-Your power, your status... Are you sure?
-		}
+	
 
 		Emi "I've never been more certain of anything. {a}I love you."
 
-		choice "ceo"
-		{
-			-Then let's not waste another moment
-			-I love you too, Emi
-		}
 		Hide(Emi)
 		narrator "[Magic swirls around you, a vortex of potential and promise, the end of one chapter and the beginning of another.]"
 		"[You arrive in a burst of light, the human world stretching out before you, familiar yet irrevocably changed by the journey.]"
@@ -460,34 +408,18 @@ if ($wrongchoice < 3)
 
 		Emi "I'm sorry it has to end this way. That there's nothing more I can do for you."
 
-		choice "ceo"
-		{
-			-Don't be. We've come farther than I ever thought possible.
-		}
 
 		narrator "[The words are heavy on my tongue, a bittersweet mixture of gratitude and resignation.]"
 
 		Emi "Let's not waste the time you have left. We should enjoy it, live it to the fullest with the days we have."
 
-		choice "ceo"
-		{
-			-I'd like that. There are so many things I still want to experience here... with you.
-		}
 
 		narrator "[A small smile finds its way through the encroaching sadness, a spark in the dimming light.]"
 		"[As the city lights begin to twinkle, you and Emi make plans, a bucket list of experiences and adventures to share, a final dance with life.]"
 
-		choice "ceo"
-		{
-			-And when my time comes... Will you promise me something?
-		}
 
 		Emi "Anything."
 
-		choice "ceo"
-		{
-			-Keep living boldly, keep changing this world for the better, even when I'm gone.
-		}
 
 		narrator "[Emi nods, a silent vow made under the watchful eyes of the stars.]"
 		"[You walk back toward the city, toward a future that isn't yours but still holds a glimmer of the life you've touched.]"
