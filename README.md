@@ -2,7 +2,7 @@
 
 Capstone Project 2023 - 2024
 
-A 2D visual novel game created by Tsukimi Dango. The game is heavily inspired by existing East-Asian stories in the genre featuring an anime artstyle and cozy city vibes.
+A 2D visual novel isekai game created by Tsukimi Dango. The game is heavily inspired by existing East-Asian stories in the genre featuring an anime art style and cozy city vibes. Discover new love and friendships while exploring a magical, foreign world. Will you get all you desire? Or will it be too late?
 
 --ART CREDITS--
 
