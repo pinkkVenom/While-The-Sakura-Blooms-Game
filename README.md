@@ -2,7 +2,10 @@
 
 Capstone Project 2023 - 2024
 
+A 2D visual novel game created by Tsukimi Dango. The game is heavily inspired by existing East-Asian stories in the genre featuring an anime artstyle and cozy city vibes.
+
 --CREDITS--
+
 Hospital Bed Scene - Reference by Studio Lab
 https://sketchfab.com/3d-models/hospital-room-fd58a2f8e93447c18e52a5cb1c1e77dd
 
@@ -23,7 +26,11 @@ Store Dialogue Background - Reference by Christian Wiediger
 Theme song “While the sakura blooms” – commission created by Alzha Studio
 
 
+
+
+
 Coding/Scripts
+
 Visual Novel System -
 https://www.youtube.com/watch?v=cO6NzrvTrkY&list=PLGSox0FgA5B58Ki4t4VqAPDycEpmkB
 d0i by Stellar Studio
