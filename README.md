@@ -7,11 +7,11 @@ Tsukimi Dango and inspired by East-Asian stories in the genre. Discover new
 love and friendships while exploring a magical, foreign world. Will you get
 all you desire? Or will it be too late?
 
-**Status:** Playable, with known bugs. Not updated since [year].
+**Status:** Playable, with known bugs. Not updated since 2024.
 
-## My role
-This was a team capstone project. I was the sole programmer and wrote all of
-the game's code. The story and artwork were created by my teammates
+## Roles
+This was a team capstone project. Julia was the sole programmer and wrote all of
+the game's code. The story, artwork, and presentations were created by
 Violet, Zaid, Dani, Lucy, and Ivy.
 
 ## Features
@@ -29,7 +29,7 @@ menu for jumping between scenes.
 
 ## How we used AI
 Our course did not allow AI to write the game's code, and all code was
-written by Julia Ociesa without AI. GPT was used only for smaller supporting tasks,
+written by Julia without AI. GPT was used only for smaller supporting tasks,
 such as brainstorming the initial story concept.
 
 ## Credits
