@@ -12,7 +12,7 @@ all you desire? Or will it be too late?
 ## My role
 This was a team capstone project. I was the sole programmer and wrote all of
 the game's code. The story and artwork were created by my teammates
-[names, if you'd like to credit them].
+Violet, Zaid, Dani, Lucy, and Ivy.
 
 ## Features
 - Visual novel dialogue system
