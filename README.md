@@ -21,10 +21,10 @@ Violet, Zaid, Dani, Lucy, and Ivy.
 - Saving game progress
 
 ## A challenge we solved: testing the story without replaying it
-Testing a branching story from the beginning every time was slow. I added a
+Testing a branching story from the beginning every time was slow. We added a
 scene variable in the code so we could jump to any point in the story by
 editing the variable and launching the game from there. It was a practical
-fix rather than an ideal one. With more time, I would build an in-game debug
+fix rather than an ideal one. With more time, we would build an in-game debug
 menu for jumping between scenes.
 
 ## How we used AI
